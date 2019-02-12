@@ -1,0 +1,30 @@
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+	<title>{{ page.title }} - {{ site.title }}</title>
+	<link rel="stylesheet" href="{{ "/assets/css/just-the-docs.css" | absolute_url }}">
+	{% if site.search_enabled != nil %}
+	<script type="text/javascript" src="{{ "/assets/js/vendor/lunr.min.js" | absolute_url }}"></script>
+	{% endif %}
+	<script type="text/javascript" src="{{ "/assets/js/just-the-docs.js" | absolute_url }}"></script>
+
+	<!-- MathJax -->
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.png">
+	<link rel="icon" sizes="192x192" href="{{ site.baseurl }}/favicon-highres.png">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
