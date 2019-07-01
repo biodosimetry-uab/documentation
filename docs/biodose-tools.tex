@@ -64,27 +64,10 @@
 \let\rmarkdownfootnote\footnote%
 \def\footnote{\protect\rmarkdownfootnote}
 
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
 
   \title{Biodose Tools}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
     \author{Alfredo Hernández}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{2019-07-01}
+      \date{2019-07-02}
 
 % \documentclass[paper=a4, fontsize=12pt, twoside=semi, abstracton, listof=totoc, toc=left]{scrartcl}
 \usepackage[T1]{fontenc}
@@ -156,7 +139,10 @@
 }
 \makeatother
 
+\usepackage{pdfpages}
+
 \begin{document}
+\includepdf{images/cover.pdf}
 \maketitle
 
 {
@@ -164,15 +150,31 @@
 \tableofcontents
 }
 \hypertarget{about}{%
-\section{About}\label{about}}
+\section*{About}\label{about}}
+\addcontentsline{toc}{section}{About}
 
-\includegraphics{assets/home.pdf}
+\includegraphics{images/home.pdf}
 
-This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with \href{https://www.r-project.org/about.html}{R} \citep{R-base} together with \href{https://shiny.rstudio.com}{Shiny} to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.
+This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with \href{https://www.r-project.org/about.html}{R} \citep{R-base} together with \href{https://shiny.rstudio.com}{Shiny} \citep{R-shiny} to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.
 
 We also aim to clarify and explain the tests used and to propose those considered most appropriate. Each laboratory in its routine work should choose the optimum method, but the project aims to reach a consensus that will help us in case of mutual assistance or intercomparisons.
 
 The project is initially developed by \href{http://www.reneb.net}{RENEB} association, but contributions are always welcome.
+
+\includegraphics{images/by-nc-sa.png}\\
+The online version of this book is licensed under the \href{http://creativecommons.org/licenses/by-nc-sa/4.0/}{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
+
+\hypertarget{structure-of-the-book}{%
+\subsection*{Structure of the book}\label{structure-of-the-book}}
+\addcontentsline{toc}{subsection}{Structure of the book}
+
+\hypertarget{acknowledgements}{%
+\subsection*{Acknowledgements}\label{acknowledgements}}
+\addcontentsline{toc}{subsection}{Acknowledgements}
+
+\hypertarget{about-the-authors}{%
+\subsection*{About the authors}\label{about-the-authors}}
+\addcontentsline{toc}{subsection}{About the authors}
 
 \hypertarget{intro}{%
 \section{Introduction}\label{intro}}

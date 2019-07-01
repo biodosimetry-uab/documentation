@@ -11,7 +11,7 @@
   <meta property="og:title" content="Biodose Tools" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="images/cover.png" />
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="biodosimetry-uab/documentation" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Biodose Tools" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  
+  <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Alfredo Hernández" />
 
 
-<meta name="date" content="2019-07-01" />
+<meta name="date" content="2019-07-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon-highres.png" />
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 
-<link rel="next" href="intro.html">
+<link rel="next" href="structure-of-the-book.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -63,23 +63,25 @@
       <nav role="navigation">
 
 <ul class="summary">
-<link rel = "icon", type = "image/x-icon", href = "../favicon.png">
-<link rel = "icon", sizes = "192x192", href="../favicon-highres.png">
 <li><a href="./">Biodose Tools Documentation</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="part"><span><b>I Getting Biodose Tools</b></span></li>
-<li class="chapter" data-level="3" data-path="online.html"><a href="online.html"><i class="fa fa-check"></i><b>3</b> Online</a></li>
-<li class="part"><span><b>II Using Biodose Tools</b></span></li>
-<li class="chapter" data-level="4" data-path="user-interface.html"><a href="user-interface.html"><i class="fa fa-check"></i><b>4</b> User Interface</a></li>
-<li class="part"><span><b>III Statistical Methods</b></span></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a><ul>
+<li class="chapter" data-level="" data-path="structure-of-the-book.html"><a href="structure-of-the-book.html"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the authors</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I Getting Biodose Tools</b></span></li>
+<li class="chapter" data-level="2" data-path="online.html"><a href="online.html"><i class="fa fa-check"></i><b>2</b> Online</a></li>
+<li class="part"><span><b>II Using Biodose Tools</b></span></li>
+<li class="chapter" data-level="3" data-path="user-interface.html"><a href="user-interface.html"><i class="fa fa-check"></i><b>3</b> User Interface</a></li>
+<li class="part"><span><b>III Statistical Methods</b></span></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
+<li class="chapter" data-level="4.1" data-path="example-one.html"><a href="example-one.html"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="example-two.html"><a href="example-two.html"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="appendix-a-black-magic.html"><a href="appendix-a-black-magic.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Black Magic</a></li>
@@ -106,15 +108,16 @@
 <div id="header">
 <h1 class="title">Biodose Tools</h1>
 <p class="author"><em>Alfredo Hernández</em></p>
-<p class="date"><em>2019-07-01</em></p>
+<p class="date"><em>2019-07-02</em></p>
 </div>
-<div id="about" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> About</h1>
-<p><img src="assets/home.svg" /><!-- --></p>
-<p>This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with <a href="https://www.r-project.org/about.html">R</a> <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span> together with <a href="https://shiny.rstudio.com">Shiny</a> to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.</p>
+<div id="about" class="section level1 unnumbered">
+<h1>About</h1>
+<p><img src="images/home.svg" /><!-- --></p>
+<p>This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with <a href="https://www.r-project.org/about.html">R</a> <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span> together with <a href="https://shiny.rstudio.com">Shiny</a> <span class="citation">(Chang et al. <a href="references.html#ref-R-shiny" role="doc-biblioref">2019</a>)</span> to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.</p>
 <p>We also aim to clarify and explain the tests used and to propose those considered most appropriate. Each laboratory in its routine work should choose the optimum method, but the project aims to reach a consensus that will help us in case of mutual assistance or intercomparisons.</p>
 <p>The project is initially developed by <a href="http://www.reneb.net">RENEB</a> association, but contributions are always welcome.</p>
-
+<p><img src="images/by-nc-sa.png" alt="Creative Commons License" /><br />
+The online version of this book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p> 
 </div>
             </section>
 
@@ -122,7 +125,7 @@
         </div>
       </div>
 
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="structure-of-the-book.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -137,14 +140,14 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
+"facebook": false,
 "twitter": true,
 "google": false,
-"linkedin": false,
+"linkedin": true,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin"]
 },
 "fontsettings": {
 "theme": "white",
@@ -152,14 +155,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/biodosimetry-uab/documentation/edit/master/index.Rmd",
 "text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
-"download": ["biodose-tools.pdf"],
+"download": ["biodose-tools.pdf", "biodose-tools.epub"],
 "toc": {
 "collapse": "subsection"
 }
