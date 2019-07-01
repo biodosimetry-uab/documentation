@@ -1,3 +1,64 @@
+% \documentclass[paper=a4, fontsize=12pt, twoside=semi, abstracton, listof=totoc, toc=left]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% \usepackage{lmodern}
+\usepackage{newpxtext}
+\usepackage{newpxmath}
+\let\openbox\relax
+\usepackage{slantsc}
+\usepackage{microtype}
+
+
+% Sectioning layout
+\addtokomafont{sectioning}{\normalfont\bfseries}
+\setkomafont{section}{\LARGE}
+\setkomafont{subsection}{\Large}
+\setkomafont{subsubsection}{\large}
+\setkomafont{paragraph}{\large}
+\setkomafont{subparagraph}{\large}
+
+\renewcommand\sectionformat
+  {Chapter\enskip\thesection\autodot\hspace{1em}}
+
+
+\usepackage{tocstyle}
+\usetocstyle{standard}
+% \renewcommand*\descriptionlabel[1]{\hspace\labelsep\normalfont\bfseries{#1}}
+\usepackage[titletoc]{appendix}
+\BeforeStartingTOC[lof]{\def\autodot{:}}
+\BeforeStartingTOC[lot]{\def\autodot{:}}
+
+
+% Empty pages
+\usepackage{etoolbox}
+\pretocmd{\toc}{\cleardoubleevenemptypage}{}{}
+\pretocmd{\section}{\cleardoubleevenemptypage}{}{}
+\pretocmd{\part}{\cleardoubleevenemptypage\thispagestyle{empty}}{}{}
+\renewcommand\partheadstartvskip{\clearpage\null\vfil}
+\renewcommand\partheadmidvskip{\par\nobreak\vskip 20pt\thispagestyle{empty}}
+
+% Paragraph indentation behaviour
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3\baselineskip plus2pt minus2pt}
+\newcommand{\sk}{\medskip\noindent}
+
+% Fancy header and footer
+% \usepackage{fancyhdr}
+% \pagestyle{fancyplain}
+% \fancyhead[LO]{\thepage}
+% \fancyhead[CO]{}
+% % \fancyhead[RO]{\nouppercase{ASD}}
+% \fancyhead[RO]{\nouppercase{\rightmark}}
+% \fancyhead[LE]{\nouppercase{\rightmark}}
+% % % \fancyhead[LE]{\nouppercase{\leftmark}}
+% \fancyhead[CE]{}
+% \fancyhead[RE]{\thepage}
+% \fancyfoot{}
+% \renewcommand{\headrulewidth}{0.3pt}
+% \renewcommand{\footrulewidth}{0pt}
+% \setlength{\headheight}{13.6pt}
+
+% Default packages
 \usepackage{booktabs}
 \usepackage{amsthm}
 \makeatletter
