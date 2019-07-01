@@ -1,20 +1,29 @@
 bookdown::gitbook:
   css: style.css
+  split_by: section
   config:
     toc:
       before: |
-        <link rel = "icon", type = "image/x-icon", href = "../favicon.png">
-        <link rel = "icon", sizes = "192x192", href="../favicon-highres.png">
         <li><a href="./">Biodose Tools Documentation</a></li>
 
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
-    download: ["pdf"]
+    edit: https://github.com/biodosimetry-uab/documentation/edit/master/%s
+    download: ["pdf", "epub"]
+    sharing:
+      facebook: no
+      twitter: yes
+      google: no
+      linkedin: yes
+      weibo: no
+      instapaper: no
+      vk: no
+      all: ['facebook', 'twitter', 'linkedin']
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   latex_engine: pdflatex
   citation_package: natbib
   keep_tex: yes
+  template: template.tex
 bookdown::epub_book: default
