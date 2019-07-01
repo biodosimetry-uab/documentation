@@ -1,4 +1,4 @@
-# (PART) Tables and Figures {-}
+# (PART) Statistical Methods {-}
 
 # Applications
 
