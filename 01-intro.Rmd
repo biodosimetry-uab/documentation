@@ -1,3 +1,11 @@
-# Introduction {#intro}
+## Structure of the book {-}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+## Acknowledgements {-}
+
+## About the authors {-}
+
+# Background and goals {-}
+
+```{r echo=FALSE}
+knitr::include_graphics("images/intro/chronology.svg", auto_pdf = getOption("knitr.graphics.auto_pdf", TRUE))
+```

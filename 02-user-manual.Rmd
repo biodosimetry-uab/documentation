@@ -1,0 +1,27 @@
+# (PART) Using Biodose Tools {-}
+
+# Getting Biodose Tools
+
+## Online
+
+During the beta testing phase, the application is hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodose-tools-beta/](https://aldomann.shinyapps.io/biodose-tools-beta/)
+
+
+## On RStudio
+*This is a work in progress.*
+
+The application can be easily installed by runnning
+```r
+install.packages("biodose-tools")
+```
+
+Alternatively, if you want to download the development version, you can just run
+```r
+devtools::install_github("biodosimetry-uab/biodose-tools-package")
+```
+
+# Usage
+
+## User interface
+
+We describe our methods in this chapter.

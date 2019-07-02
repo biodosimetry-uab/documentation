@@ -1,5 +1,6 @@
 --- 
 title: "Biodose Tools"
+subtitle: "User Manual & Documentation"
 author: "Alfredo Hernández"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -19,7 +20,6 @@ pdf-cover-image: "images/cover.pdf"
 
 # About {-}
 
-
 ```{r echo=FALSE}
 knitr::include_graphics("images/home.svg", auto_pdf = getOption("knitr.graphics.auto_pdf", TRUE))
 ```
@@ -36,12 +36,6 @@ The online version of this book is licensed under the [Creative Commons Attribut
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'shiny'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'shiny', 'bs4Dash'
 ), 'packages.bib')
 ```
-
-## Structure of the book {-}
-
-## Acknowledgements {-}
-
-## About the authors {-}
