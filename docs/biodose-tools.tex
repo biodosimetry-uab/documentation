@@ -30,6 +30,46 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -66,7 +106,8 @@
 
 
   \title{Biodose Tools}
-    \author{Alfredo Hernández}
+  \subtitle{User Manual \& Documentation}
+  \author{Alfredo Hernández}
       \date{2019-07-02}
 
 % \documentclass[paper=a4, fontsize=12pt, twoside=semi, abstracton, listof=totoc, toc=left]{scrartcl}
@@ -176,45 +217,87 @@ The online version of this book is licensed under the \href{http://creativecommo
 \subsection*{About the authors}\label{about-the-authors}}
 \addcontentsline{toc}{subsection}{About the authors}
 
-\hypertarget{intro}{%
-\section{Introduction}\label{intro}}
+\hypertarget{background-and-goals}{%
+\section*{Background and goals}\label{background-and-goals}}
+\addcontentsline{toc}{section}{Background and goals}
 
-You can label chapter and section titles using \texttt{\{\#label\}} after them, e.g., we can reference Chapter \ref{intro}. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \ref{methods}.
-
-\hypertarget{part-getting-biodose-tools}{%
-\part{Getting Biodose Tools}\label{part-getting-biodose-tools}}
-
-\hypertarget{online}{%
-\section{Online}\label{online}}
-
-Here is a review of existing methods.
+\includegraphics{images/intro/chronology.pdf}
 
 \hypertarget{part-using-biodose-tools}{%
 \part{Using Biodose Tools}\label{part-using-biodose-tools}}
 
+\hypertarget{getting-biodose-tools}{%
+\section{Getting Biodose Tools}\label{getting-biodose-tools}}
+
+\hypertarget{online}{%
+\subsection{Online}\label{online}}
+
+During the beta testing phase, the application is hosted on Shinyapps.io: \url{https://aldomann.shinyapps.io/biodose-tools-beta/}
+
+\hypertarget{on-rstudio}{%
+\subsection{On RStudio}\label{on-rstudio}}
+
+\emph{This is a work in progress.}
+
+The application can be easily installed by runnning
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"biodose-tools"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Alternatively, if you want to download the development version, you can just run
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"biodosimetry-uab/biodose-tools-package"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{usage}{%
+\section{Usage}\label{usage}}
+
 \hypertarget{user-interface}{%
-\section{User Interface}\label{user-interface}}
+\subsection{User interface}\label{user-interface}}
 
 We describe our methods in this chapter.
 
 \hypertarget{part-statistical-methods}{%
 \part{Statistical Methods}\label{part-statistical-methods}}
 
-\hypertarget{applications}{%
-\section{Applications}\label{applications}}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
-Some \emph{significant} applications are demonstrated in this chapter.
+Here is a review of existing statistical methods for the different implemented modules, i.e.,
 
-\hypertarget{example-one}{%
-\subsection{Example one}\label{example-one}}
+\begin{itemize}
+\tightlist
+\item
+  Dicentric analysis
+\item
+  Translocation analysis
+\end{itemize}
 
-\hypertarget{example-two}{%
-\subsection{Example two}\label{example-two}}
+The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools.
 
-\hypertarget{final-words}{%
-\section{Final Words}\label{final-words}}
+\hypertarget{dicentric-analysis}{%
+\section{Dicentric analysis}\label{dicentric-analysis}}
 
-We have finished a nice book.
+\hypertarget{dose-effect-curve-fitting}{%
+\subsection{Dose-effect curve fitting}\label{dose-effect-curve-fitting}}
+
+\hypertarget{dose-estimation}{%
+\subsection{Dose estimation}\label{dose-estimation}}
+
+\hypertarget{translocation-analysis}{%
+\section{Translocation analysis}\label{translocation-analysis}}
+
+\hypertarget{dose-effect-curve-fitting-1}{%
+\subsection{Dose-effect curve fitting}\label{dose-effect-curve-fitting-1}}
+
+\hypertarget{dose-estimation-1}{%
+\subsection{Dose estimation}\label{dose-estimation-1}}
 
 \hypertarget{refs}{}
 
@@ -222,8 +305,10 @@ We have finished a nice book.
 \appendix}
 
 
-\hypertarget{appendix-a-black-magic}{%
-\section{Appendix A: Black Magic}\label{appendix-a-black-magic}}
+\hypertarget{implementation-details}{%
+\section{Implementation details}\label{implementation-details}}
+
+The Biodose Tools user interface is written in \citep{R-shiny} using Bootstrap 4 \citep{R-bs4Dash}, analyses are implemented in the R programming language \citep{R-base}, with the resultant tables and plots rendered in HTML through JavaScript libraries. This is done by the browser of choice (Google Chrome, Firefox, Microsoft Edge, and Safari are officially suppored), or by an instance of QtWebKit if the app is run through RStudio.
 
 \bibliography{book.bib,packages.bib}
 
