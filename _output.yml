@@ -16,10 +16,11 @@ bookdown::gitbook:
       twitter: yes
       google: no
       linkedin: yes
+      github: yes
       weibo: no
       instapaper: no
       vk: no
-      all: ['facebook', 'twitter', 'linkedin']
+      all: ['facebook', 'twitter', 'linkedin', 'github']
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

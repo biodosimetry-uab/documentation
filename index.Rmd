@@ -34,8 +34,6 @@ We also aim to clarify and explain the tests used and to propose those considere
 
 The project is initially developed by [RENEB](http://www.reneb.net) association, but contributions are always welcome.
 
-<!-- ![Creative Commons License](images/by-nc-sa.png) -->
-
 ```{r, echo = FALSE, fig.align = "center"}
     knitr::include_graphics("images/by-nc-sa.png", dpi = 96)
     ```
