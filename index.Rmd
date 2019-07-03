@@ -20,8 +20,12 @@ pdf-cover-image: "images/cover.pdf"
 
 # About {-}
 
+```{r include=FALSE}
+options(knitr.graphics.auto_pdf = TRUE)
+```
+
 ```{r echo=FALSE}
-knitr::include_graphics("images/home.svg", auto_pdf = getOption("knitr.graphics.auto_pdf", TRUE))
+knitr::include_graphics("images/home.svg")
 ```
 
 This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with [R](https://www.r-project.org/about.html) [@R-base] together with [Shiny](https://shiny.rstudio.com) [@R-shiny] to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.
@@ -30,7 +34,11 @@ We also aim to clarify and explain the tests used and to propose those considere
 
 The project is initially developed by [RENEB](http://www.reneb.net) association, but contributions are always welcome.
 
-![Creative Commons License](images/by-nc-sa.png)  
+<!-- ![Creative Commons License](images/by-nc-sa.png) -->
+
+```{r, echo = FALSE, fig.align = "center"}
+    knitr::include_graphics("images/by-nc-sa.png", dpi = 96)
+    ```
 The online version of this book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
 
 ```{r include=FALSE}
