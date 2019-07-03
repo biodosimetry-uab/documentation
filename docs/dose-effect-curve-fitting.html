@@ -24,7 +24,7 @@
 <meta name="author" content="Alfredo Hernández" />
 
 
-<meta name="date" content="2019-07-03" />
+<meta name="date" content="2019-07-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,9 +50,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -62,14 +62,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +80,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -187,6 +189,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dose-effect-curve-fitting" class="section level2">
 <h2><span class="header-section-number">4.1</span> Dose-effect curve fitting</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="right">D</th>
+<th align="right">N</th>
+<th align="right">X</th>
+<th align="right">C0</th>
+<th align="right">C1</th>
+<th align="right">C2</th>
+<th align="right">C3</th>
+<th align="right">C4</th>
+<th align="right">C5</th>
+<th align="right">DI</th>
+<th align="right">u</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.00</td>
+<td align="right">5000</td>
+<td align="right">8</td>
+<td align="right">4992</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9985997</td>
+<td align="right">-0.0748406</td>
+</tr>
+<tr class="even">
+<td align="right">0.10</td>
+<td align="right">5002</td>
+<td align="right">14</td>
+<td align="right">4988</td>
+<td align="right">14</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9974005</td>
+<td align="right">-0.1348939</td>
+</tr>
+<tr class="odd">
+<td align="right">0.25</td>
+<td align="right">2008</td>
+<td align="right">22</td>
+<td align="right">1987</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.0804910</td>
+<td align="right">2.6098032</td>
+</tr>
+<tr class="even">
+<td align="right">0.50</td>
+<td align="right">2002</td>
+<td align="right">55</td>
+<td align="right">1947</td>
+<td align="right">55</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9730135</td>
+<td align="right">-0.8614691</td>
+</tr>
+<tr class="odd">
+<td align="right">0.75</td>
+<td align="right">1832</td>
+<td align="right">100</td>
+<td align="right">1736</td>
+<td align="right">92</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.0259749</td>
+<td align="right">0.7898872</td>
+</tr>
+<tr class="even">
+<td align="right">1.00</td>
+<td align="right">1168</td>
+<td align="right">109</td>
+<td align="right">1064</td>
+<td align="right">99</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9992767</td>
+<td align="right">-0.0175514</td>
+</tr>
+<tr class="odd">
+<td align="right">1.50</td>
+<td align="right">562</td>
+<td align="right">100</td>
+<td align="right">474</td>
+<td align="right">76</td>
+<td align="right">12</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.0639572</td>
+<td align="right">1.0765604</td>
+</tr>
+<tr class="even">
+<td align="right">2.00</td>
+<td align="right">333</td>
+<td align="right">103</td>
+<td align="right">251</td>
+<td align="right">63</td>
+<td align="right">17</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.1407182</td>
+<td align="right">1.8218931</td>
+</tr>
+<tr class="odd">
+<td align="right">3.00</td>
+<td align="right">193</td>
+<td align="right">108</td>
+<td align="right">104</td>
+<td align="right">72</td>
+<td align="right">15</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.8336227</td>
+<td align="right">-1.6377580</td>
+</tr>
+<tr class="even">
+<td align="right">4.00</td>
+<td align="right">103</td>
+<td align="right">103</td>
+<td align="right">35</td>
+<td align="right">41</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0.8823529</td>
+<td align="right">-0.8442765</td>
+</tr>
+<tr class="odd">
+<td align="right">5.00</td>
+<td align="right">59</td>
+<td align="right">107</td>
+<td align="right">11</td>
+<td align="right">19</td>
+<td align="right">11</td>
+<td align="right">9</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">1.1498550</td>
+<td align="right">0.8107914</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://biodosimetry-uab.github.io/documentation/data/count-data-IAEA.csv">Download dicentrics distribution</a></p>
 </div>
             </section>
 
@@ -208,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": false,
 "twitter": true,
 "google": false,
@@ -216,7 +381,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin"]
+"all": ["facebook", "twitter", "linkedin", "github"]
 },
 "fontsettings": {
 "theme": "white",
