@@ -443,9 +443,15 @@ We describe the user interface (UI) components in this section.
 \hypertarget{design-principles}{%
 \subsubsection{Design principles}\label{design-principles}}
 
-\begin{center}\includegraphics{images/user-manual/color-palette-primary} \end{center}
+Color is an effective, powerful and instantly recognizable medium for visual communications. In Biodose Tools color is used to identify different sections of information, a technique called \emph{color-coding}.
 
-\begin{center}\includegraphics{images/user-manual/color-palette-secondary} \end{center}
+\begin{quote}
+Once users are attuned to the color schemes, they can use them. Even before then, they'll know when they've left one section for another, if they notice that the color scheme changed. So color-coding works to distinguish one section from another; it makes the boundaries clear.
+
+-- Jenifer Tidwell \citep{Tidwel2010}
+\end{quote}
+
+\begin{center}\includegraphics{images/user-manual/color-coding} \end{center}
 
 \hypertarget{part-statistical-methods}{%
 \part{Statistical Methods}\label{part-statistical-methods}}
@@ -494,7 +500,7 @@ The primary objective of this section is to provide biologists with technical in
 
 The Biodose Tools user interface is written in \citep{R-shiny} using Bootstrap 4 \citep{R-bs4Dash}, analyses are implemented in the R programming language \citep{R-base}, with the resultant tables and plots rendered in HTML through JavaScript libraries. This is done by the browser of choice (Google Chrome, Firefox, Microsoft Edge, and Safari are officially suppored), or by an instance of QtWebKit if the app is run through RStudio.
 
-\bibliography{book.bib,packages.bib}
+\bibliography{book.bib,packages.bib,extra.bib}
 
 
 \end{document}
