@@ -1,5 +1,5 @@
 # (APPENDIX) Appendices {-} 
 
-# Implementation details
+# Implementation details {#app:implementation}
 
 The Biodose Tools user interface is written in [@R-shiny] using Bootstrap 4 [@R-bs4Dash], analyses are implemented in the R programming language [@R-base], with the resultant tables and plots rendered in HTML through JavaScript libraries. This is done by the browser of choice (Google Chrome, Firefox, Microsoft Edge, and Safari are officially suppored), or by an instance of QtWebKit if the app is run through RStudio.
