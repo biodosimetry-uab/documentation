@@ -60,7 +60,7 @@ for (row in 1:num_rows) {
 knitr::kable(mytable)
 ```
 
-[Download dicentrics distribution](data/count-data-IAEA.csv)
+[Download dicentrics distribution](https://biodosimetry-uab.github.io/documentation/data/count-data-IAEA.csv)
 
 ## Dose estimation
 
