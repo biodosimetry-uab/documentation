@@ -1,20 +1,20 @@
 # (PART) Statistical Methods {-}
 
-# Introduction 
+# Introduction {#stats-intro}
 Here is a review of existing statistical methods for the different implemented modules, i.e., 
  
 - Dicentric analysis
 - Translocation analysis
 
-The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools.
+The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools. The main source is [@IAEA2001]
 
-# Dicentric analysis
+# Dicentric analysis {#stats-dicent}
 
 ## Dose-effect curve fitting
 
 ## Dose estimation
 
-# Translocation analysis
+# Translocation analysis {#stats-trans}
 
 ## Dose-effect curve fitting
 
