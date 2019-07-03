@@ -108,7 +108,7 @@
   \title{Biodose Tools}
   \subtitle{User Manual \& Documentation}
   \author{Alfredo Hernández}
-      \date{2019-07-02}
+      \date{2019-07-03}
 
 % \documentclass[paper=a4, fontsize=12pt, twoside=semi, abstracton, listof=totoc, toc=left]{scrartcl}
 \usepackage[T1]{fontenc}
@@ -202,12 +202,19 @@ We also aim to clarify and explain the tests used and to propose those considere
 
 The project is initially developed by \href{http://www.reneb.net}{RENEB} association, but contributions are always welcome.
 
-\includegraphics{images/by-nc-sa.png}\\
+\begin{center}\includegraphics[width=0.92in]{images/by-nc-sa} \end{center}
+
 The online version of this book is licensed under the \href{http://creativecommons.org/licenses/by-nc-sa/4.0/}{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
 
 \hypertarget{structure-of-the-book}{%
 \subsection*{Structure of the book}\label{structure-of-the-book}}
 \addcontentsline{toc}{subsection}{Structure of the book}
+
+Chapter \ref{get} introduces the user to Biodose Tools and how to use it either online or with RStudio. \ref{manual} introduces the basic design principles behind the user interface, and the usage of the different modules.
+
+\ldots{}
+
+In Appendix \ref{app:implementation}, a technical review of the implementation of Biodose Tools is discussed.
 
 \hypertarget{acknowledgements}{%
 \subsection*{Acknowledgements}\label{acknowledgements}}
@@ -216,6 +223,172 @@ The online version of this book is licensed under the \href{http://creativecommo
 \hypertarget{about-the-authors}{%
 \subsection*{About the authors}\label{about-the-authors}}
 \addcontentsline{toc}{subsection}{About the authors}
+
+The project is initially developed by \href{http://www.reneb.net}{RENEB} association, as a collaboration between Universitat Autònoma de Barcelona, Bundesamt für Strahlenschutz, Durham University, Institut de Radioprotection et de Sûreté Nucléaire, Universidad de la Rioja, and Public Health of England.
+
+Below, a list of the team behind the development of Biodose Tools.
+
+\hypertarget{universitat-autonoma-de-barcelona}{%
+\subsubsection*{Universitat Autònoma de Barcelona}\label{universitat-autonoma-de-barcelona}}
+\addcontentsline{toc}{subsubsection}{Universitat Autònoma de Barcelona}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{http://aldomann.com}{Alfredo Hernández}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Statistical programmer
+  \item
+    Main author
+  \end{itemize}
+\item
+  \textbf{\href{http://grupsderecerca.uab.cat/advancedstochasticmodelling/content/pere-puig}{Pere Puig}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Mathematician
+  \end{itemize}
+\item
+  \textbf{\href{https://scholar.google.com/citations?user=jMLzrEQAAAAJ}{Joan Francesc Barquinero}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biologist
+  \end{itemize}
+\item
+  \textbf{\href{https://www.researchgate.net/scientific-contributions/2058388356_Lleonard_Barrios}{Lleonard Barrios}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biologist
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{bundesamt-fur-strahlenschutz}{%
+\subsubsection*{Bundesamt für Strahlenschutz}\label{bundesamt-fur-strahlenschutz}}
+\addcontentsline{toc}{subsubsection}{Bundesamt für Strahlenschutz}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{https://www.researchgate.net/profile/David_Endesfelder2}{David Endesfelder}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Mathematician
+  \end{itemize}
+\item
+  \textbf{\href{https://www.researchgate.net/profile/Ulrike_Kulka}{Ulrike Kulka}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biologist
+  \end{itemize}
+\item
+  \textbf{\href{https://www.researchgate.net/scientific-contributions/2121336457_Ursula_Oestreicher}{Ursula Oestreicher}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biologist
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{durham-university}{%
+\subsubsection*{Durham University}\label{durham-university}}
+\addcontentsline{toc}{subsubsection}{Durham University}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{https://www.dur.ac.uk/research/directory/staff/?id=4542}{Jochen Einbeck}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Statistician
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{institut-de-radioprotection-et-de-surete-nucleaire}{%
+\subsubsection*{Institut de Radioprotection et de Sûreté Nucléaire}\label{institut-de-radioprotection-et-de-surete-nucleaire}}
+\addcontentsline{toc}{subsubsection}{Institut de Radioprotection et de Sûreté Nucléaire}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{https://www.researchgate.net/profile/Mohamed_Benadjaoud}{Amine Benadjaoud}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biostatistician
+  \end{itemize}
+\item
+  \textbf{\href{https://www.researchgate.net/profile/Gruel_Gaetan}{Gruel Gaëtan}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biologist
+  \end{itemize}
+\item
+  \textbf{\href{https://www.researchgate.net/profile/Eric_Gregoire2}{Eric Grègoire}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biologist
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{universidad-de-la-rioja}{%
+\subsubsection*{Universidad de la Rioja}\label{universidad-de-la-rioja}}
+\addcontentsline{toc}{subsubsection}{Universidad de la Rioja}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{https://investigacion.unirioja.es/investigadores/1322/detalle}{Manuel Higueras}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Mathematician
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{public-health-of-england}{%
+\subsubsection*{Public Health of England}\label{public-health-of-england}}
+\addcontentsline{toc}{subsubsection}{Public Health of England}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\href{https://www.phe-protectionservices.org.uk/cds/team/liz_ainsbury}{Elizabeth Ainsbury}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Physicist
+  \end{itemize}
+\item
+  \textbf{\href{https://www.phe-protectionservices.org.uk/cds/team/david_lloyd}{David Lloyd}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Biologist
+  \end{itemize}
+\end{itemize}
 
 \hypertarget{background-and-goals}{%
 \section*{Background and goals}\label{background-and-goals}}
@@ -226,16 +399,18 @@ The online version of this book is licensed under the \href{http://creativecommo
 \hypertarget{part-using-biodose-tools}{%
 \part{Using Biodose Tools}\label{part-using-biodose-tools}}
 
-\hypertarget{getting-biodose-tools}{%
-\section{Getting Biodose Tools}\label{getting-biodose-tools}}
+\hypertarget{get}{%
+\section{Getting Biodose Tools}\label{get}}
 
-\hypertarget{online}{%
-\subsection{Online}\label{online}}
+Stuff
+
+\hypertarget{get-online}{%
+\subsection{Online}\label{get-online}}
 
 During the beta testing phase, the application is hosted on Shinyapps.io: \url{https://aldomann.shinyapps.io/biodose-tools-beta/}
 
-\hypertarget{on-rstudio}{%
-\subsection{On RStudio}\label{on-rstudio}}
+\hypertarget{get-offline}{%
+\subsection{On RStudio}\label{get-offline}}
 
 \emph{This is a work in progress.}
 
@@ -255,19 +430,28 @@ Alternatively, if you want to download the development version, you can just run
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{usage}{%
-\section{Usage}\label{usage}}
+\hypertarget{manual}{%
+\section{Usage}\label{manual}}
 
-\hypertarget{user-interface}{%
-\subsection{User interface}\label{user-interface}}
+Stuff
 
-We describe our methods in this chapter.
+\hypertarget{manual-ui}{%
+\subsection{User interface}\label{manual-ui}}
+
+We describe the user interface (UI) components in this section.
+
+\hypertarget{design-principles}{%
+\subsubsection{Design principles}\label{design-principles}}
+
+\begin{center}\includegraphics{images/user-manual/color-palette-primary} \end{center}
+
+\begin{center}\includegraphics{images/user-manual/color-palette-secondary} \end{center}
 
 \hypertarget{part-statistical-methods}{%
 \part{Statistical Methods}\label{part-statistical-methods}}
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\hypertarget{stats-intro}{%
+\section{Introduction}\label{stats-intro}}
 
 Here is a review of existing statistical methods for the different implemented modules, i.e.,
 
@@ -279,10 +463,10 @@ Here is a review of existing statistical methods for the different implemented m
   Translocation analysis
 \end{itemize}
 
-The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools.
+The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools. The main source is \citep{IAEA2001}
 
-\hypertarget{dicentric-analysis}{%
-\section{Dicentric analysis}\label{dicentric-analysis}}
+\hypertarget{stats-dicent}{%
+\section{Dicentric analysis}\label{stats-dicent}}
 
 \hypertarget{dose-effect-curve-fitting}{%
 \subsection{Dose-effect curve fitting}\label{dose-effect-curve-fitting}}
@@ -290,8 +474,8 @@ The primary objective of this section is to provide biologists with technical in
 \hypertarget{dose-estimation}{%
 \subsection{Dose estimation}\label{dose-estimation}}
 
-\hypertarget{translocation-analysis}{%
-\section{Translocation analysis}\label{translocation-analysis}}
+\hypertarget{stats-trans}{%
+\section{Translocation analysis}\label{stats-trans}}
 
 \hypertarget{dose-effect-curve-fitting-1}{%
 \subsection{Dose-effect curve fitting}\label{dose-effect-curve-fitting-1}}
@@ -305,8 +489,8 @@ The primary objective of this section is to provide biologists with technical in
 \appendix}
 
 
-\hypertarget{implementation-details}{%
-\section{Implementation details}\label{implementation-details}}
+\hypertarget{app:implementation}{%
+\section{Implementation details}\label{app:implementation}}
 
 The Biodose Tools user interface is written in \citep{R-shiny} using Bootstrap 4 \citep{R-bs4Dash}, analyses are implemented in the R programming language \citep{R-base}, with the resultant tables and plots rendered in HTML through JavaScript libraries. This is done by the browser of choice (Google Chrome, Firefox, Microsoft Edge, and Safari are officially suppored), or by an instance of QtWebKit if the app is run through RStudio.
 
