@@ -10,7 +10,7 @@ bibliography: [book.bib, packages.bib, extra.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: biodosimetry-uab/documentation
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "User Guide & Documentation for Biodose Tools"
 apple-touch-icon: "favicon-highres.png"
 apple-touch-icon-size: 120
 favicon: "favicon.png"
