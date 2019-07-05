@@ -3,3 +3,16 @@
 # Implementation details {#app:implementation}
 
 The Biodose Tools user interface is written in [@R-shiny] using Bootstrap 4 [@R-bs4Dash], analyses are implemented in the R programming language [@R-base], with the resultant tables and plots rendered in HTML through JavaScript libraries. This is done by the browser of choice (Google Chrome, Firefox, Microsoft Edge, and Safari are officially suppored), or by an instance of QtWebKit if the app is run through RStudio.
+
+# How to cite Biodose Tools
+
+If you want to cite Biodose Tools, you can use the following BibTeX entry:
+
+```tex
+@Manual{BiodoseTools2019,
+  title = {{Biodose Tools}},
+  author = {Alfredo Hernández and Joan Francesc Barquinero and David Endesfelder and Pere Puig and Lleonard Barrios and Jochen Einbeck and Amine Benadjaoud and Elizabeth Ainsbury and Ulrike Kulka and Eric Grègoire and Manuel Higueras and Gruel Gaëtan and Ursula Oestreicher and David Lloyd},
+  year = {2019},
+  url = {https://biodosimetry-uab.github.io/documentation/},
+}
+```
