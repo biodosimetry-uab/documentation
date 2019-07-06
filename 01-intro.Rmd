@@ -10,7 +10,7 @@ In Appendix \@ref(app:implementation), a technical review of the implementation 
 
 ## About the authors {-}
 
-The project is initially developed by [RENEB](http://www.reneb.net) association, as a collaboration between Universitat Autònoma de Barcelona (UAB), Bundesamt für Strahlenschutz (BfS), Durham University (DU), Institut de Radioprotection et de Sûreté Nucléaire (IRSN), Universidad de la Rioja (UdR), and Public Health of England (PHE).
+The project is initially developed by [RENEB](http://www.reneb.net) association, as a collaboration between Universitat Autònoma de Barcelona ([UAB](https://www.uab.cat/)), Bundesamt für Strahlenschutz ([BfS](http://www.bfs.de/EN/home/home_node.html)), Durham University ([DU](https://www.dur.ac.uk/)), Institut de Radioprotection et de Sûreté Nucléaire ([IRSN](https://www.irsn.fr/EN/Pages/Home.aspx)), Universidad de la Rioja ([UdR](https://www.unirioja.es/)), and Public Health England ([PHE](https://www.phe-protectionservices.org.uk/)).
 
 ### Principal contributors {-}
 
@@ -38,7 +38,30 @@ The project is initially developed by [RENEB](http://www.reneb.net) association,
 
 # Background and goals {-}
 
+Over the years more powerful software has been developed to aid biologists in their daily work. Biodose Tools is the next step.
+
 ```{r echo=FALSE}
 knitr::include_graphics("images/intro/chronology.svg")
 ```
+
+## R Shiny as a statistical tool {-}
+
+Shiny is an R package that makes it easy to build interactive web apps straight from R, combining the computational power of R with the interactivity of the modern web.
+
+- Access to a powerful web framework for building web applications using R.
+- Being in complete control of the mathematics and statistics behind.
+
+- Rethink what biologists and laboratories need in their everyday workflow.
+- Build a complete, fully documented tool.
+- Provide an Open Source tool to the community.
+
+### Modules {-}
+
+Different modules can be built for each function (fitting, dose estimation, …) while being totally independent from one another.
+
+```{r echo=FALSE, out.width = "355px", fig.align='center'}
+knitr::include_graphics("images/stats/iaea-cover.jpg", dpi = 2)
+```
+
+This opens up the possibility to implement statistical methods not included in the IAEA Manual (2011).
 
