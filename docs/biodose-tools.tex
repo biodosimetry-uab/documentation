@@ -108,7 +108,7 @@
   \title{Biodose Tools}
   \subtitle{User Manual \& Documentation}
   \author{Alfredo Hernández}
-      \date{2019-07-05}
+      \date{2019-07-06}
 
 % \documentclass[paper=a4, fontsize=12pt, twoside=semi, abstracton, listof=totoc, toc=left]{scrartcl}
 \usepackage[T1]{fontenc}
@@ -224,7 +224,7 @@ In Appendix \ref{app:implementation}, a technical review of the implementation o
 \subsection*{About the authors}\label{about-the-authors}}
 \addcontentsline{toc}{subsection}{About the authors}
 
-The project is initially developed by \href{http://www.reneb.net}{RENEB} association, as a collaboration between Universitat Autònoma de Barcelona (UAB), Bundesamt für Strahlenschutz (BfS), Durham University (DU), Institut de Radioprotection et de Sûreté Nucléaire (IRSN), Universidad de la Rioja (UdR), and Public Health of England (PHE).
+The project is initially developed by \href{http://www.reneb.net}{RENEB} association, as a collaboration between Universitat Autònoma de Barcelona (\href{https://www.uab.cat/}{UAB}), Bundesamt für Strahlenschutz (\href{http://www.bfs.de/EN/home/home_node.html}{BfS}), Durham University (\href{https://www.dur.ac.uk/}{DU}), Institut de Radioprotection et de Sûreté Nucléaire (\href{https://www.irsn.fr/EN/Pages/Home.aspx}{IRSN}), Universidad de la Rioja (\href{https://www.unirioja.es/}{UdR}), and Public Health England (\href{https://www.phe-protectionservices.org.uk/}{PHE}).
 
 \hypertarget{principal-contributors}{%
 \subsubsection*{Principal contributors}\label{principal-contributors}}
@@ -236,11 +236,11 @@ Name & Institution & Role\tabularnewline
 \midrule
 \endhead
 \href{http://aldomann.com}{Alfredo Hernández} & UAB & Statistical programmer and main author\tabularnewline
-\href{https://scholar.google.com/citations?user=jMLzrEQAAAAJ}{Joan Francesc Barquinero} & UAB & Biologist\tabularnewline
+\href{https://orcid.org/0000-0003-0084-5268}{Joan Francesc Barquinero} & UAB & Biologist\tabularnewline
 \href{https://www.researchgate.net/profile/David_Endesfelder2}{David Endesfelder} & BfS & Mathematician\tabularnewline
 \href{http://grupsderecerca.uab.cat/advancedstochasticmodelling/content/pere-puig}{Pere Puig} & UAB & Mathematician\tabularnewline
-\href{https://www.researchgate.net/scientific-contributions/2058388356_Lleonard_Barrios}{Lleonard Barrios} & UAB & Biologist\tabularnewline
-\href{https://www.dur.ac.uk/research/directory/staff/?id=4542}{Jochen Einbeck} & DU & Statistician\tabularnewline
+\href{https://orcid.org/0000-0002-6151-8503}{Lleonard Barrios} & UAB & Biologist\tabularnewline
+\href{https://orcid.org/0000-0002-9457-2020}{Jochen Einbeck} & DU & Statistician\tabularnewline
 \href{https://www.researchgate.net/profile/Mohamed_Benadjaoud}{Amine Benadjaoud} & IRSN & Biostatistician\tabularnewline
 \href{https://www.phe-protectionservices.org.uk/cds/team/liz_ainsbury}{Elizabeth Ainsbury} & PHE & Physicist\tabularnewline
 \bottomrule
@@ -255,7 +255,7 @@ Name & Institution & Role\tabularnewline
 Name & Institution & Role\tabularnewline
 \midrule
 \endhead
-\href{https://www.researchgate.net/profile/Ulrike_Kulka}{Ulrike Kulka} & BfS & Biologist\tabularnewline
+\href{https://orcid.org/0000-0002-7734-3162}{Ulrike Kulka} & BfS & Biologist\tabularnewline
 \href{https://www.researchgate.net/profile/Eric_Gregoire2}{Eric Grègoire} & IRSN & Biologist\tabularnewline
 \href{https://investigacion.unirioja.es/investigadores/1322/detalle}{Manuel Higueras} & UdR & Mathematician\tabularnewline
 \href{https://www.researchgate.net/profile/Gruel_Gaetan}{Gruel Gaëtan} & IRSN & Biologist\tabularnewline
@@ -268,7 +268,38 @@ Name & Institution & Role\tabularnewline
 \section*{Background and goals}\label{background-and-goals}}
 \addcontentsline{toc}{section}{Background and goals}
 
+Over the years more powerful software has been developed to aid biologists in their daily work. Biodose Tools is the next step.
+
 \includegraphics{images/intro/chronology.pdf}
+
+\hypertarget{r-shiny-as-a-statistical-tool}{%
+\subsection*{R Shiny as a statistical tool}\label{r-shiny-as-a-statistical-tool}}
+\addcontentsline{toc}{subsection}{R Shiny as a statistical tool}
+
+Shiny is an R package that makes it easy to build interactive web apps straight from R, combining the computational power of R with the interactivity of the modern web.
+
+\begin{itemize}
+\item
+  Access to a powerful web framework for building web applications using R.
+\item
+  Being in complete control of the mathematics and statistics behind.
+\item
+  Rethink what biologists and laboratories need in their everyday workflow.
+\item
+  Build a complete, fully documented tool.
+\item
+  Provide an Open Source tool to the community.
+\end{itemize}
+
+\hypertarget{modules}{%
+\subsubsection*{Modules}\label{modules}}
+\addcontentsline{toc}{subsubsection}{Modules}
+
+Different modules can be built for each function (fitting, dose estimation, \ldots) while being totally independent from one another.
+
+\begin{center}\includegraphics[width=355px]{images/stats/iaea-cover} \end{center}
+
+This opens up the possibility to implement statistical methods not included in the IAEA Manual (2011).
 
 \hypertarget{part-using-biodose-tools}{%
 \part{Using Biodose Tools}\label{part-using-biodose-tools}}
@@ -286,7 +317,7 @@ During the beta testing phase, the application is hosted on Shinyapps.io: \url{h
 \hypertarget{get-offline}{%
 \subsection{On RStudio}\label{get-offline}}
 
-\emph{This is a work in progress.}
+Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.
 
 The application can be easily installed by runnning
 
@@ -325,7 +356,7 @@ Once users are attuned to the color schemes, they can use them. Even before then
 -- Jenifer Tidwell \citep{Tidwel2010}
 \end{quote}
 
-\begin{center}\includegraphics{images/user-manual/color-coding} \end{center}
+\begin{center}\includegraphics[width=300px]{images/user-manual/color-coding} \end{center}
 
 \hypertarget{part-statistical-methods}{%
 \part{Statistical Methods}\label{part-statistical-methods}}
