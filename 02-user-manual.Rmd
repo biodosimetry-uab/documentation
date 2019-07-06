@@ -9,7 +9,8 @@ During the beta testing phase, the application is hosted on Shinyapps.io: [https
 
 
 ## On RStudio {#get-offline}
-*This is a work in progress.*
+
+Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.
 
 The application can be easily installed by runnning
 ```r
@@ -43,7 +44,7 @@ Color is an effective, powerful and instantly recognizable medium for visual com
 >
 > -- <cite>Jenifer Tidwell [@Tidwel2010]</cite>
 
-```{r fig.align='center', echo=FALSE}
+```{r echo=FALSE, out.width = "300px", fig.align='center'}
 knitr::include_graphics("images/user-manual/color-coding.svg", dpi = 96)
 ```
 
