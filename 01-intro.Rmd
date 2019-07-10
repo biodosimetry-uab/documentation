@@ -46,6 +46,13 @@ knitr::include_graphics("images/intro/chronology.svg")
 
 ## R Shiny as a statistical tool {-}
 
+### R {-}
+
+R is a general purpose package that includes support for a wide variety of modern
+statistical and graphical methods (many of which have been contributed by users). It is available for GNU/Linux, Mac OS X, and Windows. The R Foundation for Statistical Computing holds and administers the copyright of the R software and documentation. R is available under the terms of the Free Software Foundation’s GNU General Public License in source code form.
+
+### R Shiny {-}
+
 Shiny is an R package that makes it easy to build interactive web apps straight from R, combining the computational power of R with the interactivity of the modern web.
 
 - Access to a powerful web framework for building web applications using R.
