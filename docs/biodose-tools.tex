@@ -108,7 +108,7 @@
   \title{Biodose Tools}
   \subtitle{User Manual \& Documentation}
   \author{Alfredo Hernández}
-      \date{2019-07-06}
+      \date{2019-07-10}
 
 % \documentclass[paper=a4, fontsize=12pt, twoside=semi, abstracton, listof=totoc, toc=left]{scrartcl}
 \usepackage[T1]{fontenc}
@@ -276,6 +276,17 @@ Over the years more powerful software has been developed to aid biologists in th
 \subsection*{R Shiny as a statistical tool}\label{r-shiny-as-a-statistical-tool}}
 \addcontentsline{toc}{subsection}{R Shiny as a statistical tool}
 
+\hypertarget{r}{%
+\subsubsection*{R}\label{r}}
+\addcontentsline{toc}{subsubsection}{R}
+
+R is a general purpose package that includes support for a wide variety of modern
+statistical and graphical methods (many of which have been contributed by users). It is available for GNU/Linux, Mac OS X, and Windows. The R Foundation for Statistical Computing holds and administers the copyright of the R software and documentation. R is available under the terms of the Free Software Foundation's GNU General Public License in source code form.
+
+\hypertarget{r-shiny}{%
+\subsubsection*{R Shiny}\label{r-shiny}}
+\addcontentsline{toc}{subsubsection}{R Shiny}
+
 Shiny is an R package that makes it easy to build interactive web apps straight from R, combining the computational power of R with the interactivity of the modern web.
 
 \begin{itemize}
@@ -319,11 +330,75 @@ During the beta testing phase, the application is hosted on Shinyapps.io: \url{h
 
 Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.
 
+To run Biodose Tools on your local machine, you need to install R \citep{R-base}. Additionally, we recommend to install RStudio \citep{R-Rstudio}.
+
+\hypertarget{installing-r}{%
+\subsubsection{Installing R}\label{installing-r}}
+
+\hypertarget{under-windows}{%
+\paragraph{Under Windows}\label{under-windows}}
+
+Versions of R for Windows XP and later, including 64-bit versions, are available at CRAN. The distribution includes \texttt{Rgui.exe}, which launches a self-contained windowing system that includes a command-line interface, \texttt{Rterm.exe} for a command-line interface only, Rscript.exe for batch processing only, and \texttt{R.exe}, which is suitable for batch or command-line use.
+
+More information on Windows-specific issues can be found in the \href{https://cloud.r-project.org/bin/windows/base/rw-FAQ.html}{CRAN R for Windows FAQ}.
+
+\hypertarget{under-macos}{%
+\paragraph{Under macOS}\label{under-macos}}
+
+A version of R for macOS 10.6 and higher is available at CRAN. This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command \texttt{R}.
+
+More information on Macintosh-specific issues can be found in the \href{https://cloud.r-project.org/bin/macosx/RMacOSX-FAQ.html}{CRAN R for Mac OS X FAQ}.
+
+\hypertarget{under-gnulinux}{%
+\paragraph{Under GNU/Linux}\label{under-gnulinux}}
+
+R is available for most Linux distributions through your distribution's repositories. For example, R is provided on Debian-based distributions like Ubuntu by the \texttt{r-base} package. Many additional packages, such as \texttt{r-cran-rpart}, are provided at the maintainer's discretion.
+
+To install R on Ubuntu, run the following commands on the Terminal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ apt-get update}
+\FunctionTok{sudo}\NormalTok{ apt-get install r-base r-base-dev}
+\end{Highlighting}
+\end{Shaded}
+
+To install R on Fedora, run the following command on the Terminal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{dnf}\NormalTok{ --refresh install R}
+\end{Highlighting}
+\end{Shaded}
+
+To install R on Arch Linux, run the following command on the Terminal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ pacman -S r}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{installing-rstudio}{%
+\subsubsection{Installing RStudio}\label{installing-rstudio}}
+
+RStudio for Windows, macOS, or GNU/Linux can be downloaded from \href{https://www.rstudio.com/products/rstudio/download/\#download}{https://www.rstudio.com/products/rstudio/download/}. RStudio requires R to be installed on the local machine, so make sure to install it first.
+
+Once installation is complete, the recommended next step for a new user would be to start RStudio and run a sample session.
+
+\begin{center}\includegraphics[width=11.74in]{images/user-manual/rstudio-mac} \end{center}
+
+The \texttt{\textgreater{}} character is the command prompt, and commands are executed once the user
+presses the RETURN or ENTER key.
+
+\hypertarget{installing-biodose-tools}{%
+\subsubsection{Installing Biodose Tools}\label{installing-biodose-tools}}
+
 The application can be easily installed by runnning
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"biodose-tools"}\NormalTok{)}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"BiodoseTools"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -332,6 +407,17 @@ Alternatively, if you want to download the development version, you can just run
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"biodosimetry-uab/biodose-tools-package"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{running-biodose-tools}{%
+\subsubsection{Running Biodose Tools}\label{running-biodose-tools}}
+
+Once it is installed, Biodose Tools can be easily run by typing
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{BiodoseTools}\OperatorTok{::}\KeywordTok{runApp}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -357,6 +443,9 @@ Once users are attuned to the color schemes, they can use them. Even before then
 \end{quote}
 
 \begin{center}\includegraphics[width=300px]{images/user-manual/color-coding} \end{center}
+
+\hypertarget{feedback}{%
+\section{Feedback}\label{feedback}}
 
 \hypertarget{part-statistical-methods}{%
 \part{Statistical Methods}\label{part-statistical-methods}}

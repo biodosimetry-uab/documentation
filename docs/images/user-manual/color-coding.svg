@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -50,9 +50,9 @@
      inkscape:bbox-paths="true"
      inkscape:snap-bbox-midpoints="true"
      inkscape:snap-bbox-edge-midpoints="true"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="229.74527"
-     inkscape:cy="-128.95919"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="32.879165"
+     inkscape:cy="-52.470973"
      inkscape:current-layer="g7096"
      inkscape:window-x="66"
      inkscape:window-y="34"
@@ -297,7 +297,7 @@
              height="50"
              width="190"
              id="rect1249"
-             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#2b9a7c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4.00373363;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#2db77d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4.00373363;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
           <text
              xml:space="preserve"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Menlo;-inkscape-font-specification:Menlo;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -308,7 +308,7 @@
                id="tspan1251"
                x="-1344.505"
                y="613.60626"
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.75px;line-height:1.25;font-family:'Fira Code';-inkscape-font-specification:'Fira Code';text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1">#2b9a7c</tspan></text>
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.75px;line-height:1.25;font-family:'Fira Code';-inkscape-font-specification:'Fira Code';text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1">#2db77d</tspan></text>
           <text
              id="text1257"
              y="594"
@@ -318,7 +318,7 @@
                y="594"
                x="-1423.3949"
                id="tspan1255"
-               sodipodi:role="line">Lochinvar</tspan></text>
+               sodipodi:role="line">Jungle Green</tspan></text>
         </g>
         <g
            transform="translate(208,145)"
