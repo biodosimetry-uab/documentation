@@ -4,3 +4,16 @@ language:
   ui:
     chapter_name: "Chapter "
 delete_merged_file: true
+rmd_files:
+  - "index.Rmd"
+  - "contents/01a-about.Rmd"
+  - "contents/01b-background.Rmd"
+  - "contents/02a-manual-intro.Rmd"
+  - "contents/02b-manual-get.Rmd"
+  - "contents/02c-manual-use.Rmd"
+  - "contents/02d-manual-feedback.Rmd"
+  - "contents/03a_stats_intro.Rmd"
+  - "contents/03b_stats_dicent.Rmd"
+  - "contents/03c_stats_trans.Rmd"
+  - "contents/appendices.Rmd"
+  - "contents/references.Rmd"
