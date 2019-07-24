@@ -1,0 +1,44 @@
+# (PART) Statistical Methods {-}
+
+# Introduction {#stats-intro}
+Here is a review of existing statistical methods for the different implemented modules, i.e., 
+ 
+- Dicentric analysis
+- Translocation analysis
+
+The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools. The main source is [@IAEA2001] and the papers the statistical analyses are based on.
+
+## Statistical considerations {#stats-considerations}
+
+There is a strong evidence that the yields of chromosome aberrations (dicentrics, translocations, ...) or micronuclei, $Y$, are related to exposed dose, $D$, by the linear quadratic equation
+
+\begin{equation} 
+  Y = C + \alpha D + \beta D^2
+  (\#eq:dose-response-lq)
+\end{equation}
+
+As seen in \@ref(eq:dose-response-lq)
+
+or, for high LET radiation, the $\alpha$-term becomes large and eventually the $\beta$-term becomes biologically less relevant and also statistically "masked". In this situation, the the dose response is
+approximated by the linear equation
+
+\begin{equation} 
+  Y = C + \alpha D
+  (\#eq:dose-response-l)
+\end{equation}
+
+The objective of dose-effect or curve fitting is to determine those values of the coefficients $C$, $\alpha$ and $\beta$ which best fit the data points. For dicentrics\@ref(stats-dicent), irradiation with X or gamma rays produces a distribution of damage which is very well represented by the Poisson distribution [98]. In contrast, neutrons and other types of high LET radiation produce distributions which display overdispersion, where the variance ($\sigma^{2}$) exceeds the mean (y). Whether the ratio of variance to mean ($\sigma^{2}/y$) is a function of dose is at present an open question. For micronuclei the data tend to overdispersion at all doses even with photon irradiation. 
+
+Because curve fitting methods are based on Poisson statistics, the dicentric cell distribution should be tested for compliance with the Poisson distribution for each dose used to construct the calibration curve. Nowadays, the most widely used test is the u test [99, 100]. The u test statistic is a normalized unit of the dispersion index ($\sigma^{2}/y$), which for a Poisson distribution should be unity. u values higher than 1.96 indicate overdispersion (with a two- sided significance level, $\alpha$ = 0.025).
+
+\begin{equation} 
+  u = (\sigma^{2}/y - 1) \sqrt{\frac{N - 1}{2 (1 - 1/X)}}
+  (\#eq:u-value)
+\end{equation}
+
+- `DI` is the dispersion index $\sigma^{2}/y$.
+- `u` is the $u$-value, which for a Poisson distribution should be unity.
+
+```{r include=FALSE}
+library(tidyverse)
+```

@@ -1,0 +1,9 @@
+# (PART) Using Biodose Tools {-}
+
+# Getting Biodose Tools {#get}
+Stuff
+
+## Online {#get-online}
+
+During the beta testing phase, the application is hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodose-tools-beta/](https://aldomann.shinyapps.io/biodose-tools-beta/)
+

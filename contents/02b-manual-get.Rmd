@@ -1,13 +1,3 @@
-# (PART) Using Biodose Tools {-}
-
-# Getting Biodose Tools {#get}
-Stuff
-
-## Online {#get-online}
-
-During the beta testing phase, the application is hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodose-tools-beta/](https://aldomann.shinyapps.io/biodose-tools-beta/)
-
-
 ## On RStudio {#get-offline}
 
 Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.
@@ -78,30 +68,3 @@ Once it is installed, Biodose Tools can be easily run by typing
 ```r
 BiodoseTools::runApp()
 ```
-
-# Usage {#manual}
-
-Stuff
-
-## User interface {#manual-ui}
-
-We describe the user interface (UI) components in this section.
-
-### Design principles 
-
-
-
-Color is an effective, powerful and instantly recognizable medium for visual communications. In Biodose Tools color is used to identify different sections of information, a technique called *color-coding*.
-
-> Once users are attuned to the color schemes, they can use them. Even before then, they'll know when they've left one section for another, if they notice that the color scheme changed. So color-coding works to distinguish one section from another; it makes the boundaries clear.
->
-> -- <cite>Jenifer Tidwell [@Tidwel2010]</cite>
-
-```{r echo=FALSE, out.width = "300px", fig.align='center'}
-knitr::include_graphics("images/user-manual/color-coding.svg", dpi = 96)
-```
-
-
-# Feedback {#feedback}
-
-
