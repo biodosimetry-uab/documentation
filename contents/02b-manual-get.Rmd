@@ -1,4 +1,4 @@
-## On RStudio {#get-offline}
+## On RStudio {#manual-get-offline}
 
 Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.
 
@@ -43,7 +43,7 @@ RStudio for Windows, macOS, or GNU/Linux can be downloaded from [https://www.rst
 
 Once installation is complete, the recommended next step for a new user would be to start RStudio and run a sample session.
 
-```{r echo=FALSE, fig.align='center'}
+```{r echo=FALSE, out.width = '90%', fig.align='center'}
 knitr::include_graphics("images/user-manual/rstudio-mac.png", dpi = 96)
 ```
 

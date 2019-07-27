@@ -18,13 +18,14 @@ cover-image: "images/cover.png"
 pdf-cover-image: "images/cover.pdf"
 ---
 
-# About {-}
+
+# Preface {-}
 
 ```{r include=FALSE}
 options(knitr.graphics.auto_pdf = TRUE)
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, out.width = '80%', fig.align='center'}
 knitr::include_graphics("images/home.svg")
 ```
 
@@ -45,3 +46,5 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'shiny', 'bs4Dash'
 ), 'packages.bib')
 ```
+
+\newpage

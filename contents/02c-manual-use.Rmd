@@ -1,8 +1,8 @@
-# Usage {#manual}
+# Usage {#manual-use}
 
 Stuff
 
-## User interface {#manual-ui}
+## User interface {#manual-use-ui}
 
 We describe the user interface (UI) components in this section.
 
@@ -16,7 +16,10 @@ Color is an effective, powerful and instantly recognizable medium for visual com
 >
 > -- <cite>Jenifer Tidwell [@Tidwel2010]</cite>
 
-```{r echo=FALSE, out.width = "300px", fig.align='center'}
+```{r echo=FALSE, out.width = '50%', fig.align='center'}
 knitr::include_graphics("images/user-manual/color-coding.svg", dpi = 96)
 ```
 
+### Widgets and elements
+
+### Inputs
