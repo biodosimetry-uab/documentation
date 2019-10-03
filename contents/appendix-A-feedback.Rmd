@@ -1,0 +1,16 @@
+# (APPENDIX) Appendices {-} 
+
+# Feedback {#appendix-feedback}
+
+Please provide your suggestions and feedback to help us improve Biodose Tools. Use the following link to open a new issue on the project's issue tracker: https://github.com/biodosimetry-uab/biodose-tools/issues/new. 
+
+You can also use the "Give feedback" button on Biodose Tools' navbar (the location of the button is subject to change after the beta testing phase).
+
+  
+We provide a short template on the issue tracker (pictured below), but feel free to do your own thing:
+
+```{r echo=FALSE, out.width='85%', fig.align='center'}
+knitr::include_graphics("images/user-manual/feedback.png", dpi = 96)
+```
+
+Be as descriptive as possible and in case of an error or issue, explain the required steps to reproduce the experienced error. Notice that pictures can attached
