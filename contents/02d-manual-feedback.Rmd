@@ -1,9 +1,0 @@
-# Feedback {#manual-feedback}
-
-If you find any error or...
-
-```{r echo=FALSE, out.width='85%', fig.align='center'}
-knitr::include_graphics("images/user-manual/feedback.png", dpi = 96)
-```
-
-

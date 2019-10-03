@@ -1,0 +1,75 @@
+# Dicentric analysis {#stats-dicent}
+
+## Dose-effect curve fitting
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+Table 4 gives example data used to construct dose-effect curves for low LET $\gamma$-radiation and high LET $\alpha$ radiation.
+
+```{r echo=FALSE}
+mytable <- data.table::fread("data/count-data-IAEA.csv")
+
+mytable <- mytable %>%
+  dplyr::mutate(
+    N = 0,
+    X = 0,
+    DI = 0,
+    u = 0
+  ) %>%
+  dplyr::select(D, N, X, everything())
+
+first_aberr_index <- 4
+last_aberr_index <- ncol(mytable) - 2
+num_rows <- nrow(mytable)
+
+mytable <- mytable %>%
+  dplyr::mutate(
+    D = as.numeric(D),
+    X = as.integer(X),
+    N = as.integer(rowSums(.[first_aberr_index:last_aberr_index]))
+  )
+
+# Ugly method to calculate index of dispersion
+for (row in 1:num_rows) {
+  xf <- 0
+  x2f <- 0
+  # Calculate summatories
+  for (k in seq(0, last_aberr_index - first_aberr_index, 1)) {
+    xf <- xf + mytable[row, grep("C", names(mytable), value = T)][k + 1] * k
+    x2f <- x2f + mytable[row, grep("C", names(mytable), value = T)][k + 1] * k^2
+  }
+  # Calculate variance and mean
+  var <- (x2f - (xf^2) / mytable[row, "N"]) / (mytable[row, "N"] - 1)
+  mean <- xf / mytable[row, "N"]
+  # Save values into data frame
+  mytable[row, "X"] <- as.integer(xf)
+  mytable[row, "DI"] <- var / mean
+  mytable[row, "u"] <- (var / mean - 1) * sqrt((mytable[row, "N"] - 1) / (2 * (1 - 1 / mytable[row, "X"])))
+}
+
+knitr::kable(mytable, booktabs = TRUE, caption = "[Download dicentrics distribution.](https://biodosimetry-uab.github.io/documentation/data/count-data-IAEA.csv)")
+```
+
+
+For each dose analysed, total number of cells scored ($N$), total number of dicentrics observed ($X$), cell distribution of dicentrics and dispersion index ($\sigma^{2}/\bar{y}$) and $u$-test ($u$) are presented. $u$-values greater than 1.96 indicate overdispersion.
+
+### Fitting method 
+The technique suggested for determining the best fit coefficients is that of maximum likelihood [104, 105]. Using this method, the best fit value for each coefficient is achieved by assuming a Poisson distribution and maximizing the likelihood of the observations by the method of iteratively reweighted least squares. For overdispersed (non-Poisson) distributions, as obtained after high LET radiation, the weights must take into account the overdispersion. If the data show a statistically significant trend of $\sigma^{2}/\bar{y}$ with dose, then that trend should be used. Otherwise, the Poisson weight on each data point should be divided by the average value of $\sigma^{2}/\bar{y}$.
+
+### Goodness of fit 
+The goodness of fit of the curve and significance of fitted $\alpha$ and $\beta$ coefficients should then be tested, for instance using the Chi-squared ($\chi^{2}$) test and an appropriate form of the $F$-test (e.g. $F$-test, $z$-test or $t$-test) respectively. Biodose Tools implements the $t$-test.
+
+Let $\hat{\theta}$ be an estimator of the parameter $\theta = \alpha, \beta, C$ in the fit model. Then the $t$-statistic for this parameter is defined as
+\begin{equation} 
+  t_{\hat{\theta}} = \frac{\hat{\theta}}{\widehat{se}(\hat{\theta})}
+  (\#eq:t-test)
+\end{equation}
+
+
+If there is evidence of a lack of fit (i.e. the $\chi^{2}$ is greater than the degrees of freedom ($df$)), then the standard error should be increased by $(\chi^{2}/df)^{1/2}$. Many computer programs calculate SE values that are based on the sum of squares, instead of the Poisson estimate of the variance, which may lead to a false underestimation of the Poisson error. For this reason, when SE are calculated using this method, and the df is greater than the $\chi^{2}$, it is a good practice to increase the SE by $(df/\chi^{2})^{1/2}$.
+
+The $p$-values of the $\chi^{2}$-test shown in Table 5 indicate that the fitted data points were not statistically different from the observed ones confirming a good fit.
+
+## Dose estimation

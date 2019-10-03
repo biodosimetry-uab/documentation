@@ -4,20 +4,25 @@ Many laboratories will prefer to use their own computers to run the app instead 
 
 To run Biodose Tools on your local machine, you need to install R [@R-base]. Additionally, we recommend to install RStudio [@R-Rstudio].
 
+
 ### Installing R
 
-#### Under Windows
+
+#### Under Windows {-}
+
 Versions of R for Windows XP and later, including 64-bit versions, are available at CRAN. The distribution includes `Rgui.exe`, which launches a self-contained windowing system that includes a command-line interface, `Rterm.exe` for a command-line interface only, Rscript.exe for batch processing only, and `R.exe`, which is suitable for batch or command-line use. 
 
 More information on Windows-specific issues can be found in the [CRAN R for Windows FAQ](https://cloud.r-project.org/bin/windows/base/rw-FAQ.html).
 
-#### Under macOS
+
+#### Under macOS {-}
 
 A version of R for macOS 10.6 and higher is available at CRAN. This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command `R`. 
 
 More information on Macintosh-specific issues can be found in the [CRAN R for Mac OS X FAQ](https://cloud.r-project.org/bin/macosx/RMacOSX-FAQ.html).
 
-#### Under GNU/Linux
+
+#### Under GNU/Linux {-}
 
 R is available for most Linux distributions through your distribution's repositories. For example, R is provided on Debian-based distributions like Ubuntu by the `r-base` package. Many additional packages, such as `r-cran-rpart`, are provided at the maintainer's discretion. 
 
@@ -51,6 +56,8 @@ The `>` character is the command prompt, and commands are executed once the user
 presses the RETURN or ENTER key.
 
 ### Installing Biodose Tools
+
+*During the beta testing phase, Biodose Tools will not be available as an R package.*
 
 The application can be easily installed by runnning
 ```r

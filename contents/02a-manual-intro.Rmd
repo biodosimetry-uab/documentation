@@ -1,21 +1,10 @@
 # (PART) Using Biodose Tools {-}
 
 # Getting Biodose Tools {#manual-get}
-Stuff
+There are mainly two methods to get Biodose Tools. 
 
-## Online {#manual-get-online}
+- Online on a web browser (recommended).
+- Locally on your computer using RStudio.
 
-During the beta testing phase, the application is hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodose-tools-beta/](https://aldomann.shinyapps.io/biodose-tools-beta/)
-
-```{r echo=FALSE, out.width = '60%', fig.align='center'}
-knitr::include_graphics("images/user-manual/browsers.png", dpi = 96)
-```
-
-Biodose Tools has been througly tested to be supported by the following web browsers:
-
-- Google Chrome.
-- Firefox.
-- Microsoft Edge.
-- Safari.
-
+This chapter will go over the details and steps required to get Biodose Tools running for each method. 
 

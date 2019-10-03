@@ -1,0 +1,9 @@
+# Introduction {#intro}
+
+## Background and goals {#intro-background}
+
+Over the years more powerful software has been developed to aid biologists in their daily work. Biodose Tools is the next step.
+
+```{r echo=FALSE, out.width = '75%', fig.align='center'}
+knitr::include_graphics("images/intro/chronology.svg")
+```

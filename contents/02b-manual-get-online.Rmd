@@ -1,0 +1,16 @@
+## Online {#manual-get-online}
+
+During the beta testing phase, the application is hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodose-tools-beta/](https://aldomann.shinyapps.io/biodose-tools-beta/). 
+
+Biodose Tools will be later hosted at one of our institution's servers.
+
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
+knitr::include_graphics("images/user-manual/browsers.png", dpi = 96)
+```
+
+Biodose Tools has been througly tested to be supported by the following web browsers:
+
+- Google Chrome.
+- Firefox.
+- Microsoft Edge.
+- Safari.

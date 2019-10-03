@@ -1,5 +1,4 @@
 # Micronuclei analysis {#stats-micro}
-Stuff
 
 ## Dose-effect curve fitting
 
