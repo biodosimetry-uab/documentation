@@ -62,7 +62,7 @@ where
 
 ### Testing for Poisson
 
-Since most curve fitting methods are based on Poisson statistics, the dicentric cell distribution should be tested for compliance with the Poisson distribution for each dose used to construct the calibration curve. Nowadays, the most widely used test is the $u$-test [@Rao1956; 100]. The $u$-test statistic is a normalized unit of the dispersion index ($\sigma^{2}/\bar{y}$), which for a Poisson distribution should be unity. $u$-values higher than 1.96 indicate overdispersion (with a two-sided significance level, $\alpha$ = 0.025).
+Since most curve fitting methods are based on Poisson statistics, the dicentric cell distribution should be tested for compliance with the Poisson distribution for each dose used to construct the calibration curve. Nowadays, the most widely used test is the $u$-test [@Rao1956; @Savage1970]. The $u$-test statistic is a normalized unit of the dispersion index ($\sigma^{2}/\bar{y}$), which for a Poisson distribution should be unity. $u$-values higher than 1.96 indicate overdispersion (with a two-sided significance level, $\alpha$ = 0.025).
 
 \begin{equation} 
   u = (\sigma^{2}/\bar{y} - 1) \sqrt{\frac{N - 1}{2 (1 - 1/X)}}
@@ -82,7 +82,7 @@ $u$-values of < -1.96 indicate underdispersion. Biologically, underdispersion is
 
 ### Dose-effect calibration
 
-Adequate curve fitting requires a sufficient number of degrees of freedom to minimize the error on the curve. Ideally, 10 or more doses should be used in the range 0.25–5.0 Gy. For low LET radiation it is not necessary to have data higher than approximately 5.0 Gy and, indeed, beyond this dose there is evidence of saturation of the aberration yield which will lead to a distortion of the $\beta$ coefficient [101]. For high LET radiation a maximum of 2.0 Gy is suggested.
+Adequate curve fitting requires a sufficient number of degrees of freedom to minimize the error on the curve. Ideally, 10 or more doses should be used in the range 0.25–5.0 Gy. For low LET radiation it is not necessary to have data higher than approximately 5.0 Gy and, indeed, beyond this dose there is evidence of saturation of the aberration yield which will lead to a distortion of the $\beta$ coefficient [@Lloyd1983]. For high LET radiation a maximum of 2.0 Gy is suggested.
 
 As most radiation accidents involve doses of less than 1.0 Gy, the lower end of the curve is of particular importance in estimating doses. A significant effort should therefore be made to reduce the statistical uncertainty associated with the $\alpha$ coefficient of yield. It is suggested that several of the calibration doses, certainly a minimum of four, should be in the range of 0.25–1.0 Gy. If the laboratory is capable of obtaining data at doses below 0.25 Gy, this is very desirable. At higher doses, scoring should aim to detect 100 dicentrics at each dose. However at lower doses this is difficult to achieve and instead several thousand cells per point should be scored; a number between 3000 and 5000 is suggested. In all cases, the actual number of cells scored should be dependent on the number of dose points in the low dose region, with the focus on minimizing the error on the fitted curve. 
 
