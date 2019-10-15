@@ -1,12 +1,12 @@
 --- 
 title: "Biodose Tools"
 subtitle: "User Manual & Documentation"
-author: "Alfredo Hernández"
+author: "Alfredo Hernández\n Joan Francesc Barquinero"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: scrartcl
-bibliography: [book.bib, packages.bib, extra.bib]
+bibliography: [bib/book.bib, bib/packages.bib, bib/extra.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: biodosimetry-uab/documentation
@@ -44,7 +44,7 @@ The online version of this book is licensed under the [Creative Commons Attribut
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'shiny', 'bs4Dash'
-), 'packages.bib')
+), 'bib/packages.bib')
 ```
 
 \newpage
