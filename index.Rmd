@@ -1,13 +1,14 @@
 --- 
 title: "Biodose Tools"
 subtitle: "User Manual & Documentation"
-author: "Alfredo Hernández\n Joan Francesc Barquinero"
+author: "Alfredo Hernández, Joan Francesc Barquinero"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: scrartcl
 bibliography: [bib/book.bib, bib/packages.bib, bib/extra.bib]
-biblio-style: apalike
+biblio-style: abbrv
+# biblio-style: apalike
 link-citations: yes
 github-repo: biodosimetry-uab/documentation
 description: "User Guide & Documentation for Biodose Tools"
