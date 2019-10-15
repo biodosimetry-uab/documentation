@@ -3,8 +3,7 @@
 # Getting Biodose Tools {#manual-get}
 There are mainly two methods to get Biodose Tools. 
 
-- Online on a web browser (recommended).
+- Online on a web browser. <!-- (recommended) -->
 - Locally on your computer using RStudio.
 
-This chapter will go over the details and steps required to get Biodose Tools running for each method. 
-
+This chapter will go over the details and steps required to get Biodose Tools running for each method.

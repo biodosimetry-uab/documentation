@@ -57,21 +57,17 @@ presses the RETURN or ENTER key.
 
 ### Installing Biodose Tools
 
-*During the beta testing phase, Biodose Tools will not be available as an R package.*
-
-The application can be easily installed by runnning
+To download the development version, you can just run
 ```r
-install.packages("BiodoseTools")
+# install.packages("devtools")
+devtools::install_github("biodosimetry-uab/biodosetools")
 ```
 
-Alternatively, if you want to download the development version, you can just run
-```r
-devtools::install_github("biodosimetry-uab/biodose-tools-package")
-```
+In the future, Biodose Tools will be available on CRAN.
 
 ### Running Biodose Tools
 
 Once it is installed, Biodose Tools can be easily run by typing
 ```r
-BiodoseTools::runApp()
+biodosetools::runApp()
 ```

@@ -7,4 +7,4 @@ This chapter presents a review of the existing statistical methods for the diffe
 - Translocation analysis.
 - Micronuclei analysis (*work in progress*).
 
-The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools. The main source is [@IAEA2001] and the papers the statistical analyses are based on.
+The primary objective of this section is to provide biologists with technical information about the statistical methods and tests used on Biodose Tools. The main source are [@IAEA2001], [@IAEA2011] and the papers the statistical analyses are based on.
