@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Biodose Tools</title>
+  <title>3.1 Statistical considerations | Biodose Tools</title>
   <meta name="description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Biodose Tools" />
+  <meta property="og:title" content="3.1 Statistical considerations | Biodose Tools" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="biodosimetry-uab/documentation" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Biodose Tools" />
+  <meta name="twitter:title" content="3.1 Statistical considerations | Biodose Tools" />
   
   <meta name="twitter:description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon-highres.png" />
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-<link rel="next" href="00a_structure.html"/>
+<link rel="prev" href="03a_stats_intro.html"/>
+<link rel="next" href="03c_stats_dicent.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -213,30 +213,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Biodose Tools</h1>
-<h2 class="subtitle"><em>User Manual &amp; Documentation</em></h2>
-<p class="author"><em>Alfredo Hernández
-Joan Francesc Barquinero</em></p>
-<p class="date"><em>2019-10-15</em></p>
+<div id="stats-considerations" class="section level2">
+<h2><span class="header-section-number">3.1</span> Statistical considerations</h2>
+<p>There is a strong evidence that the yields of chromosome aberrations (dicentrics, translocations) or micronuclei (<span class="math inline">\(Y\)</span>) are related to exposed dose (<span class="math inline">\(D\)</span>) by the linear quadratic equation</p>
+<p><span class="math display" id="eq:dose-response-lq">\[\begin{equation} 
+  Y = C + \alpha D + \beta D^2
+  \tag{3.1}
+\end{equation}\]</span></p>
+<p>or, for high LET radiation, the <span class="math inline">\(\alpha\)</span>-term becomes large and eventually the <span class="math inline">\(\beta\)</span>-term becomes biologically less relevant and also statistically “masked”. In this situation, the the dose response is
+approximated by the linear equation</p>
+<p><span class="math display" id="eq:dose-response-l">\[\begin{equation} 
+  Y = C + \alpha D
+  \tag{3.2}
+\end{equation}\]</span></p>
+<div id="dose-effect-curve-fitting" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Dose-effect curve fitting</h3>
+<p>The objective of dose-effect or curve fitting is to determine those values of the coefficients <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> which best fit the data points. For dicentrics (see Chapter <a href="03c_stats_dicent.html#stats-dicent">4</a>), irradiation with X or gamma rays produces a distribution of damage which is very well represented by the Poisson distribution [98]. In contrast, neutrons and other types of high LET radiation produce distributions which display overdispersion, where the variance (<span class="math inline">\(\sigma^{2}\)</span>) exceeds the mean (<span class="math inline">\(\bar{y}\)</span>). Whether the ratio of variance to mean (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>) is a function of dose is at present an open question. For micronuclei (see Chapter <a href="03e_stats_micro.html#stats-micro">6</a>) the data tend to overdispersion at all doses even with photon irradiation.</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="images/home.svg" width="80%" style="display: block; margin: auto;" /></p>
-<p>This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with <a href="https://www.r-project.org/about.html">R</a> <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span> together with <a href="https://shiny.rstudio.com">Shiny</a> <span class="citation">(Chang et al. <a href="references.html#ref-R-shiny" role="doc-biblioref">2019</a>)</span> to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.</p>
-<p>We also aim to clarify and explain the tests used and to propose those considered most appropriate. Each laboratory in its routine work should choose the optimum method, but the project aims to reach a consensus that will help us in case of mutual assistance or intercomparisons.</p>
-<p>The project is initially developed by <a href="http://www.reneb.net">RENEB</a> association, but contributions are always welcome.</p>
-<p><img src="images/by-nc-sa.png" width="88" style="display: block; margin: auto;" />
-The online version of this book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<div style="page-break-after: always;"></div>
+<div id="poisson-distribution" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Poisson distribution</h3>
+<p>The Poisson distribution is named after Simmeon Poisson, a leading French mathematician during the early 1800s. The distribution applies when the random variable is discrete and represents the number of events that occur in a unit-of-scale, such as unit-or-time or unit-of-area. The rate of events occurring is constant and the number of events <span class="math inline">\(k\)</span> are the integers of zero and larger.</p>
+<p>Statistically, a discrete random variable <span class="math inline">\(Y\)</span> is said to have a Poisson distribution with parameter <span class="math inline">\(\lambda &gt; 0\)</span>, if, for <span class="math inline">\(k = 0, 1, 2, \dots\)</span> the probability mass function of <span class="math inline">\(Y\)</span> is given by:</p>
+<p><span class="math display" id="eq:poisson-dist">\[\begin{equation}
+    f(k; \lambda) = \Pr(Y = k)= \frac{\lambda^k e^{-\lambda}}{k!},
+    \tag{3.3}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(e\)</span> is Euler’s number (<span class="math inline">\(e\)</span> = 2.71828…),</li>
+<li><span class="math inline">\(k\)</span>! is the factorial of <span class="math inline">\(k\)</span>.</li>
+</ul>
+<p>The positive real number <span class="math inline">\(\lambda\)</span> is equal to the expected value of <span class="math inline">\(Y\)</span> and also to its variance:
+<span class="math display" id="eq:variance-poisson">\[\begin{equation}
+    \bar{y} = \operatorname{E}(Y) = \lambda, \quad \sigma^{2} = \operatorname{Var}(Y) = \lambda.
+    \tag{3.4}
+\end{equation}\]</span></p>
+<p>However, for real count data, it is recommended to calculate the variance defined as
+<span class="math display" id="eq:variance">\[\begin{equation}
+\begin{aligned}
+  \sigma^{2} = \operatorname{Var}(Y)
+  %= \frac{1}{n} \sum_{i=1}^n (y_{i} - \bar{y})^2 
+  &amp;= \frac{1}{N - 1} \left[ \sum_{k=1}^{N} k^{2} C_{k} - N \bar{y}^{2} \right] \\
+  &amp;= \frac{1}{N - 1} \left[  \sum_{k=1}^{N} k^{2} C_{k} - \frac{1}{N} \left( \sum_{k=1}^{N} k C_{k} \right)^{2} \right]
+  ,
+\end{aligned}
+  \tag{3.5}
+\end{equation}\]</span>
+where</p>
+<ul>
+<li><span class="math inline">\(N\)</span> is the total number of events,</li>
+<li><span class="math inline">\(C_{k} = N \cdot \Pr(Y = k)\)</span> is the occurrence count or frequency for event <span class="math inline">\(k\)</span>.</li>
+</ul>
+</div>
+<div id="testing-for-poisson" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Testing for Poisson</h3>
+<p>Since most curve fitting methods are based on Poisson statistics, the dicentric cell distribution should be tested for compliance with the Poisson distribution for each dose used to construct the calibration curve. Nowadays, the most widely used test is the <span class="math inline">\(u\)</span>-test [99, 100]. The <span class="math inline">\(u\)</span>-test statistic is a normalized unit of the dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), which for a Poisson distribution should be unity. <span class="math inline">\(u\)</span>-values higher than 1.96 indicate overdispersion (with a two-sided significance level, <span class="math inline">\(\alpha\)</span> = 0.025).</p>
+<p><span class="math display" id="eq:u-value">\[\begin{equation} 
+  u = (\sigma^{2}/\bar{y} - 1) \sqrt{\frac{N - 1}{2 (1 - 1/X)}}
+  \tag{3.6}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\sigma^{2}/\bar{y}\)</span> is the dispersion index,</li>
+<li><span class="math inline">\(u\)</span> is the <span class="math inline">\(u\)</span>-value, which for a Poisson distribution should be unity,</li>
+<li><span class="math inline">\(N\)</span> indicates the number of cells analysed,</li>
+<li><span class="math inline">\(X = \sum_{k=1}^{N} k C_{k}\)</span> the number of dicentrics (or dicentrics plus rings) detected,</li>
+<li><span class="math inline">\(C_{k}\)</span> is the count of cells where <span class="math inline">\(k\)</span> dicentrics were detected.</li>
+</ul>
+<p><span class="math inline">\(u\)</span>-values of &lt; -1.96 indicate underdispersion. Biologically, underdispersion is very unlikely to occur so values of <span class="math inline">\(u\)</span> lower than -1.96 may be indicative of a problem in data sampling.</p>
+</div>
+<div id="dose-effect-calibration" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Dose-effect calibration</h3>
+<p>Adequate curve fitting requires a sufficient number of degrees of freedom to minimize the error on the curve. Ideally, 10 or more doses should be used in the range 0.25–5.0 Gy. For low LET radiation it is not necessary to have data higher than approximately 5.0 Gy and, indeed, beyond this dose there is evidence of saturation of the aberration yield which will lead to a distortion of the <span class="math inline">\(\beta\)</span> coefficient [101]. For high LET radiation a maximum of 2.0 Gy is suggested.</p>
+<p>As most radiation accidents involve doses of less than 1.0 Gy, the lower end of the curve is of particular importance in estimating doses. A significant effort should therefore be made to reduce the statistical uncertainty associated with the <span class="math inline">\(\alpha\)</span> coefficient of yield. It is suggested that several of the calibration doses, certainly a minimum of four, should be in the range of 0.25–1.0 Gy. If the laboratory is capable of obtaining data at doses below 0.25 Gy, this is very desirable. At higher doses, scoring should aim to detect 100 dicentrics at each dose. However at lower doses this is difficult to achieve and instead several thousand cells per point should be scored; a number between 3000 and 5000 is suggested. In all cases, the actual number of cells scored should be dependent on the number of dose points in the low dose region, with the focus on minimizing the error on the fitted curve.</p>
+</div>
+<div id="background-level" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> Background level</h3>
+<p>Opinions vary on how to treat the background level of aberrations in fitting dose response data. In general there are three approaches: (a) a dose point at zero Gy is included in the curve fitting procedure, (b) the zero dose point is ignored, or else (c) the zero dose point is represented in every fitting procedure by a standard background value.</p>
+<p>If the measured yield at zero dose is used as one of the data points for the curve fitting (as used in the curve fitting presented above), the background becomes a variable parameter. However, since the yield in unirradiated cells is usually low, often none are observed so the measured yield at zero dose is zero. As discussed, at low doses, the statistical resolution of the data points is generally low. Thus, including the zero dose point in the curve fitting procedure can sometimes lead to negative estimates of the background value (<span class="math inline">\(C\)</span>) and negative linear coefficients (<span class="math inline">\(\alpha\)</span>), which obviously have no biological basis. Some investigators resolve this problem by ignoring zero dose data points and constraining the curve to pass through the origin (to be implemented in Biodose Tools in the future). There are, however, sufficient data published from surveys of subjects exposed only to background radiation to show that there is a small positive background level of aberrations. An alternative method adopted by some workers is therefore to use a small positive background value as a data point and to ascribe a large percentage of uncertainty to it. Ideally a laboratory should generate its own background data, although this requires the analysis of many thousands of cells. A consensus has emerged that the background level of dicentrics is ~0.5–1.0 per 1000 cells [106] whilst for translocations [107] and micronuclei [108] the control values are higher.</p>
 
+</div>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="00a_structure.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="03a_stats_intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="03c_stats_dicent.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -268,7 +333,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/biodosimetry-uab/documentation/edit/master/index.Rmd",
+"link": "https://github.com/biodosimetry-uab/documentation/edit/master/contents/03b_stats_concepts.Rmd",
 "text": "Edit"
 },
 "history": {

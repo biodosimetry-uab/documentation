@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Biodose Tools</title>
+  <title>Chapter 1 Introduction | Biodose Tools</title>
   <meta name="description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Biodose Tools" />
+  <meta property="og:title" content="Chapter 1 Introduction | Biodose Tools" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="biodosimetry-uab/documentation" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Biodose Tools" />
+  <meta name="twitter:title" content="Chapter 1 Introduction | Biodose Tools" />
   
   <meta name="twitter:description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon-highres.png" />
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-<link rel="next" href="00a_structure.html"/>
+<link rel="prev" href="00b_authors.html"/>
+<link rel="next" href="01b_rlang.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -213,30 +213,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Biodose Tools</h1>
-<h2 class="subtitle"><em>User Manual &amp; Documentation</em></h2>
-<p class="author"><em>Alfredo Hernández
-Joan Francesc Barquinero</em></p>
-<p class="date"><em>2019-10-15</em></p>
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<div id="intro-biodosimetry" class="section level2">
+<h2><span class="header-section-number">1.1</span> Biological dosimetry</h2>
+<p>The aim of biological dosimetry is to estimate the absorbed dose in a suspected individual exposed to ionizing radiation (IR), by means of analysing biomarkers (IAEA 2011) <span class="citation">(International Atomic Energy Agency <a href="references.html#ref-IAEA2011" role="doc-biblioref">2011</a>)</span>. A great majority of biomarkers of dose exposition are those coming from the DNA damage induced by IR, most of them analysed using cytogenetic techniques such as dicentric chromosomes, translocations or micronuclei. Dose-assessment is based in converting and an observed yield of damage (i.e. the frequency of dicentrics present in peripheral blood lymphocytes) using a pre-established calibration curve. If physical and biological procedures involved in biological dosimetry are not considered, the process assumes mathematical models and statistical probability distributions. First, to elaborate a calibration curve blood samples are uniformly irradiated at several doses, and the observed aberration cell distribution is confronted generally to a Poisson distribution. It is assumed that for low-LET radiation types uniform exposures result in a dicentric cell distribution that agrees with Poisson (Edwards 1979). High-LET radiation types tend to show overdispersed distributions. Then the observed yields at different doses are used to construct a calibration curve assuming a Linear-Quadratic model or Linear, depending on the radiation quality. High-LET radiation types tend to be linear (Edwards 1980). The coefficients of these models are obtained using maximum likelihood or iteratively reweighted least squares approaches. Then, in case of an accident the observed cell distribution of aberrations is confronted to the Poisson distribution to distinguish between homogeneous exposures from heterogeneous ones. If homogeneous exposure is accepted. To estimate a dose and its uncertainty, the observed yield is interpolated to the curve and uncertainties are usually calculated considering only considering the uncertainty relative to the yield observed or considering also uncertainties coming from the calibration curve (Edwards, 1978; Merkle, 1983; Savage et al., 2000). Procedures to consider both sources of uncertainties are not simple because mixes confidence intervals coming from Poisson distribution, and confidence intervals from the normal distribution arisen from the LQ or L models of the calibration (Merkle, 1983, Savage et al., 2000). If heterogeneous exposures is determined, other approaches are then applied (Dolphin 69, Sasaki 68, Pujol 2016,). Bayesian methods have been recently proposed to consider both sources of uncertainty, and for both, whole-body and partial-body dose assessment (Aisnbury 2014; Moriña 2015, Higueras 2016).</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="images/home.svg" width="80%" style="display: block; margin: auto;" /></p>
-<p>This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with <a href="https://www.r-project.org/about.html">R</a> <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span> together with <a href="https://shiny.rstudio.com">Shiny</a> <span class="citation">(Chang et al. <a href="references.html#ref-R-shiny" role="doc-biblioref">2019</a>)</span> to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.</p>
-<p>We also aim to clarify and explain the tests used and to propose those considered most appropriate. Each laboratory in its routine work should choose the optimum method, but the project aims to reach a consensus that will help us in case of mutual assistance or intercomparisons.</p>
-<p>The project is initially developed by <a href="http://www.reneb.net">RENEB</a> association, but contributions are always welcome.</p>
-<p><img src="images/by-nc-sa.png" width="88" style="display: block; margin: auto;" />
-The online version of this book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<div style="page-break-after: always;"></div>
+<div id="intro-background" class="section level2">
+<h2><span class="header-section-number">1.2</span> Background</h2>
+<p><img src="images/intro/chronology.svg" width="75%" style="display: block; margin: auto;" /></p>
+<p>The tools to deal with some or all this statistical procedures have evolved (see Ainsbury and Barquinero). Initially in MS-DOS environment, there were some routines based on commercial software like SASR or Generalized Linear Interactive Modelling (GLIM), and specially developed programs, such as MLPOL from the former National Radiological Protection Board (NRPB) nowadays Public Health England (PHE, UK) or MLREG from the Bundesamt für Strahlenschutz (BfS, Germany). All these routines or programs were used to estimate the coefficients of the dose-effect curves. Laboratories also used some Microsoft Excel based spreadsheets for both calibration fitting and dose assessment, like the ones used at the Autonomous University of Barcelona (UAB, Spain) and at the Institut de Radioprotection et de Sûreté Nucléaire (IRSN, France).</p>
+<p>The first user-friendly with a graphic user interface programmes were CABAS (Deperas 2007) developed by Institute of Nuclear Chemistry and Technology (INCT, Poland) and DOSGEN (Valdes et al, 2008) developed by the Centro de Protección e Higiene de las Radiaciones (CPHR, Cuba). DOSGEN calculated calibration curve coefficients were also used to evaluate partial-body irradiations. With CABAS it is possible to obtain the coefficients for LQ models and calculate dose-assessment under different scenarios, such as partial or delayed.</p>
+<p>A more use-friendly sophisticated program is Dose Estimate (Ainsbury, 2010). It allows calculating L and LQ models, and for dose assessment after whole dose exposures considers both, the error of the yield observed and the error from the curve. Dose Estimate also includes specific solutions for FISH based dosimetry, and can be used under different scenarios. Both CABAS and Dose Estimate are very useful to compare results among laboratories, and nowadays-interlaboratory comparisons instigate the use of a single program to have harmonized results. These programs are based on closed source software and, for example, use a single methodology to calculate uncertainties. So improvements are subjected to those who manage the source code, and end user have no possibility to modify or implement any improvement.</p>
+<div id="r-shiny" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> R Shiny</h3>
+<p>Recently, using the R project for Statistical computing <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span> some scripts have been written for biological dosimetry purposes. Although R programming is based on an open source code, its use needs skills in R language, and in the case of biological dosimetry it is also needed knowledge on the mathematical and statistical assumptions accepted. However, the R package shiny makes it easy to build interactive web apps straight from R, and the creation of a friendly user application based on open source codes.</p>
+<p>Our aim is to present the app Biodose Tools, which has been developed with R together with Shiny, to offer an on-line and easy-to-use solution to be used by biological dosimetry laboratories. Biodose Tools is an open-source program and all R routines can be downloaded for improvement or personal use. We also aim to clarify and explain the tests used and to propose those considered most appropriate. This app has been developed in the frame of the RENEB association.</p>
+<!-- Over the years more powerful software has been developed to aid biologists in their daily work. Biodose Tools is the next step. -->
 
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="00a_structure.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="00b_authors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="01b_rlang.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -268,7 +271,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/biodosimetry-uab/documentation/edit/master/index.Rmd",
+"link": "https://github.com/biodosimetry-uab/documentation/edit/master/contents/01a_background.Rmd",
 "text": "Edit"
 },
 "history": {

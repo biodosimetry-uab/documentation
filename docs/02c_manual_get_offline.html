@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Biodose Tools</title>
+  <title>2.2 On RStudio | Biodose Tools</title>
   <meta name="description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Biodose Tools" />
+  <meta property="og:title" content="2.2 On RStudio | Biodose Tools" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="biodosimetry-uab/documentation" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Biodose Tools" />
+  <meta name="twitter:title" content="2.2 On RStudio | Biodose Tools" />
   
   <meta name="twitter:description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon-highres.png" />
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-<link rel="next" href="00a_structure.html"/>
+<link rel="prev" href="02b_manual_get_online.html"/>
+<link rel="next" href="03a_stats_intro.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -213,30 +213,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Biodose Tools</h1>
-<h2 class="subtitle"><em>User Manual &amp; Documentation</em></h2>
-<p class="author"><em>Alfredo Hernández
-Joan Francesc Barquinero</em></p>
-<p class="date"><em>2019-10-15</em></p>
+<div id="manual-get-offline" class="section level2">
+<h2><span class="header-section-number">2.2</span> On RStudio</h2>
+<p>Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.</p>
+<p>To run Biodose Tools on your local machine, you need to install R <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span>. Additionally, we recommend to install RStudio <span class="citation">(RStudio Team <a href="references.html#ref-R-Rstudio" role="doc-biblioref">2015</a>)</span>.</p>
+<div id="installing-r" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Installing R</h3>
+<div id="under-windows" class="section level4 unnumbered">
+<h4>Under Windows</h4>
+<p>Versions of R for Windows XP and later, including 64-bit versions, are available at CRAN. The distribution includes <code>Rgui.exe</code>, which launches a self-contained windowing system that includes a command-line interface, <code>Rterm.exe</code> for a command-line interface only, Rscript.exe for batch processing only, and <code>R.exe</code>, which is suitable for batch or command-line use.</p>
+<p>More information on Windows-specific issues can be found in the <a href="https://cloud.r-project.org/bin/windows/base/rw-FAQ.html">CRAN R for Windows FAQ</a>.</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="images/home.svg" width="80%" style="display: block; margin: auto;" /></p>
-<p>This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with <a href="https://www.r-project.org/about.html">R</a> <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span> together with <a href="https://shiny.rstudio.com">Shiny</a> <span class="citation">(Chang et al. <a href="references.html#ref-R-shiny" role="doc-biblioref">2019</a>)</span> to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.</p>
-<p>We also aim to clarify and explain the tests used and to propose those considered most appropriate. Each laboratory in its routine work should choose the optimum method, but the project aims to reach a consensus that will help us in case of mutual assistance or intercomparisons.</p>
-<p>The project is initially developed by <a href="http://www.reneb.net">RENEB</a> association, but contributions are always welcome.</p>
-<p><img src="images/by-nc-sa.png" width="88" style="display: block; margin: auto;" />
-The online version of this book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<div style="page-break-after: always;"></div>
+<div id="under-macos" class="section level4 unnumbered">
+<h4>Under macOS</h4>
+<p>A version of R for macOS 10.6 and higher is available at CRAN. This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command <code>R</code>.</p>
+<p>More information on Macintosh-specific issues can be found in the <a href="https://cloud.r-project.org/bin/macosx/RMacOSX-FAQ.html">CRAN R for Mac OS X FAQ</a>.</p>
+</div>
+<div id="under-gnulinux" class="section level4 unnumbered">
+<h4>Under GNU/Linux</h4>
+<p>R is available for most Linux distributions through your distribution’s repositories. For example, R is provided on Debian-based distributions like Ubuntu by the <code>r-base</code> package. Many additional packages, such as <code>r-cran-rpart</code>, are provided at the maintainer’s discretion.</p>
+<p>To install R on Ubuntu, run the following commands on the Terminal:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="02c_manual_get_offline.html#cb1-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb1-2"><a href="02c_manual_get_offline.html#cb1-2"></a><span class="fu">sudo</span> apt-get install r-base r-base-dev</span></code></pre></div>
+<p>To install R on Fedora, run the following command on the Terminal:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="02c_manual_get_offline.html#cb2-1"></a><span class="ex">dnf</span> --refresh install R</span></code></pre></div>
+<p>To install R on Arch Linux, run the following command on the Terminal:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="02c_manual_get_offline.html#cb3-1"></a><span class="fu">sudo</span> pacman -S r</span></code></pre></div>
+</div>
+</div>
+<div id="installing-rstudio" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Installing RStudio</h3>
+<p>RStudio for Windows, macOS, or GNU/Linux can be downloaded from <a href="https://www.rstudio.com/products/rstudio/download/#download">https://www.rstudio.com/products/rstudio/download/</a>. RStudio requires R to be installed on the local machine, so make sure to install it first.</p>
+<p>Once installation is complete, the recommended next step for a new user would be to start RStudio and run a sample session.</p>
+<p><img src="images/user-manual/rstudio-mac.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>The <code>&gt;</code> character is the command prompt, and commands are executed once the user
+presses the RETURN or ENTER key.</p>
+</div>
+<div id="installing-biodose-tools" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Installing Biodose Tools</h3>
+<p>To download the development version, you can just run</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="02c_manual_get_offline.html#cb4-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb4-2"><a href="02c_manual_get_offline.html#cb4-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;biodosimetry-uab/biodosetools&quot;</span>)</span></code></pre></div>
+<p>In the future, Biodose Tools will be available on CRAN.</p>
+</div>
+<div id="running-biodose-tools" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Running Biodose Tools</h3>
+<p>Once it is installed, Biodose Tools can be easily run by typing</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="02c_manual_get_offline.html#cb5-1"></a>biodosetools<span class="op">::</span><span class="kw">runApp</span>()</span></code></pre></div>
+
+</div>
+</div>
+</div>
+
+
 
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="00a_structure.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="02b_manual_get_online.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="03a_stats_intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -268,7 +305,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/biodosimetry-uab/documentation/edit/master/index.Rmd",
+"link": "https://github.com/biodosimetry-uab/documentation/edit/master/contents/02c_manual_get_offline.Rmd",
 "text": "Edit"
 },
 "history": {

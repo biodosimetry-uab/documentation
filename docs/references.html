@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>References | Biodose Tools</title>
   <meta name="description" content="User Guide &amp; Documentation for Biodose Tools" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="References | Biodose Tools" />
   <meta property="og:type" content="book" />
@@ -21,18 +21,18 @@
   <meta name="twitter:description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="twitter:image" content="images/cover.png" />
 
-<meta name="author" content="Alfredo Hernández" />
+<meta name="author" content="Alfredo Hernández Joan Francesc Barquinero" />
 
 
-<meta name="date" content="2019-07-10" />
+<meta name="date" content="2019-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon-highres.png" />
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-<link rel="prev" href="dose-estimation-1.html">
-<link rel="next" href="app-implementation.html">
+<link rel="prev" href="appendix_C_cite.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -55,7 +58,6 @@ code.sourceCode > span { color: inherit; text-decoration: inherit; }
 code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -131,51 +133,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Biodose Tools Documentation</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="" data-path="structure-of-the-book.html"><a href="structure-of-the-book.html"><i class="fa fa-check"></i>Structure of the book</a></li>
-<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
-<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the authors</a><ul>
-<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#principal-contributors"><i class="fa fa-check"></i>Principal contributors</a></li>
-<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#contributors"><i class="fa fa-check"></i>Contributors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="00a_structure.html"><a href="00a_structure.html"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="00b_authors.html"><a href="00b_authors.html"><i class="fa fa-check"></i>About the authors</a><ul>
+<li class="chapter" data-level="" data-path="00b_authors.html"><a href="00b_authors.html#principal-contributors"><i class="fa fa-check"></i>Principal contributors</a></li>
+<li class="chapter" data-level="" data-path="00b_authors.html"><a href="00b_authors.html#contributors"><i class="fa fa-check"></i>Contributors</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="background-and-goals.html"><a href="background-and-goals.html"><i class="fa fa-check"></i>Background and goals</a><ul>
-<li class="chapter" data-level="" data-path="r-shiny-as-a-statistical-tool.html"><a href="r-shiny-as-a-statistical-tool.html"><i class="fa fa-check"></i>R Shiny as a statistical tool</a><ul>
-<li class="chapter" data-level="" data-path="r-shiny-as-a-statistical-tool.html"><a href="r-shiny-as-a-statistical-tool.html#r"><i class="fa fa-check"></i>R</a></li>
-<li class="chapter" data-level="" data-path="r-shiny-as-a-statistical-tool.html"><a href="r-shiny-as-a-statistical-tool.html#r-shiny"><i class="fa fa-check"></i>R Shiny</a></li>
-<li class="chapter" data-level="" data-path="r-shiny-as-a-statistical-tool.html"><a href="r-shiny-as-a-statistical-tool.html#modules"><i class="fa fa-check"></i>Modules</a></li>
+<li class="chapter" data-level="1" data-path="01a_background.html"><a href="01a_background.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="01a_background.html"><a href="01a_background.html#intro-biodosimetry"><i class="fa fa-check"></i><b>1.1</b> Biological dosimetry</a></li>
+<li class="chapter" data-level="1.2" data-path="01a_background.html"><a href="01a_background.html#intro-background"><i class="fa fa-check"></i><b>1.2</b> Background</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="01a_background.html"><a href="01a_background.html#r-shiny"><i class="fa fa-check"></i><b>1.2.1</b> R Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01b_rlang.html"><a href="01b_rlang.html"><i class="fa fa-check"></i><b>1.3</b> R Shiny as a statistical tool</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="01b_rlang.html"><a href="01b_rlang.html#r"><i class="fa fa-check"></i><b>1.3.1</b> R</a></li>
+<li class="chapter" data-level="1.3.2" data-path="01b_rlang.html"><a href="01b_rlang.html#r-shiny-1"><i class="fa fa-check"></i><b>1.3.2</b> R Shiny</a></li>
+<li class="chapter" data-level="1.3.3" data-path="01b_rlang.html"><a href="01b_rlang.html#intro-background-modules"><i class="fa fa-check"></i><b>1.3.3</b> Modules</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>I Using Biodose Tools</b></span></li>
-<li class="chapter" data-level="1" data-path="get.html"><a href="get.html"><i class="fa fa-check"></i><b>1</b> Getting Biodose Tools</a><ul>
-<li class="chapter" data-level="1.1" data-path="get-online.html"><a href="get-online.html"><i class="fa fa-check"></i><b>1.1</b> Online</a></li>
-<li class="chapter" data-level="1.2" data-path="get-offline.html"><a href="get-offline.html"><i class="fa fa-check"></i><b>1.2</b> On RStudio</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="get-offline.html"><a href="get-offline.html#installing-r"><i class="fa fa-check"></i><b>1.2.1</b> Installing R</a></li>
-<li class="chapter" data-level="1.2.2" data-path="get-offline.html"><a href="get-offline.html#installing-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Installing RStudio</a></li>
-<li class="chapter" data-level="1.2.3" data-path="get-offline.html"><a href="get-offline.html#installing-biodose-tools"><i class="fa fa-check"></i><b>1.2.3</b> Installing Biodose Tools</a></li>
-<li class="chapter" data-level="1.2.4" data-path="get-offline.html"><a href="get-offline.html#running-biodose-tools"><i class="fa fa-check"></i><b>1.2.4</b> Running Biodose Tools</a></li>
+<li class="chapter" data-level="2" data-path="02a_manual_intro.html"><a href="02a_manual_intro.html"><i class="fa fa-check"></i><b>2</b> Getting Biodose Tools</a><ul>
+<li class="chapter" data-level="2.1" data-path="02b_manual_get_online.html"><a href="02b_manual_get_online.html"><i class="fa fa-check"></i><b>2.1</b> Online</a></li>
+<li class="chapter" data-level="2.2" data-path="02c_manual_get_offline.html"><a href="02c_manual_get_offline.html"><i class="fa fa-check"></i><b>2.2</b> On RStudio</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="02c_manual_get_offline.html"><a href="02c_manual_get_offline.html#installing-r"><i class="fa fa-check"></i><b>2.2.1</b> Installing R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="02c_manual_get_offline.html"><a href="02c_manual_get_offline.html#installing-rstudio"><i class="fa fa-check"></i><b>2.2.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="2.2.3" data-path="02c_manual_get_offline.html"><a href="02c_manual_get_offline.html#installing-biodose-tools"><i class="fa fa-check"></i><b>2.2.3</b> Installing Biodose Tools</a></li>
+<li class="chapter" data-level="2.2.4" data-path="02c_manual_get_offline.html"><a href="02c_manual_get_offline.html#running-biodose-tools"><i class="fa fa-check"></i><b>2.2.4</b> Running Biodose Tools</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="manual.html"><a href="manual.html"><i class="fa fa-check"></i><b>2</b> Usage</a><ul>
-<li class="chapter" data-level="2.1" data-path="manual-ui.html"><a href="manual-ui.html"><i class="fa fa-check"></i><b>2.1</b> User interface</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="manual-ui.html"><a href="manual-ui.html#design-principles"><i class="fa fa-check"></i><b>2.1.1</b> Design principles</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="feedback.html"><a href="feedback.html"><i class="fa fa-check"></i><b>3</b> Feedback</a></li>
 <li class="part"><span><b>II Statistical Methods</b></span></li>
-<li class="chapter" data-level="4" data-path="stats-intro.html"><a href="stats-intro.html"><i class="fa fa-check"></i><b>4</b> Introduction</a></li>
-<li class="chapter" data-level="5" data-path="stats-dicent.html"><a href="stats-dicent.html"><i class="fa fa-check"></i><b>5</b> Dicentric analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="dose-effect-curve-fitting.html"><a href="dose-effect-curve-fitting.html"><i class="fa fa-check"></i><b>5.1</b> Dose-effect curve fitting</a></li>
-<li class="chapter" data-level="5.2" data-path="dose-estimation.html"><a href="dose-estimation.html"><i class="fa fa-check"></i><b>5.2</b> Dose estimation</a></li>
+<li class="chapter" data-level="3" data-path="03a_stats_intro.html"><a href="03a_stats_intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a><ul>
+<li class="chapter" data-level="3.1" data-path="03b_stats_concepts.html"><a href="03b_stats_concepts.html"><i class="fa fa-check"></i><b>3.1</b> Statistical considerations</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="03b_stats_concepts.html"><a href="03b_stats_concepts.html#dose-effect-curve-fitting"><i class="fa fa-check"></i><b>3.1.1</b> Dose-effect curve fitting</a></li>
+<li class="chapter" data-level="3.1.2" data-path="03b_stats_concepts.html"><a href="03b_stats_concepts.html#poisson-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Poisson distribution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="03b_stats_concepts.html"><a href="03b_stats_concepts.html#testing-for-poisson"><i class="fa fa-check"></i><b>3.1.3</b> Testing for Poisson</a></li>
+<li class="chapter" data-level="3.1.4" data-path="03b_stats_concepts.html"><a href="03b_stats_concepts.html#dose-effect-calibration"><i class="fa fa-check"></i><b>3.1.4</b> Dose-effect calibration</a></li>
+<li class="chapter" data-level="3.1.5" data-path="03b_stats_concepts.html"><a href="03b_stats_concepts.html#background-level"><i class="fa fa-check"></i><b>3.1.5</b> Background level</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="stats-trans.html"><a href="stats-trans.html"><i class="fa fa-check"></i><b>6</b> Translocation analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="dose-effect-curve-fitting-1.html"><a href="dose-effect-curve-fitting-1.html"><i class="fa fa-check"></i><b>6.1</b> Dose-effect curve fitting</a></li>
-<li class="chapter" data-level="6.2" data-path="dose-estimation-1.html"><a href="dose-estimation-1.html"><i class="fa fa-check"></i><b>6.2</b> Dose estimation</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="4" data-path="03c_stats_dicent.html"><a href="03c_stats_dicent.html"><i class="fa fa-check"></i><b>4</b> Dicentric analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="03c_stats_dicent.html"><a href="03c_stats_dicent.html#dose-effect-curve-fitting-1"><i class="fa fa-check"></i><b>4.1</b> Dose-effect curve fitting</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="03c_stats_dicent.html"><a href="03c_stats_dicent.html#fitting-method"><i class="fa fa-check"></i><b>4.1.1</b> Fitting method</a></li>
+<li class="chapter" data-level="4.1.2" data-path="03c_stats_dicent.html"><a href="03c_stats_dicent.html#goodness-of-fit"><i class="fa fa-check"></i><b>4.1.2</b> Goodness of fit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="03c_stats_dicent.html"><a href="03c_stats_dicent.html#dose-estimation"><i class="fa fa-check"></i><b>4.2</b> Dose estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="03d_stats_trans.html"><a href="03d_stats_trans.html"><i class="fa fa-check"></i><b>5</b> Translocation analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="03d_stats_trans.html"><a href="03d_stats_trans.html#dose-effect-curve-fitting-2"><i class="fa fa-check"></i><b>5.1</b> Dose-effect curve fitting</a></li>
+<li class="chapter" data-level="5.2" data-path="03d_stats_trans.html"><a href="03d_stats_trans.html#dose-estimation-1"><i class="fa fa-check"></i><b>5.2</b> Dose estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="03e_stats_micro.html"><a href="03e_stats_micro.html"><i class="fa fa-check"></i><b>6</b> Micronuclei analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="03e_stats_micro.html"><a href="03e_stats_micro.html#dose-effect-curve-fitting-3"><i class="fa fa-check"></i><b>6.1</b> Dose-effect curve fitting</a></li>
+<li class="chapter" data-level="6.2" data-path="03e_stats_micro.html"><a href="03e_stats_micro.html#dose-estimation-2"><i class="fa fa-check"></i><b>6.2</b> Dose estimation</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="app-implementation.html"><a href="app-implementation.html"><i class="fa fa-check"></i><b>A</b> Implementation details</a></li>
-<li class="chapter" data-level="B" data-path="how-to-cite-biodose-tools.html"><a href="how-to-cite-biodose-tools.html"><i class="fa fa-check"></i><b>B</b> How to cite Biodose Tools</a></li>
+<li class="chapter" data-level="A" data-path="appendix_A_feedback.html"><a href="appendix_A_feedback.html"><i class="fa fa-check"></i><b>A</b> Feedback</a></li>
+<li class="chapter" data-level="B" data-path="appendix_B_implementation.html"><a href="appendix_B_implementation.html"><i class="fa fa-check"></i><b>B</b> Implementation details</a><ul>
+<li class="chapter" data-level="B.1" data-path="appendix_B_implementation.html"><a href="appendix_B_implementation.html#technologies"><i class="fa fa-check"></i><b>B.1</b> Technologies</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="appendix_C_cite.html"><a href="appendix_C_cite.html"><i class="fa fa-check"></i><b>C</b> How to cite Biodose Tools</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -208,37 +225,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ref-IAEA2001">
 <p>International Atomic Energy Agency. 2001. “Cytogenetic Analysis for Radiation Dose Assessment - A Manual.” <em>Technical Report Series</em>, 138. <a href="https://www.iaea.org/publications/8735/cytogenetic-dosimetry-applications-in-preparedness-for-and-response-to-radiation-emergencies">https://www.iaea.org/publications/8735/cytogenetic-dosimetry-applications-in-preparedness-for-and-response-to-radiation-emergencies</a>.</p>
 </div>
+<div id="ref-IAEA2011">
+<p>———. 2011. “Cytogenetic Dosimetry: Applications in Preparedness for and Response to Radiation Emergencies.” <em>Manual Series</em>, 247.</p>
+</div>
 <div id="ref-R-base">
 <p>R Core Team. 2019. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
 </div>
 <div id="ref-R-Rstudio">
 <p>RStudio Team. 2015. <em>RStudio: Integrated Development Environment for R</em>. Boston, MA: RStudio, Inc. <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.</p>
 </div>
-<div id="ref-Tidwel2010">
-<p>Tidwell, Jenifer. 2010. <em>Designing Interfaces: Patterns for Effective Interaction Design</em>. O’Reilly Media, Inc.</p>
-</div>
 </div>
 
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="dose-estimation-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="app-implementation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="appendix_C_cite.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -259,7 +275,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/biodosimetry-uab/documentation/edit/master/06-references.Rmd",
+"link": "https://github.com/biodosimetry-uab/documentation/edit/master/contents/references.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -274,6 +290,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

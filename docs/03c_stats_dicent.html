@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Biodose Tools</title>
+  <title>Chapter 4 Dicentric analysis | Biodose Tools</title>
   <meta name="description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Biodose Tools" />
+  <meta property="og:title" content="Chapter 4 Dicentric analysis | Biodose Tools" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="biodosimetry-uab/documentation" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Biodose Tools" />
+  <meta name="twitter:title" content="Chapter 4 Dicentric analysis | Biodose Tools" />
   
   <meta name="twitter:description" content="User Guide &amp; Documentation for Biodose Tools" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon-highres.png" />
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-<link rel="next" href="00a_structure.html"/>
+<link rel="prev" href="03b_stats_concepts.html"/>
+<link rel="next" href="03d_stats_trans.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -213,30 +213,239 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Biodose Tools</h1>
-<h2 class="subtitle"><em>User Manual &amp; Documentation</em></h2>
-<p class="author"><em>Alfredo Hernández
-Joan Francesc Barquinero</em></p>
-<p class="date"><em>2019-10-15</em></p>
+<div id="stats-dicent" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Dicentric analysis</h1>
+<div id="dose-effect-curve-fitting-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Dose-effect curve fitting</h2>
+<p>Table <a href="03c_stats_dicent.html#tab:count-data">4.1</a> gives example data used to construct dose-effect curves for low LET <span class="math inline">\(\gamma\)</span>-radiation and high LET <span class="math inline">\(\alpha\)</span> radiation.</p>
+<table>
+<caption><span id="tab:count-data">Table 4.1: </span><a href="https://biodosimetry-uab.github.io/documentation/data/count-data-IAEA.csv">Download dicentrics distribution.</a></caption>
+<thead>
+<tr class="header">
+<th align="right">D</th>
+<th align="right">N</th>
+<th align="right">X</th>
+<th align="right">C0</th>
+<th align="right">C1</th>
+<th align="right">C2</th>
+<th align="right">C3</th>
+<th align="right">C4</th>
+<th align="right">C5</th>
+<th align="right">DI</th>
+<th align="right">u</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.00</td>
+<td align="right">5000</td>
+<td align="right">8</td>
+<td align="right">4992</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9985997</td>
+<td align="right">-0.0748406</td>
+</tr>
+<tr class="even">
+<td align="right">0.10</td>
+<td align="right">5002</td>
+<td align="right">14</td>
+<td align="right">4988</td>
+<td align="right">14</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9974005</td>
+<td align="right">-0.1348939</td>
+</tr>
+<tr class="odd">
+<td align="right">0.25</td>
+<td align="right">2008</td>
+<td align="right">22</td>
+<td align="right">1987</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.0804910</td>
+<td align="right">2.6098032</td>
+</tr>
+<tr class="even">
+<td align="right">0.50</td>
+<td align="right">2002</td>
+<td align="right">55</td>
+<td align="right">1947</td>
+<td align="right">55</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9730135</td>
+<td align="right">-0.8614691</td>
+</tr>
+<tr class="odd">
+<td align="right">0.75</td>
+<td align="right">1832</td>
+<td align="right">100</td>
+<td align="right">1736</td>
+<td align="right">92</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.0259749</td>
+<td align="right">0.7898872</td>
+</tr>
+<tr class="even">
+<td align="right">1.00</td>
+<td align="right">1168</td>
+<td align="right">109</td>
+<td align="right">1064</td>
+<td align="right">99</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.9992767</td>
+<td align="right">-0.0175514</td>
+</tr>
+<tr class="odd">
+<td align="right">1.50</td>
+<td align="right">562</td>
+<td align="right">100</td>
+<td align="right">474</td>
+<td align="right">76</td>
+<td align="right">12</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.0639572</td>
+<td align="right">1.0765604</td>
+</tr>
+<tr class="even">
+<td align="right">2.00</td>
+<td align="right">333</td>
+<td align="right">103</td>
+<td align="right">251</td>
+<td align="right">63</td>
+<td align="right">17</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1.1407182</td>
+<td align="right">1.8218931</td>
+</tr>
+<tr class="odd">
+<td align="right">3.00</td>
+<td align="right">193</td>
+<td align="right">108</td>
+<td align="right">104</td>
+<td align="right">72</td>
+<td align="right">15</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.8336227</td>
+<td align="right">-1.6377580</td>
+</tr>
+<tr class="even">
+<td align="right">4.00</td>
+<td align="right">103</td>
+<td align="right">103</td>
+<td align="right">35</td>
+<td align="right">41</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0.8823529</td>
+<td align="right">-0.8442765</td>
+</tr>
+<tr class="odd">
+<td align="right">5.00</td>
+<td align="right">59</td>
+<td align="right">107</td>
+<td align="right">11</td>
+<td align="right">19</td>
+<td align="right">11</td>
+<td align="right">9</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">1.1498550</td>
+<td align="right">0.8107914</td>
+</tr>
+</tbody>
+</table>
+<p>For each dose analysed, total number of cells scored (<span class="math inline">\(N\)</span>), total number of dicentrics observed (<span class="math inline">\(X\)</span>), cell distribution of dicentrics and dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>) and <span class="math inline">\(u\)</span>-test (<span class="math inline">\(u\)</span>) are presented. <span class="math inline">\(u\)</span>-values greater than 1.96 indicate overdispersion.</p>
+<div id="fitting-method" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Fitting method</h3>
+<p>The technique suggested for determining the best fit coefficients is that of maximum likelihood [104, 105]. Using this method, the best fit value for each coefficient is achieved by assuming a Poisson distribution and maximizing the likelihood of the observations by the method of iteratively reweighted least squares. For overdispersed (non-Poisson) distributions, as obtained after high LET radiation, the weights must take into account the overdispersion. If the data show a statistically significant trend of <span class="math inline">\(\sigma^{2}/\bar{y}\)</span> with dose, then that trend should be used. Otherwise, the Poisson weight on each data point should be divided by the average value of <span class="math inline">\(\sigma^{2}/\bar{y}\)</span>.</p>
+<table>
+<caption><span id="tab:dic-coeffs">Table 4.2: </span>Dicentrics Coefficients</caption>
+<thead>
+<tr class="header">
+<th align="left">Coefficient</th>
+<th align="right">Estimate</th>
+<th align="right">Std. Error</th>
+<th align="right">t-statistic</th>
+<th align="right">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(C\)</span></td>
+<td align="right">0.00128</td>
+<td align="right">0.0004714</td>
+<td align="right">2.716</td>
+<td align="right">0.0066080</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\alpha\)</span></td>
+<td align="right">0.02104</td>
+<td align="right">0.0051580</td>
+<td align="right">4.079</td>
+<td align="right">0.0000452</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\beta\)</span></td>
+<td align="right">0.06303</td>
+<td align="right">0.0040070</td>
+<td align="right">15.730</td>
+<td align="right">0.0000000</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="images/home.svg" width="80%" style="display: block; margin: auto;" /></p>
-<p>This project in an app to be used by biological dosimetry laboratories. Biodose Tools is an open-source project that aims to be a tool to perform all different tests and calculations needed. The app is developed with <a href="https://www.r-project.org/about.html">R</a> <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2019</a>)</span> together with <a href="https://shiny.rstudio.com">Shiny</a> <span class="citation">(Chang et al. <a href="references.html#ref-R-shiny" role="doc-biblioref">2019</a>)</span> to offer an on-line, easy-to-use solution. Although the intention is to provide the application as a website, all R routines can be downloaded for improvement or personal use.</p>
-<p>We also aim to clarify and explain the tests used and to propose those considered most appropriate. Each laboratory in its routine work should choose the optimum method, but the project aims to reach a consensus that will help us in case of mutual assistance or intercomparisons.</p>
-<p>The project is initially developed by <a href="http://www.reneb.net">RENEB</a> association, but contributions are always welcome.</p>
-<p><img src="images/by-nc-sa.png" width="88" style="display: block; margin: auto;" />
-The online version of this book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<div style="page-break-after: always;"></div>
+<div id="goodness-of-fit" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Goodness of fit</h3>
+<!-- The goodness of fit of the curve and significance of fitted $\alpha$ and $\beta$ coefficients should then be tested, for instance using the Chi-squared ($\chi^{2}$) test and an appropriate form of the $F$-test (e.g. $F$-test, $z$-test or $t$-test) respectively. Biodose Tools implements the $t$-test. -->
+<p>The goodness of fit of the curve and significance of fitted <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> coefficients should then be tested, for instance using an appropriate form of the <span class="math inline">\(F\)</span>-test (e.g. <span class="math inline">\(F\)</span>-test, <span class="math inline">\(z\)</span>-test or <span class="math inline">\(t\)</span>-test) respectively. Biodose Tools implements the <span class="math inline">\(t\)</span>-test.</p>
+<p>Let <span class="math inline">\(\hat{\theta}\)</span> be an estimator of the parameter <span class="math inline">\(\theta = \alpha, \beta, C\)</span> in the fit model. Then the <span class="math inline">\(t\)</span>-statistic for this parameter is defined as
+<span class="math display" id="eq:t-test">\[\begin{equation} 
+  t_{\hat{\theta}} = \frac{\hat{\theta}}{\widehat{se}(\hat{\theta})}
+  \tag{4.1}
+\end{equation}\]</span></p>
+<!-- If there is evidence of a lack of fit (i.e. the $\chi^{2}$ is greater than the degrees of freedom ($df$)), then the standard error should be increased by $(\chi^{2}/df)^{1/2}$. Many computer programs calculate SE values that are based on the sum of squares, instead of the Poisson estimate of the variance, which may lead to a false underestimation of the Poisson error. For this reason, when SE are calculated using this method, and the df is greater than the $\chi^{2}$, it is a good practice to increase the SE by $(df/\chi^{2})^{1/2}$. -->
+<p>The <span class="math inline">\(p\)</span>-values of the <span class="math inline">\(t\)</span>-test shown in Table <a href="03c_stats_dicent.html#tab:dic-coeffs">4.2</a> indicate that the fitted data points were not statistically different from the observed ones confirming a good fit.</p>
+</div>
+</div>
+<div id="dose-estimation" class="section level2">
+<h2><span class="header-section-number">4.2</span> Dose estimation</h2>
 
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="00a_structure.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="03b_stats_concepts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="03d_stats_trans.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -268,7 +477,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/biodosimetry-uab/documentation/edit/master/index.Rmd",
+"link": "https://github.com/biodosimetry-uab/documentation/edit/master/contents/03c_stats_dicent.Rmd",
 "text": "Edit"
 },
 "history": {
