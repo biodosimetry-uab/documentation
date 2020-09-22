@@ -60,7 +60,7 @@ presses the RETURN or ENTER key.
 To download the development version, you can just run
 ```r
 # install.packages("devtools")
-devtools::install_github("biodosimetry-uab/biodosetools")
+devtools::install_github("biodosetools-team/biodosetools")
 ```
 
 In the future, Biodose Tools will be available on CRAN.

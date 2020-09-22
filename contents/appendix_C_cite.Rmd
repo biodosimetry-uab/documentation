@@ -11,8 +11,8 @@ If you want to cite Biodose Tools, you can use the following BibTeX entry:
             and Ulrike Kulka and Eric Grègoire and Manuel Higueras and 
             Gruel Gaëtan and Ursula Oestreicher and David Lloyd},
   year = {2019},
-  url = {https://biodosimetry-uab.github.io/documentation/},
+  url = {https://biodosetools-team.github.io/documentation/},
 }
 ```
 
-You can download the BibTex entry clicking [here](https://biodosimetry-uab.github.io/documentation/data/biodose-tools.bib).
+You can download the BibTex entry clicking [here](https://biodosetools-team.github.io/documentation/data/biodose-tools.bib).

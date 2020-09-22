@@ -2,7 +2,7 @@
 
 # Feedback {#appendix-feedback}
 
-Please provide your suggestions and feedback to help us improve Biodose Tools. Use the following link to open a new issue on the project's issue tracker: https://github.com/biodosimetry-uab/biodose-tools/issues/new. 
+Please provide your suggestions and feedback to help us improve Biodose Tools. Use the following link to open a new issue on the project's issue tracker: https://github.com/biodosetools-team/biodose-tools/issues/new. 
 
 You can also use the "Give feedback" button on Biodose Tools' navbar (the location of the button is subject to change after the beta testing phase).
 

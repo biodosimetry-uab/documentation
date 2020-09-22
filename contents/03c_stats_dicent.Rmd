@@ -9,16 +9,17 @@ library(tidyverse)
 Table \@ref(tab:count-data) gives example data used to construct dose-effect curves for low LET $\gamma$-radiation and high LET $\alpha$ radiation.
 
 ```{r count-data, echo=FALSE}
-mytable <- data.table::fread("data/count-data-IAEA.csv")
+mytable <- data.table::fread(here::here("data/count-data-IAEA.csv"))
 
 mytable <- mytable %>%
+  as.data.frame() %>% 
   dplyr::mutate(
     N = 0,
     X = 0,
     DI = 0,
     u = 0
   ) %>%
-  dplyr::select(D, N, X, everything())
+  dplyr::select(D, N, X, dplyr::everything())
 
 first_aberr_index <- 4
 last_aberr_index <- ncol(mytable) - 2
@@ -51,7 +52,7 @@ for (row in 1:num_rows) {
 
 mytable %>% 
   knitr::kable(booktabs = TRUE, 
-               caption = "[Download dicentrics distribution.](https://biodosimetry-uab.github.io/documentation/data/count-data-IAEA.csv)") #%>% 
+               caption = "[Download dicentrics distribution.](https://biodosetools-team.github.io/documentation/data/count-data-IAEA.csv)") #%>% 
   # kableExtra::kable_styling(latex_options = "basic")
 ```
 
@@ -62,7 +63,7 @@ For each dose analysed, total number of cells scored ($N$), total number of dice
 The technique suggested for determining the best fit coefficients is that of maximum likelihood [@Papworth1975; @Merkle1983]. Using this method, the best fit value for each coefficient is achieved by assuming a Poisson distribution and maximizing the likelihood of the observations by the method of iteratively reweighted least squares. For overdispersed (non-Poisson) distributions, as obtained after high LET radiation, the weights must take into account the overdispersion. If the data show a statistically significant trend of $\sigma^{2}/\bar{y}$ with dose, then that trend should be used. Otherwise, the Poisson weight on each data point should be divided by the average value of $\sigma^{2}/\bar{y}$.
 
 ```{r dic-coeffs, echo=FALSE}
-mytable <- data.table::fread("data/dicentrics-coeffs.csv")
+mytable <- data.table::fread(here::here("data/dicentrics-coeffs.csv"))
 
 mytable %>% 
   knitr::kable(booktabs = TRUE, 

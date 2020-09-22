@@ -10,7 +10,7 @@ bibliography: [bib/book.bib, bib/packages.bib, bib/extra.bib]
 biblio-style: abbrv
 # biblio-style: apalike
 link-citations: yes
-github-repo: biodosimetry-uab/documentation
+github-repo: biodosetools-team/documentation
 description: "User Guide & Documentation for Biodose Tools"
 apple-touch-icon: "favicon-highres.png"
 apple-touch-icon-size: 120
