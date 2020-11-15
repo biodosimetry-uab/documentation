@@ -24,4 +24,3 @@ The project is initially developed by [RENEB](http://www.reneb.net) association,
 | [Manuel Higueras](https://investigacion.unirioja.es/investigadores/1322/detalle)                          |     UdR     | Mathematician |
 | [Gruel Gaëtan](https://www.researchgate.net/profile/Gruel_Gaetan)                                         |     IRSN    | Biologist     |
 | [Ursula Oestreicher](https://www.researchgate.net/scientific-contributions/2121336457_Ursula_Oestreicher) |     BfS     | Biologist     |
-| [David Lloyd](https://www.phe-protectionservices.org.uk/cds/team/david_lloyd)                             |     PHE     | Biologist     |
