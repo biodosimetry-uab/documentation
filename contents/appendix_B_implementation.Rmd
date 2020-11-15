@@ -2,4 +2,4 @@
 
 ## Technologies
 
-The Biodose Tools user interface is written in R Shiny [@R-shiny] using Bootstrap 4 [@R-bs4Dash], analyses are implemented in the R programming language [@R-base], with the resultant tables and plots rendered in HTML through JavaScript libraries. This is done by the browser of choice, or by an instance of QtWebKit if the app is run through RStudio.
+The Biodose Tools user interface is written in R Shiny [@R-shiny] using Bootstrap 3 through the {shinydashboard} [@R-shinydashboard] package, analyses are implemented in the R programming language [@R-base], with the resultant tables and plots rendered in HTML through JavaScript libraries. This is done by the browser of choice, or by an instance of QtWebKit if the app is run through RStudio.
