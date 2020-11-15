@@ -1,12 +1,9 @@
 eq:dose-response-lq
 eq:dose-response-l
 eq:poisson-dist
-eq:variance-poisson
-eq:variance
 eq:u-value
 tab:count-data
 tab:dic-coeffs
-eq:t-test
 intro
 intro-biodosimetry
 intro-background
