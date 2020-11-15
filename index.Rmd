@@ -44,7 +44,7 @@ The online version of this book is licensed under the [Creative Commons Attribut
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'shiny', 'bs4Dash'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'shiny', 'shinydashboard'
 ), 'bib/packages.bib')
 ```
 
