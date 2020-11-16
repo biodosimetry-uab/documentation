@@ -1,18 +1,17 @@
 # How to cite Biodose Tools {#appendix-cite}
 
-If you want to cite Biodose Tools, you can use the following BibTeX entry:
+If you want to cite Biodose Tools, you can copy or  [download](https://biodosetools-team.github.io/documentation/data/biodose-tools.bib) the following BibTeX entry:
 
-```tex
-@Manual{BiodoseTools2019,
-  title = {{Biodose Tools}},
-  author = {Alfredo Hernández and Joan Francesc Barquinero and
-            David Endesfelder and Pere Puig and Lleonard Barrios and
-            Jochen Einbeck and Amine Benadjaoud and Elizabeth Ainsbury
-            and Ulrike Kulka and Eric Grègoire and Manuel Higueras and 
-            Gruel Gaëtan and Ursula Oestreicher and David Lloyd},
-  year = {2019},
-  url = {https://biodosetools-team.github.io/documentation/},
+```bib
+@Unpublished{
+  note = {Manuscript under construction},
+  author = {Alfredo Hern{'{a}}ndez and David Endesfelder and Jochen Einbeck and Pere Puig and Amine Benadjaoud and Manuel Higueras and Elizabeth Ainsbury and Gruel Ga{"{e}}tan and Ulrike Kulka and Lleonard Barrios and Joan Francesc Barquinero},
+  title = {Biodose Tools: An R Shiny Application for Biological Dosimetry},
+  year = {2020},
+  url = {https://biodosetools-team.github.io/biodosetools/},
 }
 ```
 
-You can download the BibTex entry clicking [here](https://biodosetools-team.github.io/documentation/data/biodose-tools.bib).
+Alternatively, you can use:
+
+> A. Hernández, D. Endesfelder, J. Einbeck, P. Puig, A. Benadjaoud, M. Higueras, E. Ainsbury, G. Gaëtan, U. Kulka, L. Barrios & J. F. Barquinero (2020). Biodose Tools: An R Shiny Application for Biological Dosimetry. URL https://biodosetools-team.github.io/biodosetools/
