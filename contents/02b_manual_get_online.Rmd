@@ -1,6 +1,6 @@
 ## Online {#manual-get-online}
 
-During the beta testing phase, the application is hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodose-tools-beta/](https://aldomann.shinyapps.io/biodose-tools-beta/). 
+Biodose Tool is currently hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodosetools-v3/](https://aldomann.shinyapps.io/biodosetools-v3/). 
 
 Biodose Tools will be later hosted at one of our institution's servers.
 
