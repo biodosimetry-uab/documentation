@@ -9,7 +9,6 @@ bookdown::gitbook:
 
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/biodosetools-team/documentation/edit/master/%s
     download: ["pdf"]
     sharing:
       facebook: no
@@ -20,7 +19,7 @@ bookdown::gitbook:
       weibo: no
       instapaper: no
       vk: no
-      all: ['facebook', 'twitter', 'linkedin', 'github']
+      all: no
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
