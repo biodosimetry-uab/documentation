@@ -191,6 +191,14 @@ $endif$
 \let\rmarkdownfootnote\footnote%
 \def\footnote{\protect\rmarkdownfootnote}
 
+%%% Fixes Pandoc error (https://github.com/rstudio/rmarkdown/issues/1649#issuecomment-717176839)
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{CSLReferences}%
+{\setlength{\parindent}{0pt}%
+\everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+{\par}
+
 $if(compact-title)$
 %%% Change title format to be more compact
 \usepackage{titling}
