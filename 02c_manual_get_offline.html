@@ -197,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="03e_stats_micro.html"><a href="03e_stats_micro.html#dose-estimation-2"><i class="fa fa-check"></i><b>7.2</b> Dose estimation</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix_A_feedback.html"><a href="appendix_A_feedback.html"><i class="fa fa-check"></i><b>A</b> Feedback</a></li>
+<li class="chapter" data-level="A" data-path="appendix_A_feedback.html"><a href="appendix_A_feedback.html"><i class="fa fa-check"></i><b>A</b> Feedback and issues</a></li>
 <li class="chapter" data-level="B" data-path="appendix_B_implementation.html"><a href="appendix_B_implementation.html"><i class="fa fa-check"></i><b>B</b> Implementation details</a><ul>
 <li class="chapter" data-level="B.1" data-path="appendix_B_implementation.html"><a href="appendix_B_implementation.html#technologies"><i class="fa fa-check"></i><b>B.1</b> Technologies</a></li>
 </ul></li>
@@ -231,12 +231,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.2.1</span> Installing R</h3>
 <div id="under-windows" class="section level4 unnumbered">
 <h4>Under Windows</h4>
-<p>Versions of R for Windows XP and later, including 64-bit versions, are available at CRAN. The distribution includes <code>Rgui.exe</code>, which launches a self-contained windowing system that includes a command-line interface, <code>Rterm.exe</code> for a command-line interface only, Rscript.exe for batch processing only, and <code>R.exe</code>, which is suitable for batch or command-line use.</p>
+<p>Versions of R for Windows XP and later, including 64-bit versions, are available at <a href="https://cloud.r-project.org/bin/windows/base/">CRAN</a>. The distribution includes <code>Rgui.exe</code>, which launches a self-contained windowing system that includes a command-line interface, <code>Rterm.exe</code> for a command-line interface only, Rscript.exe for batch processing only, and <code>R.exe</code>, which is suitable for batch or command-line use.</p>
 <p>More information on Windows-specific issues can be found in the <a href="https://cloud.r-project.org/bin/windows/base/rw-FAQ.html">CRAN R for Windows FAQ</a>.</p>
 </div>
 <div id="under-macos" class="section level4 unnumbered">
 <h4>Under macOS</h4>
-<p>A version of R for macOS 10.6 and higher is available at CRAN. This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command <code>R</code>.</p>
+<p>A version of R for macOS 10.6 and higher is available at <a href="https://cloud.r-project.org/bin/macosx/">CRAN</a>. This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command <code>R</code>.</p>
 <p>More information on Macintosh-specific issues can be found in the <a href="https://cloud.r-project.org/bin/macosx/RMacOSX-FAQ.html">CRAN R for Mac OS X FAQ</a>.</p>
 </div>
 <div id="under-gnulinux" class="section level4 unnumbered">
@@ -255,21 +255,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.2.2</span> Installing RStudio</h3>
 <p>RStudio for Windows, macOS, or GNU/Linux can be downloaded from <a href="https://www.rstudio.com/products/rstudio/download/#download">https://www.rstudio.com/products/rstudio/download/</a>. RStudio requires R to be installed on the local machine, so make sure to install it first.</p>
 <p>Once installation is complete, the recommended next step for a new user would be to start RStudio and run a sample session.</p>
-<p><img src="images/user-manual/rstudio-mac.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="images/user-manual/rstudio-ide.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>The <code>&gt;</code> character is the command prompt, and commands are executed once the user
 presses the RETURN or ENTER key.</p>
 </div>
 <div id="installing-biodose-tools" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Installing Biodose Tools</h3>
 <p>To download the development version, you can just run</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="02c_manual_get_offline.html#cb4-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="02c_manual_get_offline.html#cb4-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
 <span id="cb4-2"><a href="02c_manual_get_offline.html#cb4-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;biodosetools-team/biodosetools&quot;</span>)</span></code></pre></div>
 <p>In the future, Biodose Tools will be available on CRAN.</p>
 </div>
 <div id="running-biodose-tools" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Running Biodose Tools</h3>
 <p>Once it is installed, Biodose Tools can be easily run by typing</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="02c_manual_get_offline.html#cb5-1"></a>biodosetools<span class="op">::</span><span class="kw">runApp</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="02c_manual_get_offline.html#cb5-1"></a>biodosetools<span class="op">::</span><span class="kw">run_app</span>()</span></code></pre></div>
 
 </div>
 </div>
@@ -303,7 +303,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "github"],
+"all": false,
 "google": false
 },
 "fontsettings": {
@@ -312,8 +312,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/biodosetools-team/documentation/edit/master/contents/02c_manual_get_offline.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
