@@ -1,16 +1,16 @@
 # (APPENDIX) Appendices {-} 
 
-# Feedback {#appendix-feedback}
+# Feedback and issues {#appendix-feedback}
 
-Please provide your suggestions and feedback to help us improve Biodose Tools. Use the following link to open a new issue on the project's issue tracker: https://github.com/biodosetools-team/biodose-tools/issues/new. 
-
-You can also use the "Give feedback" button on Biodose Tools' navbar (the location of the button is subject to change after the beta testing phase).
+Please provide your suggestions and feedback to help us improve Biodose Tools. Use the following link to open a new issue on the project's issue tracker: https://github.com/biodosetools-team/biodosetools/issues/new. You can also use the "Report issue" button on Biodose Tools home page.
 
   
-We provide a short template on the issue tracker (pictured below), but feel free to do your own thing:
+We provide a short template on the issue tracker, as pictured below:
 
-```{r echo=FALSE, out.width='85%', fig.align='center'}
-knitr::include_graphics("images/user-manual/feedback.png", dpi = 96)
+```{r echo=FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("images/user-manual/feedback.png", dpi = 192)
 ```
 
-Be as descriptive as possible and in case of an error or issue, explain the required steps to reproduce the experienced error. Notice that pictures can attached
+Please make sure to specify the version used (located at the bottom of the sidebar of Biodose Tools), as well as assessment (dicentrics, translocations, etc.) and module (fitting, dose estimation, etc.)
+
+Be as descriptive as possible and in case of an error or issue, explain the required steps to reproduce the experienced error. You can attach pictures if that helps illustrate the issue.
