@@ -14,9 +14,23 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown", "dplyr", "data.table", "here"))'
-      - name: Render Book
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
+      - name: Install dependencies
+        run: Rscript -e 'install.packages(c("dplyr", "data.table", "here"))'
+      - name: Render GitBook
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
+      - name: Render PDF
+        run: |
+          bookdown::render_book(
+            "index.Rmd",
+            bookdown::pdf_book(
+              includes = list(in_header = "preamble.tex"),
+              citation_package = "natbib",
+              keep_tex = FALSE,
+              template = "template.tex"
+            )
+          )
+        shell: Rscript {0}
       - uses: actions/upload-artifact@v1
         with:
           name: _book
