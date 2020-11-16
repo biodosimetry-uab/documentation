@@ -3,7 +3,7 @@
 ## Dose-effect curve fitting
 
 ```{r include=FALSE}
-library(tidyverse)
+library(dplyr)
 ```
 
 Table \@ref(tab:count-data) gives example data used to construct dose-effect curves for low LET $\gamma$-radiation and high LET $\alpha$ radiation.
