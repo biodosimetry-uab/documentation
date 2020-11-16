@@ -10,14 +10,14 @@ To run Biodose Tools on your local machine, you need to install R [@R-base]. Add
 
 #### Under Windows {-}
 
-Versions of R for Windows XP and later, including 64-bit versions, are available at CRAN. The distribution includes `Rgui.exe`, which launches a self-contained windowing system that includes a command-line interface, `Rterm.exe` for a command-line interface only, Rscript.exe for batch processing only, and `R.exe`, which is suitable for batch or command-line use. 
+Versions of R for Windows XP and later, including 64-bit versions, are available at [CRAN](https://cloud.r-project.org/bin/windows/base/). The distribution includes `Rgui.exe`, which launches a self-contained windowing system that includes a command-line interface, `Rterm.exe` for a command-line interface only, Rscript.exe for batch processing only, and `R.exe`, which is suitable for batch or command-line use.
 
 More information on Windows-specific issues can be found in the [CRAN R for Windows FAQ](https://cloud.r-project.org/bin/windows/base/rw-FAQ.html).
 
 
 #### Under macOS {-}
 
-A version of R for macOS 10.6 and higher is available at CRAN. This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command `R`. 
+A version of R for macOS 10.6 and higher is available at [CRAN](https://cloud.r-project.org/bin/macosx/). This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command `R`. 
 
 More information on Macintosh-specific issues can be found in the [CRAN R for Mac OS X FAQ](https://cloud.r-project.org/bin/macosx/RMacOSX-FAQ.html).
 
@@ -48,8 +48,8 @@ RStudio for Windows, macOS, or GNU/Linux can be downloaded from [https://www.rst
 
 Once installation is complete, the recommended next step for a new user would be to start RStudio and run a sample session.
 
-```{r echo=FALSE, out.width = '90%', fig.align='center'}
-knitr::include_graphics("images/user-manual/rstudio-mac.png", dpi = 96)
+```{r echo=FALSE, out.width = '100%', fig.align='center'}
+knitr::include_graphics("images/user-manual/rstudio-ide.png", dpi = 192)
 ```
 
 The `>` character is the command prompt, and commands are executed once the user
@@ -59,7 +59,7 @@ presses the RETURN or ENTER key.
 
 To download the development version, you can just run
 ```r
-# install.packages("devtools")
+install.packages("devtools")
 devtools::install_github("biodosetools-team/biodosetools")
 ```
 
@@ -69,5 +69,5 @@ In the future, Biodose Tools will be available on CRAN.
 
 Once it is installed, Biodose Tools can be easily run by typing
 ```r
-biodosetools::runApp()
+biodosetools::run_app()
 ```
