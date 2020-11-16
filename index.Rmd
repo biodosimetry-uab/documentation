@@ -36,8 +36,11 @@ We also aim to clarify and explain the tests used and to propose those considere
 
 The project is initially developed by [RENEB](http://www.reneb.net) association, but contributions are always welcome.
 
-```{r, echo = FALSE, fig.align = "center"}
-    knitr::include_graphics("images/by-nc-sa.png", dpi = 96)
+<br>
+\vspace{12px}
+
+```{r, echo = FALSE, out.width = '15%', fig.align = "center"}
+    knitr::include_graphics("images/cc-by-nc-sa.png", dpi = 192)
     ```
 The online version of this book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
 
