@@ -26,3 +26,4 @@ knitr::include_graphics("images/stats/iaea-cover.jpg", dpi = 2)
 
 This opens up the possibility to implement statistical methods not included in the IAEA Manual (2011).
 
+\newpage
