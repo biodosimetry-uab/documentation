@@ -1,7 +1,7 @@
 # (PART) Using Biodose Tools {-}
 
 # Getting Biodose Tools {#manual-get}
-There are mainly two methods to get Biodose Tools. 
+There are mainly two methods to get Biodose Tools: 
 
 - Online on a web browser. <!-- (recommended) -->
 - Locally on your computer using RStudio.
