@@ -46,9 +46,14 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'shiny', 'shinydashboard'
-), 'bib/packages.bib')
+knitr::write_bib(
+  x = c(
+    .packages(), "bookdown", "knitr", "rmarkdown", "shiny", "shinydashboard",
+    "bsplus", "dplyr", "ggplot2", "magrittr", "MASS", "maxLik", "mixtools", "msm", "pander", "purrr", "rhandsontable", "rlang", "shinyWidgets", "tidyr", "xtable", 
+    "config", "golem", "htmltools", "markdown", "pkgload"
+  ),
+  file = "bib/packages.bib"
+)
 ```
 
 \newpage
