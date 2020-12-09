@@ -4,9 +4,11 @@ Many laboratories will prefer to use their own computers to run the app instead 
 
 To run Biodose Tools on your local machine, you need to install R [@R-base]. Additionally, we recommend to install RStudio [@R-Rstudio].
 
+A short installation guide video is available on `r if (knitr::is_html_output()) "[YouTube](https://www.youtube.com/watch?v=BimfOgKZUIk):"` `r if (knitr::is_latex_output()) "YouTube ([https://youtu.be/BimfOgKZUIk](https://www.youtube.com/watch?v=BimfOgKZUIk))."`
+
+`r if (knitr::is_html_output()) '<iframe width="560" height="315" src="https://www.youtube.com/embed/BimfOgKZUIk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'`
 
 ### Installing R
-
 
 #### Under Windows {-}
 
