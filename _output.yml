@@ -1,29 +1,40 @@
-bookdown::gitbook:
+bookdown::bs4_book:
+  theme:
+    primary: "#327a4f"
+    fg: "#212121"
+    bg: "#ffffff"
+  repo: https://github.com/biodosetools-team/documentation
   css: style.css
-  split_by: "rmd"
-  config:
-    toc:
-      collapse: section
-      before: |
-        <li><a href="./">Biodose Tools Documentation</a></li>
-
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf"]
-    sharing:
-      facebook: no
-      twitter: yes
-      google: no
-      linkedin: yes
-      github: yes
-      weibo: no
-      instapaper: no
-      vk: no
-      all: no
-bookdown::pdf_book:
   includes:
-    in_header: preamble.tex
-  latex_engine: pdflatex
-  citation_package: natbib
-  keep_tex: no
-  template: template.tex
+    in_header: [favicons.html]
+
+# bookdown::gitbook:
+#   css: style.css
+#   split_by: "rmd"
+#   config:
+#     toc:
+#       collapse: section
+#       before: |
+#         <li><a href="./">Biodose Tools Documentation</a></li>
+#
+#       after: |
+#         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+#     download: ["pdf"]
+#     sharing:
+#       facebook: no
+#       twitter: yes
+#       google: no
+#       linkedin: yes
+#       github: yes
+#       weibo: no
+#       instapaper: no
+#       vk: no
+#       all: no
+
+# bookdown::pdf_book:
+#   includes:
+#     in_header: preamble.tex
+#   latex_engine: pdflatex
+#   citation_package: natbib
+#   keep_tex: no
+#   template: template.tex

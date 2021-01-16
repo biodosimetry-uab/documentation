@@ -4,7 +4,7 @@ subtitle: "User Manual & Documentation"
 author: "Alfredo Hernández, Joan Francesc Barquinero"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::bs4_book
 documentclass: scrartcl
 bibliography: [bib/book.bib, bib/packages.bib, bib/extra.bib]
 biblio-style: abbrv
@@ -20,7 +20,7 @@ pdf-cover-image: "images/cover.pdf"
 ---
 
 
-# Preface {-}
+# Welcome {-}
 
 ```{r include=FALSE}
 options(knitr.graphics.auto_pdf = TRUE)
@@ -40,8 +40,9 @@ The project is initially developed by [RENEB](http://www.reneb.net) association,
 \vspace{12px}
 
 ```{r, echo = FALSE, out.width = '15%', fig.align = "center"}
-    knitr::include_graphics("images/cc-by-nc-sa.png", dpi = 192)
-    ```
+knitr::include_graphics("images/cc-by-nc-sa.png", dpi = 192)
+```
+
 The online version of this book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
 
 ```{r include=FALSE}
@@ -49,7 +50,8 @@ The online version of this book is licensed under the [Creative Commons Attribut
 knitr::write_bib(
   x = c(
     .packages(), "bookdown", "knitr", "rmarkdown", "shiny", "shinydashboard",
-    "bsplus", "dplyr", "ggplot2", "magrittr", "MASS", "maxLik", "mixtools", "msm", "pander", "purrr", "rhandsontable", "rlang", "shinyWidgets", "tidyr", "xtable", 
+    "bsplus", "dplyr", "ggplot2", "magrittr", "MASS", "maxLik", "mixtools", "msm", 
+    "pander", "purrr", "rhandsontable", "rlang", "shinyWidgets", "tidyr", "xtable",
     "config", "golem", "htmltools", "markdown", "pkgload"
   ),
   file = "bib/packages.bib"
