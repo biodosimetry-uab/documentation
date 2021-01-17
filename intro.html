@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Introduction | Biodose Tools</title>
+<meta name="author" content="Alfredo Hernández, Joan Francesc Barquinero">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link rel="icon" type="image/x-icon" href="favicon.png">
+<link rel="icon" sizes="192x192" href="favicon-highres.png">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="User Manual &amp; Documentation">Biodose Tools</a>:
+        <small class="text-muted">User Manual &amp; Documentation</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="active" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Using Biodose Tools</li>
+<li><a class="" href="manual-get.html"><span class="header-section-number">2</span> Getting Biodose Tools</a></li>
+<li><a class="" href="manual-use.html"><span class="header-section-number">3</span> Usage</a></li>
+<li class="book-part">Statistical Methods</li>
+<li><a class="" href="stats-intro.html"><span class="header-section-number">4</span> Introduction</a></li>
+<li><a class="" href="stats-dicent.html"><span class="header-section-number">5</span> Dicentric analysis</a></li>
+<li><a class="" href="stats-trans.html"><span class="header-section-number">6</span> Translocation analysis</a></li>
+<li><a class="" href="stats-micro.html"><span class="header-section-number">7</span> Micronuclei analysis</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></li>
+<li><a class="" href="appendix-implementation.html"><span class="header-section-number">B</span> Implementation details</a></li>
+<li><a class="" href="appendix-cite.html"><span class="header-section-number">C</span> How to cite Biodose Tools</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/biodosetools-team/documentation">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro" class="section level1">
+<h1>
+<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
+</h1>
+<div id="intro-biodosimetry" class="section level2">
+<h2>
+<span class="header-section-number">1.1</span> Biological dosimetry<a class="anchor" aria-label="anchor" href="#intro-biodosimetry"><i class="fas fa-link"></i></a>
+</h2>
+<p>Biological dosimetry aims estimating the absorbed dose in an individual in which an exposure to ionizing radiation (IR) is suspected, by means of analysing biomarkers of dose <span class="citation">(International Atomic Energy Agency <a href="references.html#ref-IAEA2011" role="doc-biblioref">2011</a>)</span>. A great majority of biomarkers of dose exposition are those coming of the induced DNA damage, most of them analysed using cytogenetic techniques such as dicentric chromosomes, translocations or micronuclei. Dose-assessment is based in converting an observed yield of damage (i.e., the frequency of dicentrics present in peripheral blood lymphocytes) in an absorbed dose using a pre-established calibration curve. This process assumes mathematical models and statistical probability distributions. First, to elaborate a calibration curve blood samples must be uniformly irradiated at several doses, and the observed aberration cell distribution is confronted generally to a Poisson distribution. It is assumed that for low-LET radiation types uniform exposures result in a dicentric cell distribution that agrees with Poisson <span class="citation">(Edwards, Lloyd, and Purrott <a href="references.html#ref-Edwards1979" role="doc-biblioref">1979</a>)</span>. High-LET radiation types tend to show overdispersed distributions. Then the observed yields at different doses are used to construct a calibration curve assuming a Linear-Quadratic model or Linear, depending on the radiation quality. High-LET radiation types tend to be linear <span class="citation">(Edwards, Lloyd, and Purrott <a href="references.html#ref-Edwards1980" role="doc-biblioref">1980</a>)</span>. The coefficients of these models are obtained using maximum likelihood or iteratively reweighted least squares approaches.</p>
+<p>In case of an accident the observed cell distribution of aberrations is confronted to the Poisson distribution to distinguish between homogeneous exposures from heterogeneous ones. If homogeneous exposure is accepted. To estimate a dose and its uncertainty, the observed yield is interpolated to the curve and uncertainties are usually calculated considering only the uncertainty relative to the yield observed or considering also uncertainties coming from the calibration curve <span class="citation">(Edwards <a href="references.html#ref-Edwards1978" role="doc-biblioref">1978</a>; Merkle <a href="references.html#ref-Merkle1983" role="doc-biblioref">1983</a>; Savage et al. <a href="references.html#ref-Savage2000" role="doc-biblioref">2000</a>)</span>. Procedures to consider both sources of uncertainties are not simple because mixes confidence intervals coming from Poisson distribution, and confidence intervals from the normal distribution from the LQ or L models of the calibration <span class="citation">(Merkle <a href="references.html#ref-Merkle1983" role="doc-biblioref">1983</a>; Savage et al. <a href="references.html#ref-Savage2000" role="doc-biblioref">2000</a>)</span>. If heterogeneous exposures is determined, other approaches are then applied <span class="citation">(Dolphin <a href="references.html#ref-Dolphin1969" role="doc-biblioref">1969</a>; Sasaki and Miyata <a href="references.html#ref-Sasaki1968" role="doc-biblioref">1968</a>; Pujol et al. <a href="references.html#ref-Pujol2016" role="doc-biblioref">2016</a>)</span>. Bayesian methods have been recently proposed to consider both sources of uncertainty, and for both, whole- and partial body dose assessment <span class="citation">(Ainsbury et al. <a href="references.html#ref-Ainsbury2014" role="doc-biblioref">2014</a>; Moriña et al. <a href="references.html#ref-Morina2015" role="doc-biblioref">2015</a>; Higueras et al. <a href="references.html#ref-Higueras2015" role="doc-biblioref">2015</a>)</span>.</p>
+
+</div>
+<div id="intro-software" class="section level2">
+<h2>
+<span class="header-section-number">1.2</span> Tools and software<a class="anchor" aria-label="anchor" href="#intro-software"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure"><img src="images/intro/chronology.svg" width="75%" style="display: block; margin: auto;"></div>
+<p>The tools to deal with some or all this statistical procedures have evolved <span class="citation">(see Ainsbury and Barquinero <a href="references.html#ref-Ainsbury2009" role="doc-biblioref">2009</a>)</span>. Initially in MS-DOS environment, there was some routines based on commercial software like SASR or Generalized Linear Interactive Modelling (GLIM), and specially developed programs, such as MLPOL from the former National Radiological Protection Board (NRPB) nowadays Public Health England (PHE, UK) or MLREG from the Bundesamt für Strahlenschutz (BfS, Germany). All these routines or programs were used to estimate the coefficients of the dose-effect curves. Laboratories also used some Microsoft Excel based spreadsheets for both calibration fitting and dose assessment, like the ones used at the Autonomous University of Barcelona (UAB, Spain) and at the Institut de Radioprotection et de Sûreté Nucléaire (IRSN, France).</p>
+<p>The first user-friendly with a graphic user interface programmes were CABAS <span class="citation">(Deperas et al. <a href="references.html#ref-Deperas2007" role="doc-biblioref">2007</a>)</span> developed by Institute of Nuclear Chemistry and Technology (INCT, Poland) and DOSGEN <span class="citation">(Valdes Ramos et al. <a href="references.html#ref-Valdes2010" role="doc-biblioref">2010</a>)</span> developed by the Centro de Protección e Higiene de las Radiaciones (CPHR, Cuba). DOSEGEN calculated calibration curve coefficients and also was used to evaluate partial body irradiations. With CABAS it is possible to obtain the coefficients for LQ models and calculate dose-assessment under different scenarios, such as partial or delayed. A more use-friendly sophisticated program was Dose Estimate <span class="citation">(Ainsbury and Lloyd <a href="references.html#ref-Ainsbury2010" role="doc-biblioref">2010</a>)</span>. Dose Estimate allows calculating L and LQ models, and for dose assessment after whole dose exposures considers both, the error of the yield observed and the error from the curve. This program also includes specific solutions for FISH based dosimetry, and can be used under different scenarios. Both CABAS and Dose estimate are very useful to compare results among laboratories, and nowadays-interlaboratory comparisons instigate the use of a single program to have harmonized results. These programs are based on closed source software and, for example, use a single methodology to calculate uncertainties. So improvements are subjected to those who manage the source code, and end user have no possibility to modify or implement any improvement.</p>
+<p>Recently, using the R project for Statistical computing <span class="citation">(R Core Team <a href="references.html#ref-R-base" role="doc-biblioref">2020</a>)</span> some scripts have been written for biological dosimetry purposes. Although R programming is based on an open source code, its use needs skills in R language, and in the case of biological dosimetry it is also needed knowledge on the mathematical and statistical assumptions accepted. However, the R package shiny makes it easy to build interactive web apps straight from R, and the creation of a friendly user application based on open source codes.</p>
+<p>Our aim is to present the app Biodose Tools, which has been developed with R together with Shiny, to offer an on-line and easy-to-use solution to be used by biological dosimetry laboratories. Biodose tools is an open-source program and all R routines can be downloaded for improvement or personal use. We also aim to clarify and explain the tests used and to propose those considered most appropriate. This app has been developed in the frame of the RENEB association.</p>
+
+</div>
+<div id="intro-rlang" class="section level2">
+<h2>
+<span class="header-section-number">1.3</span> R Shiny as a statistical tool<a class="anchor" aria-label="anchor" href="#intro-rlang"><i class="fas fa-link"></i></a>
+</h2>
+<div id="r" class="section level3">
+<h3>
+<span class="header-section-number">1.3.1</span> R<a class="anchor" aria-label="anchor" href="#r"><i class="fas fa-link"></i></a>
+</h3>
+<p>R is a general purpose package that includes support for a wide variety of modern
+statistical and graphical methods (many of which have been contributed by users). It is available for GNU/Linux, Mac OS X, and Windows. The R Foundation for Statistical Computing holds and administers the copyright of the R software and documentation. R is available under the terms of the Free Software Foundation’s GNU General Public License in source code form.</p>
+</div>
+<div id="r-shiny" class="section level3">
+<h3>
+<span class="header-section-number">1.3.2</span> R Shiny<a class="anchor" aria-label="anchor" href="#r-shiny"><i class="fas fa-link"></i></a>
+</h3>
+<p>Shiny is an R package that makes it easy to build interactive web apps straight from R, combining the computational power of R with the interactivity of the modern web.</p>
+<ul>
+<li><p>Access to a powerful web framework for building web applications using R.</p></li>
+<li><p>Being in complete control of the mathematics and statistics behind.</p></li>
+<li><p>Rethink what biologists and laboratories need in their everyday workflow.</p></li>
+<li><p>Build a complete, fully documented tool.</p></li>
+<li><p>Provide an Open Source tool to the community.</p></li>
+</ul>
+</div>
+<div id="intro-background-modules" class="section level3">
+<h3>
+<span class="header-section-number">1.3.3</span> Modules<a class="anchor" aria-label="anchor" href="#intro-background-modules"><i class="fas fa-link"></i></a>
+</h3>
+<p>Different modules can be built for each function (fitting, dose estimation, …) while being totally independent from one another.</p>
+<div class="inline-figure"><img src="images/stats/iaea-cover.jpg" width="35%" style="display: block; margin: auto;"></div>
+<p>This opens up the possibility to implement statistical methods not included in the IAEA Manual (2011).</p>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="preface.html">Preface</a></div>
+<div class="next"><a href="manual-get.html"><span class="header-section-number">2</span> Getting Biodose Tools</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intro"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="nav-link" href="#intro-biodosimetry"><span class="header-section-number">1.1</span> Biological dosimetry</a></li>
+<li><a class="nav-link" href="#intro-software"><span class="header-section-number">1.2</span> Tools and software</a></li>
+<li>
+<a class="nav-link" href="#intro-rlang"><span class="header-section-number">1.3</span> R Shiny as a statistical tool</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r"><span class="header-section-number">1.3.1</span> R</a></li>
+<li><a class="nav-link" href="#r-shiny"><span class="header-section-number">1.3.2</span> R Shiny</a></li>
+<li><a class="nav-link" href="#intro-background-modules"><span class="header-section-number">1.3.3</span> Modules</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/biodosetools-team/documentation/blob/master/contents/01a_background.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/biodosetools-team/documentation/edit/master/contents/01a_background.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Biodose Tools</strong>: User Manual &amp; Documentation" was written by Alfredo Hernández, Joan Francesc Barquinero. It was last built on 2021-01-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>
