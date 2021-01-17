@@ -3,11 +3,11 @@ on:
      branches:
        - master
 
-name: renderbook
+name: build-book
 
 jobs:
   build:
-    name: Render-Book
+    name: Build-Book
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
