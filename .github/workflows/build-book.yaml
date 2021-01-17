@@ -37,11 +37,11 @@ jobs:
       - name: Install macOS system dependencies
         if: runner.os == 'macOS'
         run: |
-          brew install libgit2
+          brew install libgit2 xml2
 
-      - name: Install remotes
+      - name: Install dependencies
         run: |
-          install.packages("remotes")
+          install.packages(c("remotes", "sessioninfo"))
         shell: Rscript {0}
 
       - name: Install rmarkdown
@@ -50,9 +50,10 @@ jobs:
           remotes::install_github("rstudio/bslib")
           install.packages("downlit")
           remotes::install_github("rstudio/bookdown")
+          install.packages("xml2")
         shell: Rscript {0}
 
-      - name: Install dependencies
+      - name: Install book dependencies
         run: |
           install.packages(c("dplyr", "data.table", "here", "sessioninfo"))
         shell: Rscript {0}
@@ -78,22 +79,31 @@ jobs:
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 
-      - name: Copy
-        run: cp _redirects _book/
-
-      - name: Deploy to Netlify
-        if: contains(env.isExtPR, 'false')
-        id: netlify-deploy
-        uses: nwtgck/actions-netlify@v1.1
+      - uses: actions/upload-artifact@v1
         with:
-          publish-dir: './_book'
-          production-branch: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message:
-            'Deploy from GHA: ${{ github.event.pull_request.title || github.event.head_commit.message }} (${{ github.sha }})'
-          # these all default to 'true'
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-          # enable-commit-status: true
-          #o verwrites-pull-request-comment: true
-        timeout-minutes: 1
+          name: _book
+          path: _book/
+
+# Need to first create an empty gh-pages branch
+# see https://pkgdown.r-lib.org/reference/deploy_site_github.html
+# and also add secrets for a GH_PAT and EMAIL to the repository
+# gh-action from Cecilapp/GitHub-Pages-deploy
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: bookdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: Download artifact
+       uses: actions/download-artifact@v1.0.0
+       with:
+         # Artifact name
+         name: _book # optional
+         # Destination path
+         path: _book # optional
+     - name: Deploy to GitHub Pages
+       uses: Cecilapp/GitHub-Pages-deploy@master
+       env:
+          EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
+          GH_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens
+          BUILD_DIR: _book/                     # "_site/" by default
