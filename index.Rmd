@@ -16,7 +16,6 @@ apple-touch-icon: "favicon-highres.png"
 apple-touch-icon-size: 120
 favicon: "favicon.png"
 cover-image: "images/cover.png"
-pdf-cover-image: "images/cover.pdf"
 ---
 
 
@@ -26,7 +25,7 @@ pdf-cover-image: "images/cover.pdf"
 options(knitr.graphics.auto_pdf = TRUE)
 ```
 
-```{r echo=FALSE, out.width = '80%', fig.align='center'}
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
 knitr::include_graphics("images/home.svg")
 ```
 
