@@ -24,3 +24,19 @@ pre code {
 .inline-figure {
   border: none !important;
 }
+
+.chapter-nav .prev, .chapter-nav .next {
+  padding-bottom: 0.2rem;
+  padding-top: 0.1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border: 1px solid #eee;
+  border-radius: 0.2rem;
+  border-color: #327a4f;
+  box-shadow: none;
+}
+
+nav[data-toggle="toc"] .nav a.nav-link.active, nav[data-toggle="toc"] .nav .nav-link.active > li > a {
+  background-color: #eee;
+  border-radius: 0.2rem;
+}
