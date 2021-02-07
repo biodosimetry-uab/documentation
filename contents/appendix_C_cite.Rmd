@@ -3,15 +3,15 @@
 If you want to cite Biodose Tools, you can copy or  [download](https://biodosetools-team.github.io/documentation/data/biodose-tools.bib) the following BibTeX entry:
 
 ```bib
-@Unpublished{BiodoseTools2020,
+@Unpublished{BiodoseTools2021,
   note = {Manuscript under construction},
   author = {Alfredo Hernández and David Endesfelder and Jochen Einbeck and Pere Puig and Amine Benadjaoud and Manuel Higueras and Elizabeth Ainsbury and Gaëtan Gruel and Ulrike Kulka and Lleonard Barrios and Joan Francesc Barquinero},
   title = {Biodose Tools: An R Shiny Application for Biological Dosimetry},
-  year = {2020},
+  year = {2021},
   url = {https://biodosetools-team.github.io/biodosetools/},
 }
 ```
 
 Alternatively, you can use:
 
-> A. Hernández, D. Endesfelder, J. Einbeck, P. Puig, A. Benadjaoud, M. Higueras, E. Ainsbury, G. Gruel, U. Kulka, L. Barrios & J. F. Barquinero (2020). Biodose Tools: An R Shiny Application for Biological Dosimetry. URL https://biodosetools-team.github.io/biodosetools/
+> A. Hernández, D. Endesfelder, J. Einbeck, P. Puig, A. Benadjaoud, M. Higueras, E. Ainsbury, G. Gruel, U. Kulka, L. Barrios & J. F. Barquinero (2021). Biodose Tools: An R Shiny Application for Biological Dosimetry. URL https://biodosetools-team.github.io/biodosetools/
