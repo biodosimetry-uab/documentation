@@ -21,7 +21,9 @@ cover-image: "images/cover.png"
 
 # Welcome {-}
 
-```{r include=FALSE}
+```{r setup, include=FALSE}
+library(dplyr)
+library(biodosetools)
 options(knitr.graphics.auto_pdf = TRUE)
 ```
 
