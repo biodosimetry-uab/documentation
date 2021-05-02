@@ -51,6 +51,11 @@ jobs:
           install.packages(c("dplyr", "data.table", "here", "sessioninfo"))
         shell: Rscript {0}
 
+      - name: Install biodosetools
+        run: |
+          remotes::install_github("biodosetools-team/biodosetools")
+        shell: Rscript {0}
+
       - name: Session info
         run: |
           options(width = 100)
