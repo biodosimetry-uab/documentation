@@ -1,13 +1,26 @@
-## Tools and software {#intro-software}
+## Software implementations {#intro-software}
 
 ```{r echo=FALSE, out.width = '75%', fig.align='center'}
 knitr::include_graphics("images/intro/chronology.svg")
 ```
 
-The tools to deal with some or all this statistical procedures have evolved [see @Ainsbury2009]. Initially in MS-DOS environment, there was some routines based on commercial software like SASR or Generalized Linear Interactive Modelling (GLIM), and specially developed programs, such as MLPOL from the former National Radiological Protection Board (NRPB) nowadays Public Health England (PHE, UK) or MLREG from the Bundesamt für Strahlenschutz (BfS, Germany). All these routines or programs were used to estimate the coefficients of the dose-effect curves. Laboratories also used some Microsoft Excel based spreadsheets for both calibration fitting and dose assessment, like the ones used at the Autonomous University of Barcelona (UAB, Spain) and at the Institut de Radioprotection et de Sûreté Nucléaire (IRSN, France). 
+The tools to deal with some or all of the statistical procedures used in biological dosimetry have evolved since the 1980s [see @Ainsbury2009]. These tools ranged from adapted Microsoft Excel sheets to specific programs (the later summarised in \Cref{tab:software-summary}). The specific programs were based on closed source software and, for example, used a single methodology to calculate uncertainties. Thus, improvements were restricted to those who manage the source code, and the end-user cannot modify or implement any improvement. In addition, there is a possibility of misunderstanding or misuse of these closed programs.
 
-The first user-friendly with a graphic user interface programmes were CABAS [@Deperas2007] developed by Institute of Nuclear Chemistry and Technology (INCT, Poland) and DOSGEN [@Valdes2010] developed by the Centro de Protección e Higiene de las Radiaciones (CPHR, Cuba). DOSEGEN calculated calibration curve coefficients and also was used to evaluate partial body irradiations. With CABAS it is possible to obtain the coefficients for LQ models and calculate dose-assessment under different scenarios, such as partial or delayed. A more use-friendly sophisticated program was Dose Estimate [@Ainsbury2010]. Dose Estimate allows calculating L and LQ models, and for dose assessment after whole dose exposures considers both, the error of the yield observed and the error from the curve. This program also includes specific solutions for FISH based dosimetry, and can be used under different scenarios. Both CABAS and Dose estimate are very useful to compare results among laboratories, and nowadays-interlaboratory comparisons instigate the use of a single program to have harmonized results. These programs are based on closed source software and, for example, use a single methodology to calculate uncertainties. So improvements are subjected to those who manage the source code, and end user have no possibility to modify or implement any improvement.
+```{r software-summary, echo=FALSE, purl=FALSE}
+tibble::tribble(
+  ~`Name`,         ~`Language(s)`,  ~`Framework(s)`, ~`Author(s)`,
+  "MLPOL",         "Fortran 77",    "--",            "@Edwards1994",
+  "MLREG",         "--",            "--",            "@BfS1996",
+  "DOSGEN",        "Pascal",        "Turbo Pascal",  "@Garcia1996",
+  "CABAS",         "Object Pascal", "Delphi",        "@Deperas2007",
+  "Dose Estimate", "Object Pascal", "Delphi 6",      "@Ainsbury2010"
+) %>%
+  knitr::kable(
+    caption = "List of historical analysis software developed specifically for radiation biodosimetry.",
+    align = "l"
+  )
+```
 
-Recently, using the R project for Statistical computing [@R-base] some scripts have been written for biological dosimetry purposes. Although R programming is based on an open source code, its use needs skills in R language, and in the case of biological dosimetry it is also needed knowledge on the mathematical and statistical assumptions accepted. However, the R package shiny makes it easy to build interactive web apps straight from R, and the creation of a friendly user application based on open source codes.
+Recently, using the R project for statistical computing [@R-base] some scripts have been written for biological dosimetry purposes. Although R programming is based on open source code, most end-users performing biodosimetry are usually not familiar with programming and mathematical or statistical modelling that is required to use or implement R source code. It is therefore required to provide tools with GUIs that are easy to use and that provide the required functionality to obtain reliable dose estimates.
 
-Our aim is to present the app Biodose Tools, which has been developed with R together with Shiny, to offer an on-line and easy-to-use solution to be used by biological dosimetry laboratories. Biodose tools is an open-source program and all R routines can be downloaded for improvement or personal use. We also aim to clarify and explain the tests used and to propose those considered most appropriate. This app has been developed in the frame of the RENEB association.
+In this paper we present {biodosetools} (styled as Biodose Tools), an R package developed using {shiny} [@R-shiny], to offer an online and easy-to-use solution to be used by biological dosimetry laboratories, as well as a tool for statisticians to manually perform the underlying calculations in R. The package is available from the Comprehensive R Archive Network (CRAN) at \url{https://CRAN.R-project.org/package=biodosetools} and GitHub at \url{https://github.com/biodosetools-team/biodosetools} and can be distributed under the GPL-3.0 license (GNU General Public License v3.0). Biodose Tools has been developed under the umbrella of RENEB (Running the European Network of Biological and retrospective Physical dosimetry).

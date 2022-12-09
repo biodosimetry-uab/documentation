@@ -3,27 +3,24 @@
 ### R
 
 R is a general purpose package that includes support for a wide variety of modern
-statistical and graphical methods (many of which have been contributed by users). It is available for GNU/Linux, Mac OS X, and Windows. The R Foundation for Statistical Computing holds and administers the copyright of the R software and documentation. R is available under the terms of the Free Software Foundation’s GNU General Public License in source code form.
+statistical and graphical methods (many of which have been contributed by users). It is available for GNU/Linux, macOS, and Windows. The R Foundation for Statistical Computing holds and administers the copyright of the R software and documentation. R is available under the terms of the Free Software Foundation's GNU General Public License in source code form.
 
-### R Shiny 
+### R Shiny
 
 Shiny is an R package that makes it easy to build interactive web apps straight from R, combining the computational power of R with the interactivity of the modern web.
 
 - Access to a powerful web framework for building web applications using R.
 - Being in complete control of the mathematics and statistics behind.
-
 - Rethink what biologists and laboratories need in their everyday workflow.
 - Build a complete, fully documented tool.
 - Provide an Open Source tool to the community.
 
 ### Modules {#intro-background-modules}
 
-Different modules can be built for each function (fitting, dose estimation, …) while being totally independent from one another.
+Different modules can be built for each function (fitting, dose estimation, ...) while being totally independent from one another.
 
 ```{r echo=FALSE, out.width = '35%', fig.align='center'}
 knitr::include_graphics("images/stats/iaea-cover.jpg", dpi = 2)
 ```
 
-This opens up the possibility to implement statistical methods not included in the IAEA Manual (2011).
-
-\newpage
+This opens up the possibility to implement statistical methods not included in the IAEA Manual (2011) [@IAEA2011].
