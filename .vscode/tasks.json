@@ -1,0 +1,18 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build documentation website (bookdown)",
+      "type": "shell",
+      "command": "PATH=$PATH:/opt/homebrew/bin:/Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/; Rscript -e 'bookdown::render_book(\"index.Rmd\")'",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "close": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
