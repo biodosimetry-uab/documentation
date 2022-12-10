@@ -18,6 +18,7 @@ rmd_files:
   - "contents/02d_manual_use_r.Rmd"
   - "contents/03a_stats_intro.Rmd"
   - "contents/03b_stats_considerations.Rmd"
+  - "contents/03c_stats_fitting.Rmd"
   - "contents/appendix_A_feedback.Rmd"
   - "contents/appendix_B_cite.Rmd"
   - "contents/references.Rmd"
