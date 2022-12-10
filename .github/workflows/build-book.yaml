@@ -53,7 +53,7 @@ jobs:
 
       - name: Install biodosetools
         run: |
-          remotes::install_github("biodosetools-team/biodosetools")
+          install.packages("biodosetools")
         shell: Rscript {0}
 
       - name: Session info
