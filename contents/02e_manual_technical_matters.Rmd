@@ -11,7 +11,21 @@ count_data <- data.frame(
   X = c(0L, 1L, 6L, 10L, 28L, 23L, 70L, 61L)
 )
 
-count_data |>
+count_data_kable <- count_data |>
+  as.matrix() |>
+  formatC(format = "f", digits = 3) |>
+  as.data.frame() |>
+  dplyr::mutate(
+    dplyr::across(
+      .cols = c("N", "X"),
+      .fns = as.integer
+    )
+  ) |>
+  biodosetools:::fix_count_data_names(type = "count", output = "kable")
+
+colnames(count_data_kable)[1] <- "$D \\text{ (Gy)}$"
+
+count_data_kable |>
   knitr::kable(
     caption = "Example of dicentric distribution within cells.",
     align = "c"
