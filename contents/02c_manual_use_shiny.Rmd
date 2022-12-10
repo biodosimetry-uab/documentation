@@ -80,7 +80,7 @@ It is important to note that \pkg{biodosetools} can be used not only to estimate
 
 To be able to fit the equivalent full genome dose-effect curve, we need to calculate the genomic conversion factor.
 
-To do this, in the "Stain color options" box we select the sex of the individual, and the list of chromosomes and stains used for the translocation assay. Clicking on "Generate table" will show a table in the "Chromosome data" box in which we select the chromosome-stain pairs. Clicking on the "Calculate fraction" will calculate the genomic conversion factor.
+To do this, in the "Stain color options" (Figure \@ref(fig:sc-trans-fit-01)) box we select the sex of the individual, and the list of chromosomes and stains used for the translocation assay. Clicking on "Generate table" will show a table in the "Chromosome data" box in which we select the chromosome-stain pairs. Clicking on the "Calculate fraction" will calculate the genomic conversion factor.
 
 ```{r sc-trans-fit-01, echo=FALSE, out.width='100%', fig.align='center', fig.cap="'Stains color options', 'Chromosome data' and 'Genomic conversion factor' boxes in the dose-effect fitting module."}
 knitr::include_graphics("images/screenshot-translocations-fit-01.png")
@@ -88,7 +88,7 @@ knitr::include_graphics("images/screenshot-translocations-fit-01.png")
 
 ### Input count data
 
-Once the genomic conversion factor has been calculated, we can input the count data. On the {shiny} app, we can select to either load the count data from a file (supported formats are `.csv`, `.dat`, and `.txt`) or to input the data manually. Once the table is generated and filled, the "Calculate parameters" button will calculate the total number of cells ($N$), total number of aberrations ($X$), as well as mean ($\bar{y}$), variance ($\sigma^{2}$), dispersion index ($\sigma^{2}/\bar{y}$), and $u$-value.
+Once the genomic conversion factor has been calculated, we can input the count data. On the {shiny} app, we can select to either load the count data from a file (supported formats are `.csv`, `.dat`, and `.txt`) or to input the data manually (Figure \@ref(fig:sc-trans-fit-02)). Once the table is generated and filled \@ref(Figure (fig:sc-trans-fit-03)), the "Calculate parameters" button will calculate the total number of cells ($N$), total number of aberrations ($X$), as well as mean ($\bar{y}$), variance ($\sigma^{2}$), dispersion index ($\sigma^{2}/\bar{y}$), and $u$-value.
 
 ```{r sc-trans-fit-02, echo=FALSE, out.width='100%', fig.align='center', fig.cap="'Data input options' and 'Fitting options' boxes in the dose-effect fitting module."}
 knitr::include_graphics("images/screenshot-translocations-fit-02.png")
@@ -100,16 +100,60 @@ knitr::include_graphics("images/screenshot-translocations-fit-03.png")
 
 ### Perform fitting
 
-To perform the fitting the user needs to select the appropriate fitting options to click the "Calculate fitting" button on the "Data input" box. The fit can be done either using the full genome translocations, or those measured by FISH. This will not impact any future dose estimation, as the results internally use the full genome translocations.
-
-The fitting results and summary statistics are shown in the "Results" tabbed box, and the dose-effect curve is displayed in the "Curve plot" box.
-
-The "Export results" box shows two buttons: (a) "Save fitting data", and (b) "Download report". The "Save fitting data" will generate an `.rds` file that contains all information about the count data, irradiation conditions, and options selected when performing the fitting. This file can be then loaded in the dose estimation module to load the dose-effect curve coefficients.
-
-Similarly, the "Download report" will generate a `.pdf` or a `.docx` report containing all inputs and fitting results.
+To perform the fitting the user needs to select the appropriate fitting options (Figure \@ref(fig:sc-trans-fit-02)) to click the "Calculate fitting" button on the "Data input" box (Figure \@ref(fig:sc-trans-fit-03)). The fit can be done either using the full genome translocations, or those measured by FISH. This will not impact any future dose estimation, as the results internally use the full genome translocations. The fitting results and summary statistics are shown in the "Results" tabbed box, and the dose-effect curve is displayed in the "Curve plot" box (Figure \@ref(fig:sc-trans-fit-04)).
 
 ```{r sc-trans-fit-04, echo=FALSE, out.width='100%', fig.align='center', fig.cap="'Results' tabbed box, 'Curve plot' and 'Export results' boxes in the dose-effect fitting module."}
 knitr::include_graphics("images/screenshot-translocations-fit-04.png")
 ```
 
+The "Export results" box (Figure \@ref(fig:sc-trans-fit-04)) shows two buttons: (a) "Save fitting data", and (b) "Download report". The "Save fitting data" will generate an `.rds` file that contains all information about the count data, irradiation conditions, and options selected when performing the fitting. This file can be then loaded in the dose estimation module to load the dose-effect curve coefficients. Similarly, the "Download report" will generate a `.pdf` or a `.docx` report containing all inputs and fitting results.
+
 ## Translocations dose estimation
+
+### Load pre-calculated curve
+
+The first step is to either load the pre-calculated curve in `.rds` format obtained in the dose-effect fitting module (Figure \@ref(fig:sc-trans-estimate-01)) or input the curve coefficients manually (Figure \@ref(fig:sc-trans-estimate-01b)) in case the user wants to use a pre-existing curve calculated outside of Biodose Tools. Clicking on "Preview data" will load the curve into the app and display it on the "Results" tabbed box.
+
+```{r sc-trans-estimate-01, echo=FALSE, out.width='100%', fig.align='center', fig.cap="'Curve fitting data options' box and 'Results' tabbed box in the dose estimation module when loading curve from an `.rds` file."}
+knitr::include_graphics("images/screenshot-translocations-estimate-01.png")
+```
+
+```{r sc-trans-estimate-01b, echo=FALSE, out.width='100%', fig.cap="'Curve fitting data options' box and 'Results' tabbed box in the dose estimation module when inputting curve coefficients manually. Note that if no variance-covariance matrix is provided, only the variances calculated from the coefficients' standard errors will be used in \\@ref(eq:merkle-dose-estimation-error), \\@ref(eq:delta-method-dose-var), and \\@ref(eq:dolphin-method-fraction-F-var)."}
+knitr::include_graphics("images/screenshot-translocations-estimate-01b.png")
+```
+
+### Calculate genomic conversion factor
+
+To be able to fit the equivalent full genome case data, we need to calculate the genomic conversion factor.
+
+To do this, in the "Stain color options" box (Figure \@ref(fig:sc-trans-estimate-02)) we select the sex of the individual, and the list of chromosomes and stains used for the translocation assay. Clicking on "Generate table" will show a table in the "Chromosome data" box in which we select the chromosome-stain pairs. Clicking on the "Calculate fraction" will calculate the genomic conversion factor.
+
+```{r sc-trans-estimate-02, echo=FALSE, out.width='100%', fig.align='center', fig.cap="'Stains color options', 'Chromosome data' and 'Genomic conversion factor' boxes in the dose estimation module."}
+knitr::include_graphics("images/screenshot-translocations-estimate-02.png")
+```
+
+### Input case data
+
+Next we can choose to either load the case data from a file (supported formats are `.csv`, `.dat`, and `.txt`) or to input the data manually (Figure \@ref(fig:sc-trans-estimate-03)). If needed, the user can select to use confounders (either using Sigurdson's method, or by inputting the translocation frequency per cell). Once the table is generated and filled, the "Calculate parameters" button will calculate the total number of cells ($N$), total number of aberrations ($X$), as well as mean ($\bar{F}_{p}$), standard error ($\sigma_{p}$), dispersion index ($\sigma^{2}/\bar{y}$), $u$-value, expected translocation rate ($X_{c}$), full genome mean ($\bar{F}_{g}$), and full genome error ($\sigma_{g}$).
+
+The {shiny} app also includes the option to include the information about the incident that is being evaluated. This information may be relevant to explain the results obtained and is included in the generated reports.
+
+```{r sc-trans-estimate-03, echo=FALSE, out.width='100%', fig.align='center', fig.cap="'Data input options' and 'Data input' boxes in the dose estimation module."}
+knitr::include_graphics("images/screenshot-translocations-estimate-03.png")
+```
+
+### Perform dose estimation
+
+The final step is to select the dose estimation options depending on the characteristics of the accident. In the "Dose estimation options" box (Figure \@ref(fig:sc-trans-estimate-04)) we can select type of exposure (acute or protracted), type of assessment (whole-body or partial-body), and error methods for each type of assessment.
+
+```{r sc-trans-estimate-04, echo=FALSE, out.width='60%', fig.align='center', fig.cap="'Dose estimation options' box in the dose estimation module."}
+knitr::include_graphics("images/screenshot-translocations-estimate-04.png")
+```
+
+The dose estimation results are shown in Figure \@ref(fig:sc-trans-estimate-05). Once the estimation is done the app also incorporates the possibility to describe the results obtained in the “Save results” box. All information, the calibration curve used, the data of the case, the different estimated doses, as well as the description of the case and the interpretation of the results can be saved generating a .pdf or a .docx report via the “Download report” button.
+
+```{r sc-trans-estimate-05, echo=FALSE, out.width='100%', fig.align='center', fig.cap="'Results' tabbed box, 'Curve plot' and 'Save results' boxes in the dose estimation module."}
+knitr::include_graphics("images/screenshot-translocations-estimate-05.png")
+```
+
+It is important to note that {biodosetools} can be used not only to estimate the doses, but also to draft a report of the accident being evaluated with full traceability. This can be further adapted and customised to each laboratory’s internal needs thanks to the open-source nature of the project.
