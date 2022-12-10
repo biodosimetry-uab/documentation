@@ -11,6 +11,7 @@ rmd_files:
   - "contents/01a_background.Rmd"
   - "contents/01b_software.Rmd"
   - "contents/01c_rlang.Rmd"
+  - "contents/01d_package.Rmd"
   - "contents/02a_manual_intro.Rmd"
   - "contents/02b_manual_get_online.Rmd"
   - "contents/02c_manual_get_offline.Rmd"

@@ -1,0 +1,44 @@
+# Package implementation {#package}
+
+The development of {biodosetools} started in 2018 in the frame of [RENEB](http://www.reneb.net) (Running the European Network of Biological and retrospective Physical dosimetry), one of whose purposes is to standardise methodology for individualised dose estimation from biological methods to statistical ones. Since no unique method exists for the different mathematical processes involved in biological dosimetry, several meetings and periodic correspondence were held in order to reach a consensus on the solutions to be implemented and, in particular, the solutions to be proposed as default.
+
+As of version 3.6.1 (November 2022), {biodosetools} supports dose-effect fitting and dose estimation for the following biodosimetry assays:
+
+- Dicentric assay.
+- Translocation assay.
+
+The {biodosetools} package is available from CRAN \url{https://CRAN.R-project.org/package=biodosetools} and can be installed using the standard R tools. In Table \@ref(tab:functions-list) we list all the functions available to the user through the R API provided by {biodosetools}.
+
+```{r functions-list, echo=FALSE, purl=FALSE}
+tibble::tribble(
+  ~`Usage`,       ~`Functions`,
+   "Fitting",     "`fit()`, `plot_fit_dose_curve()`",
+   "Estimation",  "`estimate_whole_body_merkle()`, `estimate_whole_body_delta()`, `estimate_partial_body_dolphin()`, `estimate_hetero_mixed_poisson()`, `plot_estimated_dose_curve()`",
+   "Auxiliary",   "`calculate_aberr_table()`, `protracted_g_function()`, `calculate_genome_fraction()`, `calculate_trans_rate_manual()`, `calculate_trans_rate_sigurdson()`",
+   "{shiny} app", "`run_app()`"
+) |>
+  knitr::kable(
+    caption = "List of available functions in the {biodosetools} package. The comprehensive functions reference can be found on the project's website at https://biodosetools-team.github.io/biodosetools/reference/.",
+    align = "l"
+  )
+```
+
+## Used packages {#package-list}
+
+Naturally, {biodosetools} is built on other packages. Data transformations and wrangling are done through {dplyr} [@R-dplyr], {tidyr} [@R-tidyr], {rlang} [@R-rlang], and {magrittr} [@R-magrittr], while visualisations are done using {ggplot2} [@ggplot22016]. All of the aforementioned packages are part of the {tidyverse} meta-package [@tidyverse2019].
+
+While most statistical calculations are implemented ad-hoc with the {stats} [@R-base] package, we rely in additional packages for some statistical analyses, such as {maxLik} [@maxLik2011], {mixtools} [@mixtools2009], {MASS} [@MASS2002], and {msm} [@msm2011].
+
+For improved legibility, messages and warnings in the command line interface are constructed using {cli} [@R-cli].
+
+## User interface using {shiny}
+
+The Biodose Tools user interface is written in R {shiny} [@R-shiny] using Bootstrap 3, via the {shinydashboard} [@R-shinydashboard], {shinyWidgets} [@R-shinyWidgets], and {bsplus} [@R-bsplus] packages, and the {golem} [@R-golem] framework. Analyses are implemented in the R programming language [@R-base], with the resultant tables and plots rendered in HTML through JavaScript libraries, via either native {shiny} or {rhandsontable} [@R-rhandsontable]. This is done by the JavaScript engine shipped on browser of choice, or by an instance of QtWebKit if the app is run within RStudio.
+
+The {shiny} app allows to download processed count or case data via {xtable} [@R-xtable]. Similarly, it allows to generate and download reports, which are rendered using {rmarkdown} [@R-rmarkdown] and Pandoc [@MacFarlane2022] to convert a native `.Rmd` document directly into a Office Open XML `.docx` document, or a `.pdf` file built from an intermediary `.tex` file using \LaTeX{} [@Lamport1994].
+
+In Biodose Tools colour is used to identify different sections of information, a technique called colour-coding. In particular, Biodose Tools uses four colours to code information: (a) blue for options and settings, (b) purple for data input, (c) green for results, and (d) orange for exporting results. Figure \@ref(fig:ui-color-coding-mockup) shows a simple mock-up of how the four types of boxes and corresponding widgets would fit together in one of the {shiny} app's modules.
+
+```{r ui-color-coding-mockup, fig.align="center", echo=FALSE, out.width="60%", fig.cap="Mock-up illustrating Biodose Tools' colour coding to create an intuitive visual organisation of the user interface."}
+knitr::include_graphics("images/user-manual/ui-color-coding-mockup.svg")
+```
