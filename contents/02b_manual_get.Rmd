@@ -1,0 +1,109 @@
+# Getting Biodose Tools {#manual-get}
+
+There are mainly two methods to get Biodose Tools:
+
+- Online on a web browser. <!-- (recommended) -->
+- Locally on your computer using RStudio.
+
+This chapter will go over the details and steps required to get Biodose Tools running for each method.
+
+## Online {#manual-get-online}
+
+Biodose Tools is currently hosted on Shinyapps.io: [https://aldomann.shinyapps.io/biodosetools-v3/](https://aldomann.shinyapps.io/biodosetools-v3/).
+
+Biodose Tools will be later hosted at one of our institution's servers.
+
+```{r echo=FALSE, out.width = '60%', fig.align='center'}
+knitr::include_graphics("images/user-manual/browsers.png", dpi = 96)
+```
+
+Biodose Tools has been througly tested to be supported by the following web browsers:
+
+- Google Chrome.
+- Firefox.
+- Safari.
+- Microsoft Edge.
+
+## On RStudio {#manual-get-offline}
+
+Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.
+
+To run Biodose Tools on your local machine, you need to install R [@R-base]. Additionally, we recommend to install RStudio [@R-Rstudio].
+
+A series of video tutorials have been prepared with the aim of helping {biodosetools} users in the installation of R, RStudio, and the package itself, as well as in the usage of the {shiny} user interface to perform dose-effect fitting and dose estimation. They can be found on our YouTube channel: https://www.youtube.com/@biodosetools.
+
+`r if (knitr::is_html_output()) '<iframe width="560" height="315" src="https://www.youtube.com/embed/BimfOgKZUIk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'`
+
+The "Installation Guide" tutorial has captions available in 8 languages. And as of 14th November, 2022 the number of views of the three existing tutorials has been 508.
+
+### Installing R
+
+#### Under Windows {-}
+
+Versions of R for Windows XP and later, including 64-bit versions, are available at [CRAN](https://cloud.r-project.org/bin/windows/base/). The distribution includes `Rgui.exe`, which launches a self-contained windowing system that includes a command-line interface, `Rterm.exe` for a command-line interface only, Rscript.exe for batch processing only, and `R.exe`, which is suitable for batch or command-line use.
+
+More information on Windows-specific issues can be found in the [CRAN R for Windows FAQ](https://cloud.r-project.org/bin/windows/base/rw-FAQ.html).
+
+
+#### Under macOS {-}
+
+A version of R for macOS 10.6 and higher is available at [CRAN](https://cloud.r-project.org/bin/macosx/). This is distributed as a disk image containing the installer. In addition to the graphical interface version, a command line version (particularly useful for batch operations) can be run as the command `R`.
+
+More information on Macintosh-specific issues can be found in the [CRAN R for macOS FAQ](https://cloud.r-project.org/bin/macosx/RMacOSX-FAQ.html).
+
+
+#### Under GNU/Linux {-}
+
+R is available for most Linux distributions through your distribution's repositories. For example, R is provided on Debian-based distributions like Ubuntu by the `r-base` package. Many additional packages, such as `r-cran-rpart`, are provided at the maintainer's discretion.
+
+To install R on Ubuntu, run the following commands on the Terminal:
+```bash
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+```
+
+To install R on Fedora, run the following command on the Terminal:
+```bash
+dnf --refresh install R
+```
+
+To install R on Arch Linux, run the following command on the Terminal:
+```bash
+sudo pacman -S r
+```
+
+### Installing RStudio
+
+RStudio for Windows, macOS, or GNU/Linux can be downloaded from [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/#download). RStudio requires R to be installed on the local machine, so make sure to install it first.
+
+Once installation is complete, the recommended next step for a new user would be to start RStudio and run a sample session.
+
+```{r echo=FALSE, out.width = '100%', fig.align='center'}
+knitr::include_graphics("images/user-manual/rstudio-ide.png", dpi = 192)
+```
+
+The `>` character is the command prompt, and commands are executed once the user
+presses the RETURN or ENTER key.
+
+### Installing Biodose Tools
+
+You can install the stable version of {biodosetools} from [CRAN](https://CRAN.R-project.org) with:
+
+```r
+install.packages("biodosetools")
+```
+
+Or install the development version from [GitHub](https://github.com/) with:
+
+```r
+install.packages("devtools")
+devtools::install_github("biodosetools-team/biodosetools")
+```
+
+### Running Biodose Tools
+
+Once installed, to run the Biodose Tools app locally, we can run the following command on the R console, which will invoke the {shiny} user interface:
+```r
+library(biodosetools)
+run_app()
+```
