@@ -1,10 +1,9 @@
-# (APPENDIX) Appendices {-} 
+# (APPENDIX) Appendices {-}
 
 # Feedback and issues {#appendix-feedback}
 
 Please provide your suggestions and feedback to help us improve Biodose Tools. Use the following link to open a new issue on the project's issue tracker: https://github.com/biodosetools-team/biodosetools/issues/new. You can also use the "Report issue" button on Biodose Tools home page.
 
-  
 We provide a short template on the issue tracker, as pictured below:
 
 ```{r echo=FALSE, out.width='90%', fig.align='center'}

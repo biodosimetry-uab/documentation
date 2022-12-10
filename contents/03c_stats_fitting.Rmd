@@ -101,7 +101,7 @@ Currently in biological dosimetry this approach is still accepted and that is wh
 \begin{align}
   G(x) = \frac{2}{x^{2}} \left( x - 1 + e^{-x} \right) ,
   \quad \text{and} \quad
-  x = \frac{t}{t_{0}},
+  x = \frac{t}{t_{0}}.
   (#eq:protraction-function)
 \end{align}
 

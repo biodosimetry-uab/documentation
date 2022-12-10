@@ -45,14 +45,14 @@ where $R^{2}$ is the confidence factor, defined as an upper-confidence limit of 
 1. Calculate the dose at which $\lambda_{U}$ crosses the lower curve. This is the upper confidence limit of the dose ($D_{U}$).
 
 ```{r th-dose-merkle-coeffs, include=FALSE}
-fit_results <- system.file("extdata", "dicentrics-fitting-results.rds", package = "biodosetools") %>% readRDS()
+fit_results <- system.file("extdata", "dicentrics-fitting-results.rds", package = "biodosetools") |> readRDS()
 fit_coeffs <- fit_results[["fit_coeffs"]]
 fit_var_cov_mat <- fit_results[["fit_var_cov_mat"]]
 ```
 
 ```{r th-dose-merkle-case, include=FALSE}
-case_data <- system.file("extdata", "cases-data-partial.csv", package = "biodosetools") %>%
-  utils::read.csv(header = TRUE) %>%
+case_data <- system.file("extdata", "cases-data-partial.csv", package = "biodosetools") |>
+  utils::read.csv(header = TRUE) |>
   calculate_aberr_table(
     type = "case",
     assessment_u = 1,
@@ -312,8 +312,8 @@ where the variance on $\gamma$ is obtained experimentally, the variance on $f_{1
 1. The lower and upper 95% confidence limits of the dose estimations ($D_{i, L}$ and $D_{i, U}$), the yields ($\lambda_{i, L}$ and $\lambda_{i, U}$), and the initial fractions of irradiated cells ($F_{i, L}$ and $F_{i, U}$) are calculated following \@ref(eq:conf-int-dose), \@ref(eq:conf-int-yield), and \@ref(eq:conf-int-fraction-F), respectively.
 
 ```{r th-dose-hetero-case, include=FALSE}
-case_data <- system.file("extdata", "cases-data-hetero.csv", package = "biodosetools") %>%
-  utils::read.csv(header = TRUE) %>%
+case_data <- system.file("extdata", "cases-data-hetero.csv", package = "biodosetools") |>
+  utils::read.csv(header = TRUE) |>
   calculate_aberr_table(
     type = "case",
     assessment_u = 1,

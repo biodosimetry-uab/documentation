@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 documentclass: scrartcl
-bibliography: [bib/book.bib, bib/packages.bib, bib/extra.bib]
+bibliography: [bib/articles.bib, bib/manuals.bib, bib/software.bib, bib/packages.bib, bib/extra.bib]
 biblio-style: abbrv
 # biblio-style: apalike
 link-citations: yes
@@ -25,6 +25,8 @@ cover-image: "images/cover.png"
 library(dplyr)
 library(biodosetools)
 options(knitr.graphics.auto_pdf = TRUE)
+
+source("contents/aux_functions.R")
 ```
 
 ```{r echo=FALSE, out.width = '60%', fig.align='center'}
@@ -59,5 +61,3 @@ knitr::write_bib(c(
   "config", "golem"
 ), "bib/packages.bib")
 ```
-
-\newpage

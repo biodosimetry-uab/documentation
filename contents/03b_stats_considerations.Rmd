@@ -26,13 +26,14 @@ If $Y \sim \operatorname{Pois}(\lambda)$, \emph{i.e.} a discrete random variable
 \begin{align}
   \Pr(Y = k) =
   \frac{\lambda^{k} e^{-\lambda}}{k!}
-  \quad, k \in \{ 0, 1, 2, \dots \}
+  ,\quad k \in \{ 0, 1, 2, \dots \}
  (\#eq:poisson-dist)
 \end{align}
 
 Both the expected value and the variance of $Y$ are equal to the rate $\lambda$, \emph{i.e.}:
 \begin{align}
-  \operatorname{E}(Y) = \lambda \quad,
+  \operatorname{E}(Y) = \lambda
+  ,\quad
   \sigma^{2} = \operatorname{Var}(Y) = \lambda.
   (\#eq:variance-poisson)
 \end{align}
@@ -43,9 +44,11 @@ For real count data, the usual estimators of the rate parameter and the variance
   (\#eq:mean-estimator)
 \end{align}
 \begin{align}
+\begin{aligned}
   \hat{\sigma}^{2}
   &= \frac{1}{N - 1} \left[ \sum_{k=1}^{M} k^{2} C_{k} - N \bar{y}^{2} \right] \\
   &= \frac{1}{N - 1} \left[ \sum_{k=1}^{M} k^{2} C_{k} - \frac{1}{N} \left( \sum_{k=1}^{M} k C_{k} \right)^{2} \right],
+\end{aligned}
   (\#eq:variance-estimator)
 \end{align}
 where $C_{k}$ is the count of cells where $k$ chromosomal aberrations were detected, $M$ is the maximum count realisation, $N = \sum_{k=0}^{M} C_{k}$ is the total number of cells analysed, and $X = \sum_{k=1}^{M} k C_{k}$ is the total number of chromosomal aberrations.
