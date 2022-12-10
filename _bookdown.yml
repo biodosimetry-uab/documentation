@@ -22,8 +22,7 @@ rmd_files:
   - "contents/03d_stats_trans.Rmd"
   - "contents/03e_stats_micro.Rmd"
   - "contents/appendix_A_feedback.Rmd"
-  - "contents/appendix_B_implementation.Rmd"
-  - "contents/appendix_C_cite.Rmd"
+  - "contents/appendix_B_cite.Rmd"
   - "contents/references.Rmd"
 css:
   - "css/style.css"
