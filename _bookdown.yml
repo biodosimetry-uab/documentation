@@ -17,6 +17,7 @@ rmd_files:
   - "contents/02b_manual_get.Rmd"
   - "contents/02c_manual_use_shiny.Rmd"
   - "contents/02d_manual_use_r.Rmd"
+  - "contents/02e_manual_technical_matters.Rmd"
   - "contents/03a_stats_intro.Rmd"
   - "contents/03b_stats_considerations.Rmd"
   - "contents/03c_stats_fitting.Rmd"
