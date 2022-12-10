@@ -1,0 +1,11 @@
+# Usage (web UI) {#manual-use-shiny}
+
+The following examples illustrate the functionality of {biodosetools}'s {shiny} user interface to perform dose-effect fitting and dose estimation for the dicentric and translocation assays. The equivalent examples using the R API can be found in Chapter \@ref(manual-use-r).
+
+## Dicentrics dose-effect fitting
+
+## Dicentrics dose estimation
+
+## Translocations dose-effect fitting
+
+## Translocations dose estimation

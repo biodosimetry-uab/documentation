@@ -1,0 +1,13 @@
+# Usage (R API) {#manual-use-r}
+
+The following examples illustrate the functionality of {biodosetools}'s R API to perform dose-effect fitting and dose estimation for the dicentric and translocation assays. The equivalent examples using the {shiny} user interface can be found in Chapter \@ref(manual-use-shiny).
+
+The full {biodosetools} R API reference detailing the available functions and parameters can be found on the project's website at https://biodosetools-team.github.io/biodosetools/reference/.
+
+## Dicentrics dose-effect fitting
+
+## Dicentrics dose estimation
+
+## Translocations dose-effect fitting
+
+## Translocations dose estimation
