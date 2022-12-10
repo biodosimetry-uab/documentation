@@ -20,7 +20,7 @@ Shiny is an R package that makes it easy to build interactive web apps straight 
 Different modules can be built for each function (fitting, dose estimation, ...) while being totally independent from one another.
 
 ```{r echo=FALSE, out.width = '35%', fig.align='center'}
-knitr::include_graphics("images/stats/iaea-cover.jpg", dpi = 2)
+knitr::include_graphics("images/iaea-cover.jpg", dpi = 2)
 ```
 
 This opens up the possibility to implement statistical methods not included in the IAEA Manual (2011) [@IAEA2011].

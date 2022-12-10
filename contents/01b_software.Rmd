@@ -1,12 +1,12 @@
 ## Software implementations {#intro-software}
 
 ```{r echo=FALSE, out.width = '75%', fig.align='center'}
-knitr::include_graphics("images/intro/chronology.svg")
+knitr::include_graphics("images/chronology.svg")
 ```
 
 The tools to deal with some or all of the statistical procedures used in biological dosimetry have evolved since the 1980s [see @Ainsbury2009]. These tools ranged from adapted Microsoft Excel sheets to specific programs (the later summarised in Table \@ref(tab:software-summary)). The specific programs were based on closed source software and, for example, used a single methodology to calculate uncertainties. Thus, improvements were restricted to those who manage the source code, and the end-user cannot modify or implement any improvement. In addition, there is a possibility of misunderstanding or misuse of these closed programs.
 
-```{r software-summary, echo=FALSE, purl=FALSE}
+```{r software-summary, echo=FALSE}
 tibble::tribble(
   ~`Name`,         ~`Language(s)`,  ~`Framework(s)`, ~`Author(s)`,
   "MLPOL",         "Fortran 77",    "--",            "@Edwards1994",

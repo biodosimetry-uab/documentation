@@ -9,7 +9,7 @@ As of version 3.6.1 (November 2022), {biodosetools} supports dose-effect fitting
 
 The {biodosetools} package is available from CRAN \url{https://CRAN.R-project.org/package=biodosetools} and can be installed using the standard R tools. In Table \@ref(tab:functions-list) we list all the functions available to the user through the R API provided by {biodosetools}.
 
-```{r functions-list, echo=FALSE, purl=FALSE}
+```{r functions-list, echo=FALSE}
 tibble::tribble(
   ~`Usage`,       ~`Functions`,
    "Fitting",     "`fit()`, `plot_fit_dose_curve()`",
@@ -40,5 +40,5 @@ The {shiny} app allows to download processed count or case data via {xtable} [@R
 In Biodose Tools colour is used to identify different sections of information, a technique called colour-coding. In particular, Biodose Tools uses four colours to code information: (a) blue for options and settings, (b) purple for data input, (c) green for results, and (d) orange for exporting results. Figure \@ref(fig:ui-color-coding-mockup) shows a simple mock-up of how the four types of boxes and corresponding widgets would fit together in one of the {shiny} app's modules.
 
 ```{r ui-color-coding-mockup, fig.align="center", echo=FALSE, out.width="60%", fig.cap="Mock-up illustrating Biodose Tools' colour coding to create an intuitive visual organisation of the user interface."}
-knitr::include_graphics("images/user-manual/ui-color-coding-mockup.svg")
+knitr::include_graphics("images/ui-color-coding-mockup.svg")
 ```

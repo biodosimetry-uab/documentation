@@ -7,7 +7,7 @@ Please provide your suggestions and feedback to help us improve Biodose Tools. U
 We provide a short template on the issue tracker, as pictured below:
 
 ```{r echo=FALSE, out.width='90%', fig.align='center'}
-knitr::include_graphics("images/user-manual/feedback.png", dpi = 192)
+knitr::include_graphics("images/feedback.png", dpi = 192)
 ```
 
 Please make sure to specify the version used (located at the bottom of the sidebar of Biodose Tools), as well as assessment (dicentrics, translocations, etc.) and module (fitting, dose estimation, etc.)
