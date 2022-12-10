@@ -16,7 +16,7 @@ In both equations $C$ is interpreted as the fitted background level.
 
 ## Dose-effect curve fitting
 
-The objective of dose-effect or curve fitting is to determine those values of the coefficients $C$, $\alpha$ and $\beta$ which best fit the calibration data points. For dicentrics (for more details see Chapter \@ref(stats-fitting)), simulated whole-body irradiation of \emph{ex vivo} blood in test tubes with X-rays or $\gamma$-rays produces aberration counts which are very well represented by the Poisson distribution [@Edwards1979]. In contrast, neutrons and other types of high-LET radiation produce distributions which display overdispersion, where the sample variance exceeds the sample mean. Rather than choosing a more suitable distribution, this is usually dealt with by adjusting the calculating the overdispersion and then adjusting the uncertainty accordingly \citepalias{IAEA2011}.
+The objective of dose-effect or curve fitting is to determine those values of the coefficients $C$, $\alpha$ and $\beta$ which best fit the calibration data points. For dicentrics (for more details see Chapter \@ref(stats-fitting)), simulated whole-body irradiation of \emph{ex vivo} blood in test tubes with X-rays or $\gamma$-rays produces aberration counts which are very well represented by the Poisson distribution [@Edwards1979]. In contrast, neutrons and other types of high-LET radiation produce distributions which display overdispersion, where the sample variance exceeds the sample mean. Rather than choosing a more suitable distribution, this is usually dealt with by adjusting the calculating the overdispersion and then adjusting the uncertainty accordingly [@IAEA2011].
 
 ## Poisson distribution
 
