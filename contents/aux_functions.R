@@ -155,24 +155,6 @@ theory_plot_estimated_dose_curve <- function(est_doses, fit_coeffs, fit_var_cov_
   return(gg_curve)
 }
 
-
-fix_estimated_dose_curve_color_labels <- function(gg, breaks, labels) {
-  gg <- gg +
-    ggplot2::scale_color_manual(
-      values = grDevices::hcl(
-        h = seq(15, 375, length = 4 + 1),
-        l = 65, c = 100
-      ) %>%
-        .[1:4] %>%
-        `names<-`(c("Partial-body", "Heterogeneous 1", "Heterogeneous 2", "Whole-body")),
-      breaks = breaks,
-      labels = labels
-    )
-
-  return(gg)
-}
-
-
 plot_fit_dose_curve_alt <- function(fit_results_list, aberr_name, max_dose, show_count_data = TRUE, conf_int = 0.95) {
   # Read objects from fit results list
   count_data <- as.data.frame(fit_results_list[["fit_raw_data"]])
