@@ -1,0 +1,5 @@
+## Acknowledgments {-}
+
+We would like to thank all members of the [RENEB](https://www.reneb.net) association who helped in the design and testing of the package and Shiny app. This research was done with support from a grant from the Spanish government (ref. PCIN-2017-077) and a grant from the Consejo de Seguridad Nuclear Español ([BOE-A-2019-311](https://www.boe.es/boe/dias/2019/01/11/pdfs/BOE-A-2019-311.pdf)).
+
+We would also like to thank everyone outside of the Biodose Tools team who helped providing subtitles for our [video tutorials](https://www.youtube.com/@biodosetools) on YouTube, in particular Tomisato Miura from Hirosaki University, who helped with the Japanese subtitles, and Tai-I Chen, who helped with the Chinese (Simplified) and Chinese (Traditional) subtitles.

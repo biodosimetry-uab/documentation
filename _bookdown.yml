@@ -8,6 +8,7 @@ rmd_files:
   - "index.Rmd"
   - "contents/00a_structure.Rmd"
   - "contents/00b_authors.Rmd"
+  - "contents/00c_acknowledgements.Rmd"
   - "contents/01a_background.Rmd"
   - "contents/01b_software.Rmd"
   - "contents/01c_rlang.Rmd"
