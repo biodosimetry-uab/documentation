@@ -1,0 +1,61 @@
+# Statistical considerations {#stats-considerations}
+
+In biological dosimetry, the quantity being modelled is usually the \emph{yield}, i.e. the mean aberration count per cell. For low-LET radiation, the yield ($\lambda$) of chromosome aberrations (e.g. dicentrics, translocations, micronuclei) is related to exposed dose ($D$) by the LQ equation:
+\begin{align}
+  \lambda = C + \alpha D + \beta D^2.
+  (\#eq:dose-response-lq)
+\end{align}
+
+For high-LET radiation, the $\alpha$-term becomes large and eventually the $\beta$-term becomes biologically less relevant and also statistically "not significant" [@Frome1986; @Sasaki2003]. In this situation, the dose-effect is approximated by the linear equation:
+\begin{align}
+  \lambda = C + \alpha D.
+  (\#eq:dose-response-l)
+\end{align}
+
+In both equations $C$ is interpreted as the fitted background level.
+
+## Dose-effect curve fitting
+
+The objective of dose-effect or curve fitting is to determine those values of the coefficients $C$, $\alpha$ and $\beta$ which best fit the calibration data points. For dicentrics (for more details see Chapter \@ref(stats-fitting)), simulated whole-body irradiation of \emph{ex vivo} blood in test tubes with X-rays or $\gamma$-rays produces aberration counts which are very well represented by the Poisson distribution [@Edwards1979]. In contrast, neutrons and other types of high-LET radiation produce distributions which display overdispersion, where the sample variance exceeds the sample mean. Rather than choosing a more suitable distribution, this is usually dealt with by adjusting the calculating the overdispersion and then adjusting the uncertainty accordingly \citepalias{IAEA2011}.
+
+## Poisson distribution
+
+In a wide range of situations, the Poisson distribution is used to model count data. Rutherford and Geiger, for example, utilised it in their famous experiment in 1910, in which they counted the number of $\alpha$-particles emitted from a polonium source over a period of time. In Biodosimetry, the Poisson distribution is commonly employed.
+
+If $Y \sim \operatorname{Pois}(\lambda)$, \emph{i.e.} a discrete random variable, $Y$, follows a Poisson distribution with rate $\lambda > 0$, then its probability mass function is:
+\begin{align}
+  \Pr(Y = k) =
+  \frac{\lambda^{k} e^{-\lambda}}{k!}
+  \quad, k \in \{ 0, 1, 2, \dots \}
+ (\#eq:poisson-dist)
+\end{align}
+
+Both the expected value and the variance of $Y$ are equal to the rate $\lambda$, \emph{i.e.}:
+\begin{align}
+  \operatorname{E}(Y) = \lambda \quad,
+  \sigma^{2} = \operatorname{Var}(Y) = \lambda.
+  (\#eq:variance-poisson)
+\end{align}
+
+For real count data, the usual estimators of the rate parameter and the variance are,
+\begin{align}
+  \hat{\lambda} = \bar{y} = \frac{X}{N},
+  (\#eq:mean-estimator)
+\end{align}
+\begin{align}
+  \hat{\sigma}^{2}
+  &= \frac{1}{N - 1} \left[ \sum_{k=1}^{M} k^{2} C_{k} - N \bar{y}^{2} \right] \\
+  &= \frac{1}{N - 1} \left[ \sum_{k=1}^{M} k^{2} C_{k} - \frac{1}{N} \left( \sum_{k=1}^{M} k C_{k} \right)^{2} \right],
+  (\#eq:variance-estimator)
+\end{align}
+where $C_{k}$ is the count of cells where $k$ chromosomal aberrations were detected, $M$ is the maximum count realisation, $N = \sum_{k=0}^{M} C_{k}$ is the total number of cells analysed, and $X = \sum_{k=1}^{M} k C_{k}$ is the total number of chromosomal aberrations.
+
+## Testing for Poisson
+
+Because most curve fitting methods rely on Poisson statistics, the dicentric cell distribution should be checked for Poisson compliance for each dose used to build the calibration curve. This should also be checked for the sample tested for an exposure. Although recently in the field of biological dosimetry different tests have been proposed to check the Poisson distribution [@Higueras2018; @Duran2002], the most widely used test is the $u$-test [@Rao1956; @Savage1970]. The $u$-test statistic \@ref(eq:u-value) is a normalised unit of the dispersion index ($\hat{\sigma}^{2}/\bar{y}$), which for a Poisson distribution should be close to 1:
+\begin{align}
+  u = (\hat{\sigma}^{2} / \bar{y} - 1) \sqrt{\frac{N - 1}{2 (1 - 1 / X)}}.
+  (\#eq:u-value)
+\end{align}
+
+When $-1.96 \le u \le 1.96$ the assumption of equidispersion is not rejected with a two-tailed significance level of $\alpha = 0.05$. A $u$-value higher than 1.96 indicates overdispersion, whilst $u$-values lower than -1.96 indicate underdispersion. Underdispersion is an extraordinary occurrence in Biodosimetry. However, @Pujol2014 claimed that, after high dose exposure (> 5 Gy), the underdispersion detected in their datasets was caused probably for two reasons. The first, due to the number of chromosomes that the cells possess and the limitation of forming cells with a very high number of dicentrics. The second is that at high doses fewer cells with 0 or 1 dicentric than expected were observed, possibly indicating a lower efficiency in repairing genetic damage at high doses.

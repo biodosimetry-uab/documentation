@@ -1,5 +1,0 @@
-# Translocation analysis {#stats-trans}
-
-## Dose-effect curve fitting
-
-## Dose estimation
