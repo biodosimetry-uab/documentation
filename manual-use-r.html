@@ -78,10 +78,11 @@
 <li><a class="" href="manual-get.html"><span class="header-section-number">3</span> Getting Biodose Tools</a></li>
 <li><a class="" href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></li>
 <li><a class="active" href="manual-use-r.html"><span class="header-section-number">5</span> Usage (R API)</a></li>
+<li><a class="" href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></li>
 <li class="book-part">Statistical Methods</li>
-<li><a class="" href="stats-considerations.html"><span class="header-section-number">6</span> Statistical considerations</a></li>
-<li><a class="" href="stats-fitting.html"><span class="header-section-number">7</span> Dose-effect curve fitting</a></li>
-<li><a class="" href="stats-estimation.html"><span class="header-section-number">8</span> Uncertainty on dose estimation</a></li>
+<li><a class="" href="stats-considerations.html"><span class="header-section-number">7</span> Statistical considerations</a></li>
+<li><a class="" href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></li>
+<li><a class="" href="stats-estimation.html"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></li>
 <li><a class="" href="appendix-cite.html"><span class="header-section-number">B</span> How to cite Biodose Tools</a></li>
@@ -103,38 +104,373 @@
 <h2>
 <span class="header-section-number">5.1</span> Dicentrics dose-effect fitting<a class="anchor" aria-label="anchor" href="#dicentrics-dose-effect-fitting-1"><i class="fas fa-link"></i></a>
 </h2>
+<div id="input-count-data-2" class="section level3" number="5.1.1">
+<h3>
+<span class="header-section-number">5.1.1</span> Input count data<a class="anchor" aria-label="anchor" href="#input-count-data-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>The first step is to input the count data. This step is accomplished in R by calling the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table()</a></code> function. This will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{y}\)</span>), variance (<span class="math inline">\(\sigma^{2}\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), and <span class="math inline">\(u\)</span>-value.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">count_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"count-data-barquinero-1995.csv"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"biodosetools"</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">count_data</span></span></code></pre></div>
+<pre><code>## # A tibble: 11 × 13
+##        D     N     X    C0    C1    C2    C3    C4    C5    mean     var    DI
+##    &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1  0     5000     8  4992     8     0     0     0     0 0.0016  0.00160 0.999
+##  2  0.1   5002    14  4988    14     0     0     0     0 0.00280 0.00279 0.997
+##  3  0.25  2008    22  1987    20     1     0     0     0 0.0110  0.0118  1.08 
+##  4  0.5   2002    55  1947    55     0     0     0     0 0.0275  0.0267  0.973
+##  5  0.75  1832   100  1736    92     4     0     0     0 0.0546  0.0560  1.03 
+##  6  1     1168   109  1064    99     5     0     0     0 0.0933  0.0933  0.999
+##  7  1.5    562   100   474    76    12     0     0     0 0.178   0.189   1.06 
+##  8  2      333   103   251    63    17     2     0     0 0.309   0.353   1.14 
+##  9  3      193   108   104    72    15     2     0     0 0.560   0.466   0.834
+## 10  4      103   103    35    41    21     4     2     0 1       0.882   0.882
+## 11  5       59   107    11    19    11     9     6     3 1.81    2.09    1.15 
+## # … with 1 more variable: u &lt;dbl&gt;</code></pre>
+</div>
+<div id="perform-fitting-2" class="section level3" number="5.1.2">
+<h3>
+<span class="header-section-number">5.1.2</span> Perform fitting<a class="anchor" aria-label="anchor" href="#perform-fitting-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>To perform the fitting in R we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/fit.html">fit()</a></code> function, whilst selecting the appropriate <code>aberr_module</code> (<code>"dicentrics"</code> in this example), <code>model_formula</code> (<code>"lin-quad"</code> or <code>"lin"</code> for LQ or L models, respectively), and <code>model_family</code> (<code>"automatic"</code>, <code>"poisson"</code>, or <code>"quasipoisson"</code>) parameters:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/fit.html">fit</a></span><span class="op">(</span></span>
+<span>  count_data <span class="op">=</span> <span class="va">count_data</span>,</span>
+<span>  model_formula <span class="op">=</span> <span class="st">"lin-quad"</span>,</span>
+<span>  model_family <span class="op">=</span> <span class="st">"automatic"</span>,</span>
+<span>  aberr_module <span class="op">=</span> <span class="st">"dicentrics"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>The <code>fit_results</code> object is a list that contains all necessary information about the count data as well as options selected when performing the fitting. This is a vital step to ensure traceability and reproducibility. Below we can see its elements:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">fit_results</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  [1] "fit_raw_data"         "fit_formula_raw"      "fit_formula_tex"     
+##  [4] "fit_coeffs"           "fit_cor_mat"          "fit_var_cov_mat"     
+##  [7] "fit_dispersion"       "fit_model_statistics" "fit_algorithm"       
+## [10] "fit_model_summary"</code></pre>
+<p>In particular, we can see how <code>fit_coeffs</code> matches the results obtained in the UI (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-04">4.4</a>):</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_results</span><span class="op">$</span><span class="va">fit_coeffs</span></span></code></pre></div>
+<pre><code>##                estimate    std.error statistic      p.value
+## coeff_C     0.001280319 0.0004714055  2.715961 6.608367e-03
+## coeff_alpha 0.021038724 0.0051576170  4.079156 4.519949e-05
+## coeff_beta  0.063032534 0.0040073856 15.729091 9.557291e-56</code></pre>
+<p>To visualise the dose-effect curve, we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_fit_dose_curve.html">plot_fit_dose_curve()</a></code> function:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_fit_dose_curve.html">plot_fit_dose_curve</a></span><span class="op">(</span></span>
+<span>  <span class="va">fit_results</span>,</span>
+<span>  aberr_name <span class="op">=</span> <span class="st">"Dicentrics"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dic-fit-dose-curve"></span>
+<img src="biodose-tools_files/figure-html/dic-fit-dose-curve-1.png" alt="Plot of dose-effect curve generated by {biodosetools}. The grey shading indicates the uncertainties associated with the calibration curve." width="100%"><p class="caption">
+Figure 5.1: Plot of dose-effect curve generated by {biodosetools}. The grey shading indicates the uncertainties associated with the calibration curve.
+</p>
+</div>
+</div>
 </div>
 <div id="dicentrics-dose-estimation-1" class="section level2" number="5.2">
 <h2>
 <span class="header-section-number">5.2</span> Dicentrics dose estimation<a class="anchor" aria-label="anchor" href="#dicentrics-dose-estimation-1"><i class="fas fa-link"></i></a>
 </h2>
+<div id="input-case-data-2" class="section level3" number="5.2.1">
+<h3>
+<span class="header-section-number">5.2.1</span> Input case data<a class="anchor" aria-label="anchor" href="#input-case-data-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Next we can choose to either load the case data from a file or to input the data manually. The data is then parsed in R by calling the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table()</a></code> function. This will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{y}\)</span>), standard error (<span class="math inline">\(\sigma\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), and <span class="math inline">\(u\)</span>-value.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">case_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"cases-data-partial.csv"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"biodosetools"</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table</a></span><span class="op">(</span></span>
+<span>    type <span class="op">=</span> <span class="st">"case"</span>,</span>
+<span>    assessment_u <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    aberr_module <span class="op">=</span> <span class="st">"dicentrics"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">case_data</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 12
+##       N     X    C0    C1    C2    C3    C4    C5     y  y_err    DI     u
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1   361   100   302    28    22     8     1     0 0.277 0.0368  1.77  10.4</code></pre>
+</div>
+<div id="perform-dose-estimation-2" class="section level3" number="5.2.2">
+<h3>
+<span class="header-section-number">5.2.2</span> Perform dose estimation<a class="anchor" aria-label="anchor" href="#perform-dose-estimation-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, to perform the dose estimation in R we can call the adequate <code>estimate_*()</code> functions and parameters depending on the characteristics of the accident. In this example, we will use <code><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_whole_body_merkle.html">estimate_whole_body_merkle()</a></code> and <code><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_partial_body_dolphin.html">estimate_partial_body_dolphin()</a></code>. First of all, however, we will need to load the fit coefficients and variance-covariance matrix from the previously calculated <code>fit_results</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_coeffs</span> <span class="op">&lt;-</span> <span class="va">fit_results</span><span class="op">$</span><span class="va">fit_coeffs</span></span>
+<span><span class="va">fit_var_cov_mat</span> <span class="op">&lt;-</span> <span class="va">fit_results</span><span class="op">$</span><span class="va">fit_var_cov_mat</span></span></code></pre></div>
+<p>After that is done, we can simply call <code><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_whole_body_merkle.html">estimate_whole_body_merkle()</a></code> and <code><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_partial_body_dolphin.html">estimate_partial_body_dolphin()</a></code>:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">results_whole_merkle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_whole_body_merkle.html">estimate_whole_body_merkle</a></span><span class="op">(</span></span>
+<span>  <span class="va">case_data</span>,</span>
+<span>  <span class="va">fit_coeffs</span>,</span>
+<span>  <span class="va">fit_var_cov_mat</span>,</span>
+<span>  conf_int_yield <span class="op">=</span> <span class="fl">0.83</span>,</span>
+<span>  conf_int_curve <span class="op">=</span> <span class="fl">0.83</span>,</span>
+<span>  protracted_g_value <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  aberr_module <span class="op">=</span> <span class="st">"dicentrics"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">results_partial</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_partial_body_dolphin.html">estimate_partial_body_dolphin</a></span><span class="op">(</span></span>
+<span>  <span class="va">case_data</span>,</span>
+<span>  <span class="va">fit_coeffs</span>,</span>
+<span>  <span class="va">fit_var_cov_mat</span>,</span>
+<span>  conf_int <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  gamma <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">2.7</span>,</span>
+<span>  aberr_module <span class="op">=</span> <span class="st">"dicentrics"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>To visualise the estimated doses, we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_estimated_dose_curve.html">plot_estimated_dose_curve()</a></code> function:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_estimated_dose_curve.html">plot_estimated_dose_curve</a></span><span class="op">(</span></span>
+<span>  est_doses <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    whole <span class="op">=</span> <span class="va">results_whole_merkle</span>,</span>
+<span>    partial <span class="op">=</span> <span class="va">results_partial</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  <span class="va">fit_coeffs</span>,</span>
+<span>  <span class="va">fit_var_cov_mat</span>,</span>
+<span>  protracted_g_value <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  conf_int_curve <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  aberr_name <span class="op">=</span> <span class="st">"Dicentrics"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dic-estimated-dose-curve-fix"></span>
+<img src="biodose-tools_files/figure-html/dic-estimated-dose-curve-fix-1.png" alt="Plot of estimated doses generated by {biodosetools}. The grey shading indicates the uncertainties associated with the calibration curve." width="100%"><p class="caption">
+Figure 5.2: Plot of estimated doses generated by {biodosetools}. The grey shading indicates the uncertainties associated with the calibration curve.
+</p>
+</div>
+</div>
 </div>
 <div id="translocations-dose-effect-fitting-1" class="section level2" number="5.3">
 <h2>
 <span class="header-section-number">5.3</span> Translocations dose-effect fitting<a class="anchor" aria-label="anchor" href="#translocations-dose-effect-fitting-1"><i class="fas fa-link"></i></a>
 </h2>
+<div id="calculate-genomic-conversion-factor-2" class="section level3" number="5.3.1">
+<h3>
+<span class="header-section-number">5.3.1</span> Calculate genomic conversion factor<a class="anchor" aria-label="anchor" href="#calculate-genomic-conversion-factor-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>To be able to fit the equivalent full genome dose-effect curve, we need to calculate the genomic conversion factor. To calculate the genomic conversion factor in R we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_genome_factor.html">calculate_genome_factor()</a></code> function:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">genome_factor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_genome_factor.html">calculate_genome_factor</a></span><span class="op">(</span></span>
+<span>  dna_table <span class="op">=</span> <span class="va">dna_content_fractions_morton</span>,</span>
+<span>  chromosome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span>,</span>
+<span>  color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Red"</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>  sex <span class="op">=</span> <span class="st">"female"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">genome_factor</span></span></code></pre></div>
+<pre><code>## [1] 0.3147797</code></pre>
+</div>
+<div id="input-count-data-3" class="section level3" number="5.3.2">
+<h3>
+<span class="header-section-number">5.3.2</span> Input count data<a class="anchor" aria-label="anchor" href="#input-count-data-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Once the genomic conversion factor has been calculated, we can input the count data. This step is accomplished in R by calling the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table()</a></code> function. This will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{y}\)</span>), variance (<span class="math inline">\(\sigma^{2}\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), and <span class="math inline">\(u\)</span>-value.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">count_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"count-data-rodriguez-2004.csv"</span>, package <span class="op">=</span> <span class="st">"biodosetools"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>N <span class="op">=</span> <span class="va">N</span> <span class="op">*</span> <span class="va">genome_factor</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">count_data</span></span></code></pre></div>
+<pre><code>## # A tibble: 11 × 13
+##        D     N     X    C0    C1    C2    C3    C4    C5    mean     var    DI
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1  0    1371.     6  4350     6     0     0     0     0 0.00138 0.00138 0.999
+##  2  0.1  1046.    15  3309    15     0     0     0     0 0.00451 0.00449 0.996
+##  3  0.25  966.    18  3051    18     0     0     0     0 0.00587 0.00583 0.994
+##  4  0.5   967.    33  3039    33     0     0     0     0 0.0107  0.0106  0.990
+##  5  0.75  664.    40  2072    38     1     0     0     0 0.0189  0.0195  1.03 
+##  6  1     669.    50  2075    48     1     0     0     0 0.0235  0.0239  1.02 
+##  7  1.5   328.    56   990    50     3     0     0     0 0.0537  0.0566  1.05 
+##  8  2     226.    71   650    65     3     0     0     0 0.0989  0.0976  0.987
+##  9  3     246.   157   649   108    23     1     0     0 0.201   0.227   1.13 
+## 10  4     125.   147   265   117    15     0     0     0 0.370   0.310   0.836
+## 11  5     124.   180   246   122    23     4     0     0 0.456   0.426   0.936
+## # … with 1 more variable: u &lt;dbl&gt;</code></pre>
+</div>
+<div id="perform-fitting-3" class="section level3" number="5.3.3">
+<h3>
+<span class="header-section-number">5.3.3</span> Perform fitting<a class="anchor" aria-label="anchor" href="#perform-fitting-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>To perform the fitting in R we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/fit.html">fit()</a></code> function, whilst selecting the appropriate <code>aberr_module</code> (<code>"translocations"</code> in this example), <code>model_formula</code> (<code>"lin-quad"</code> or <code>"lin"</code> for LQ or L models, respectively), and <code>model_family</code> (<code>"automatic"</code>, <code>"poisson"</code>, or <code>"quasipoisson"</code>) parameters:</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/fit.html">fit</a></span><span class="op">(</span></span>
+<span>  count_data <span class="op">=</span> <span class="va">count_data</span>,</span>
+<span>  model_formula <span class="op">=</span> <span class="st">"lin-quad"</span>,</span>
+<span>  model_family <span class="op">=</span> <span class="st">"automatic"</span>,</span>
+<span>  fit_link <span class="op">=</span> <span class="st">"identity"</span>,</span>
+<span>  aberr_module <span class="op">=</span> <span class="st">"translocations"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>The <code>fit_results</code> object is a list that contains all necessary information about the count data as well as options selected when performing the fitting. This is a vital step to ensure traceability and reproducibility. Below we can see its elements:</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">fit_results</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  [1] "fit_raw_data"         "fit_formula_raw"      "fit_formula_tex"     
+##  [4] "fit_coeffs"           "fit_cor_mat"          "fit_var_cov_mat"     
+##  [7] "fit_dispersion"       "fit_model_statistics" "fit_algorithm"       
+## [10] "fit_model_summary"</code></pre>
+<p>In particular, we can see how <code>fit_coeffs</code> matches the results obtained in the UI (Figure <a href="manual-use-shiny.html#fig:sc-trans-fit-04">4.13</a>):</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_results</span><span class="op">$</span><span class="va">fit_coeffs</span></span></code></pre></div>
+<pre><code>##                estimate   std.error statistic      p.value
+## coeff_C     0.006560406 0.002052834  3.195780 2.538519e-02
+## coeff_alpha 0.027197296 0.009922177  2.741061 5.081502e-02
+## coeff_beta  0.057982322 0.004630926 12.520675 3.100113e-06</code></pre>
+<p>To visualise the dose-effect curve, we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_fit_dose_curve.html">plot_fit_dose_curve()</a></code> function:</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_fit_dose_curve.html">plot_fit_dose_curve</a></span><span class="op">(</span></span>
+<span>  <span class="va">fit_results</span>,</span>
+<span>  aberr_name <span class="op">=</span> <span class="st">"Translocations"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:trans-fit-dose-curve"></span>
+<img src="biodose-tools_files/figure-html/trans-fit-dose-curve-1.png" alt="Plot of dose-effect curve generated by \{biodosetools\}. The grey shading indicates the uncertainties associated with the calibration curve." width="576"><p class="caption">
+Figure 5.3: Plot of dose-effect curve generated by {biodosetools}. The grey shading indicates the uncertainties associated with the calibration curve.
+</p>
+</div>
+</div>
 </div>
 <div id="translocations-dose-estimation-1" class="section level2" number="5.4">
 <h2>
 <span class="header-section-number">5.4</span> Translocations dose estimation<a class="anchor" aria-label="anchor" href="#translocations-dose-estimation-1"><i class="fas fa-link"></i></a>
 </h2>
+<div id="calculate-genomic-conversion-factor-3" class="section level3" number="5.4.1">
+<h3>
+<span class="header-section-number">5.4.1</span> Calculate genomic conversion factor<a class="anchor" aria-label="anchor" href="#calculate-genomic-conversion-factor-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>To be able to fit the equivalent full genome case data, we need to calculate the genomic conversion factor.</p>
+<p>To do this, in the “Stain color options” box we select the sex of the individual, and the list of chromosomes and stains used for the translocation assay. Clicking on “Generate table” will show a table in the “Chromosome data” box in which we select the chromosome-stain pairs. Clicking on the “Calculate fraction” will calculate the genomic conversion factor.</p>
+<p>To calculate the genomic conversion factor in R we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_genome_factor.html">calculate_genome_factor()</a></code> function:</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">genome_factor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_genome_factor.html">calculate_genome_factor</a></span><span class="op">(</span></span>
+<span>  dna_table <span class="op">=</span> <span class="va">dna_content_fractions_morton</span>,</span>
+<span>  chromosome <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>,</span>
+<span>  color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Red"</span>, <span class="st">"Red"</span>, <span class="st">"Green"</span>, <span class="st">"Red"</span>, <span class="st">"Green"</span>, <span class="st">"Green"</span><span class="op">)</span>,</span>
+<span>  sex <span class="op">=</span> <span class="st">"male"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">genome_factor</span></span></code></pre></div>
+<pre><code>## [1] 0.5847343</code></pre>
+</div>
+<div id="input-case-data-3" class="section level3" number="5.4.2">
+<h3>
+<span class="header-section-number">5.4.2</span> Input case data<a class="anchor" aria-label="anchor" href="#input-case-data-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Next we can choose to either load the case data from a file or to input the data manually. The data is then parsed in R by calling the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table()</a></code> function. If needed, the user can select to use confounders (either using Sigurdson’s method, or by inputting the translocation frequency per cell). Once the table is generated and filled, the “Calculate parameters” button will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{F}_{p}\)</span>), standard error (<span class="math inline">\(\sigma_{p}\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), <span class="math inline">\(u\)</span>-value, expected translocation rate (<span class="math inline">\(X_{c}\)</span>), full genome mean (<span class="math inline">\(\bar{F}_{g}\)</span>), and full genome error (<span class="math inline">\(\sigma_{g}\)</span>).</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">case_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  C0 <span class="op">=</span> <span class="fl">288</span>, C1 <span class="op">=</span> <span class="fl">52</span>, C2 <span class="op">=</span> <span class="fl">9</span>, C3 <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_aberr_table.html">calculate_aberr_table</a></span><span class="op">(</span></span>
+<span>    type <span class="op">=</span> <span class="st">"case"</span>,</span>
+<span>    assessment_u <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    aberr_module <span class="op">=</span> <span class="st">"translocations"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    Xc <span class="op">=</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/calculate_trans_rate_sigurdson.html">calculate_trans_rate_sigurdson</a></span><span class="op">(</span></span>
+<span>      cells <span class="op">=</span> <span class="va">N</span>,</span>
+<span>      genome_factor <span class="op">=</span> <span class="va">genome_factor</span>,</span>
+<span>      age_value <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>      smoker_bool <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    Fg <span class="op">=</span> <span class="op">(</span><span class="va">X</span> <span class="op">-</span> <span class="va">Xc</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">N</span> <span class="op">*</span> <span class="va">genome_factor</span><span class="op">)</span>,</span>
+<span>    Fg_err <span class="op">=</span> <span class="va">Fp_err</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">genome_factor</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">case_data</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 13
+##       N     X    C0    C1    C2    C3    Fp Fp_err    DI     u    Xc    Fg
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1   350    73   288    52     9     1 0.209 0.0259  1.12  1.64  1.02 0.352
+## # … with 1 more variable: Fg_err &lt;dbl&gt;</code></pre>
+</div>
+<div id="perform-dose-estimation-3" class="section level3" number="5.4.3">
+<h3>
+<span class="header-section-number">5.4.3</span> Perform dose estimation<a class="anchor" aria-label="anchor" href="#perform-dose-estimation-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, to perform the dose estimation in R we can call the adequate <code>estimate_*()</code> functions and parameters depending on the characteristics of the accident. In this example, we will use <code><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_whole_body_delta.html">estimate_whole_body_delta()</a></code>. First of all, however, we will need to load the fit coefficients and variance-covariance matrix from the previously calculated <code>fit_results</code>:</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_coeffs</span> <span class="op">&lt;-</span> <span class="va">fit_results</span><span class="op">$</span><span class="va">fit_coeffs</span></span>
+<span><span class="va">fit_var_cov_mat</span> <span class="op">&lt;-</span> <span class="va">fit_results</span><span class="op">$</span><span class="va">fit_var_cov_mat</span></span></code></pre></div>
+<p>Since we have a protracted exposure, we need to calculate the value of <span class="math inline">\(G(x)\)</span>:</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">protracted_g_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/protracted_g_function.html">protracted_g_function</a></span><span class="op">(</span></span>
+<span>  time <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  time_0 <span class="op">=</span> <span class="fl">2</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">protracted_g_value</span></span></code></pre></div>
+<pre><code>## [1] 0.9216251</code></pre>
+<p>After that is done, we can simply call <code><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_whole_body_delta.html">estimate_whole_body_delta()</a></code>:</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">results_whole_delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/estimate_whole_body_delta.html">estimate_whole_body_delta</a></span><span class="op">(</span></span>
+<span>  <span class="va">case_data</span>,</span>
+<span>  <span class="va">fit_coeffs</span>,</span>
+<span>  <span class="va">fit_var_cov_mat</span>,</span>
+<span>  conf_int <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  <span class="va">protracted_g_value</span>,</span>
+<span>  aberr_module <span class="op">=</span> <span class="st">"translocations"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>To visualise the estimated doses, we call the <code><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_estimated_dose_curve.html">plot_estimated_dose_curve()</a></code> function:</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://biodosetools-team.github.io/biodosetools/reference/plot_estimated_dose_curve.html">plot_estimated_dose_curve</a></span><span class="op">(</span></span>
+<span>  est_doses <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>whole <span class="op">=</span> <span class="va">results_whole_delta</span><span class="op">)</span>,</span>
+<span>  <span class="va">fit_coeffs</span>,</span>
+<span>  <span class="va">fit_var_cov_mat</span>,</span>
+<span>  <span class="va">protracted_g_value</span>,</span>
+<span>  conf_int_curve <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  aberr_name <span class="op">=</span> <span class="st">"Translocations"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:trans-estimated-dose-curve"></span>
+<img src="biodose-tools_files/figure-html/trans-estimated-dose-curve-1.png" alt="Plot of estimated doses generated by \{biodosetools\}. The grey shading indicates the uncertainties associated with the calibration curve." width="576"><p class="caption">
+Figure 5.4: Plot of estimated doses generated by {biodosetools}. The grey shading indicates the uncertainties associated with the calibration curve.
+</p>
+</div>
 
 </div>
 </div>
-
-
-
-<div class="chapter-nav">
+</div>
+  <div class="chapter-nav">
 <div class="prev"><a href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></div>
-<div class="next"><a href="stats-considerations.html"><span class="header-section-number">6</span> Statistical considerations</a></div>
+<div class="next"><a href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#manual-use-r"><span class="header-section-number">5</span> Usage (R API)</a></li>
-<li><a class="nav-link" href="#dicentrics-dose-effect-fitting-1"><span class="header-section-number">5.1</span> Dicentrics dose-effect fitting</a></li>
-<li><a class="nav-link" href="#dicentrics-dose-estimation-1"><span class="header-section-number">5.2</span> Dicentrics dose estimation</a></li>
-<li><a class="nav-link" href="#translocations-dose-effect-fitting-1"><span class="header-section-number">5.3</span> Translocations dose-effect fitting</a></li>
-<li><a class="nav-link" href="#translocations-dose-estimation-1"><span class="header-section-number">5.4</span> Translocations dose estimation</a></li>
+<li>
+<a class="nav-link" href="#dicentrics-dose-effect-fitting-1"><span class="header-section-number">5.1</span> Dicentrics dose-effect fitting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#input-count-data-2"><span class="header-section-number">5.1.1</span> Input count data</a></li>
+<li><a class="nav-link" href="#perform-fitting-2"><span class="header-section-number">5.1.2</span> Perform fitting</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#dicentrics-dose-estimation-1"><span class="header-section-number">5.2</span> Dicentrics dose estimation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#input-case-data-2"><span class="header-section-number">5.2.1</span> Input case data</a></li>
+<li><a class="nav-link" href="#perform-dose-estimation-2"><span class="header-section-number">5.2.2</span> Perform dose estimation</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#translocations-dose-effect-fitting-1"><span class="header-section-number">5.3</span> Translocations dose-effect fitting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calculate-genomic-conversion-factor-2"><span class="header-section-number">5.3.1</span> Calculate genomic conversion factor</a></li>
+<li><a class="nav-link" href="#input-count-data-3"><span class="header-section-number">5.3.2</span> Input count data</a></li>
+<li><a class="nav-link" href="#perform-fitting-3"><span class="header-section-number">5.3.3</span> Perform fitting</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#translocations-dose-estimation-1"><span class="header-section-number">5.4</span> Translocations dose estimation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calculate-genomic-conversion-factor-3"><span class="header-section-number">5.4.1</span> Calculate genomic conversion factor</a></li>
+<li><a class="nav-link" href="#input-case-data-3"><span class="header-section-number">5.4.2</span> Input case data</a></li>
+<li><a class="nav-link" href="#perform-dose-estimation-3"><span class="header-section-number">5.4.3</span> Perform dose estimation</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -145,13 +481,9 @@
 </div>
     </nav>
 </div>
-</div>
-  
-
-  
 
 </div>
- <!-- .container -->
+</div> <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 

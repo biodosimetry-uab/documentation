@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 6 Statistical considerations | Biodose Tools</title>
+<title>Chapter 7 Statistical considerations | Biodose Tools</title>
 <meta name="author" content="Alfredo Hernández, Joan Francesc Barquinero">
 <meta name="description" content="In biological dosimetry, the quantity being modelled is usually the , i.e. the mean aberration count per cell. For low-LET radiation, the yield (\(\lambda\)) of chromosome aberrations...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
-<meta property="og:title" content="Chapter 6 Statistical considerations | Biodose Tools">
+<meta property="og:title" content="Chapter 7 Statistical considerations | Biodose Tools">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/images/cover.png">
 <meta property="og:description" content="In biological dosimetry, the quantity being modelled is usually the , i.e. the mean aberration count per cell. For low-LET radiation, the yield (\(\lambda\)) of chromosome aberrations...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 6 Statistical considerations | Biodose Tools">
+<meta name="twitter:title" content="Chapter 7 Statistical considerations | Biodose Tools">
 <meta name="twitter:description" content="In biological dosimetry, the quantity being modelled is usually the , i.e. the mean aberration count per cell. For low-LET radiation, the yield (\(\lambda\)) of chromosome aberrations...">
 <meta name="twitter:image" content="/images/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -78,10 +78,11 @@
 <li><a class="" href="manual-get.html"><span class="header-section-number">3</span> Getting Biodose Tools</a></li>
 <li><a class="" href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></li>
 <li><a class="" href="manual-use-r.html"><span class="header-section-number">5</span> Usage (R API)</a></li>
+<li><a class="" href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></li>
 <li class="book-part">Statistical Methods</li>
-<li><a class="active" href="stats-considerations.html"><span class="header-section-number">6</span> Statistical considerations</a></li>
-<li><a class="" href="stats-fitting.html"><span class="header-section-number">7</span> Dose-effect curve fitting</a></li>
-<li><a class="" href="stats-estimation.html"><span class="header-section-number">8</span> Uncertainty on dose estimation</a></li>
+<li><a class="active" href="stats-considerations.html"><span class="header-section-number">7</span> Statistical considerations</a></li>
+<li><a class="" href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></li>
+<li><a class="" href="stats-estimation.html"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></li>
 <li><a class="" href="appendix-cite.html"><span class="header-section-number">B</span> How to cite Biodose Tools</a></li>
@@ -93,30 +94,30 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stats-considerations" class="section level1" number="6">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stats-considerations" class="section level1" number="7">
 <h1>
-<span class="header-section-number">6</span> Statistical considerations<a class="anchor" aria-label="anchor" href="#stats-considerations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7</span> Statistical considerations<a class="anchor" aria-label="anchor" href="#stats-considerations"><i class="fas fa-link"></i></a>
 </h1>
 <p>In biological dosimetry, the quantity being modelled is usually the , i.e. the mean aberration count per cell. For low-LET radiation, the yield (<span class="math inline">\(\lambda\)</span>) of chromosome aberrations (e.g. dicentrics, translocations, micronuclei) is related to exposed dose (<span class="math inline">\(D\)</span>) by the LQ equation:
 <span class="math display" id="eq:dose-response-lq">\[\begin{align}
   \lambda = C + \alpha D + \beta D^2.
-  \tag{6.1}
+  \tag{7.1}
 \end{align}\]</span></p>
 <p>For high-LET radiation, the <span class="math inline">\(\alpha\)</span>-term becomes large and eventually the <span class="math inline">\(\beta\)</span>-term becomes biologically less relevant and also statistically “not significant” <span class="citation">(<a href="references.html#ref-Frome1986" role="doc-biblioref">Frome and DuFrain 1986</a>; <a href="references.html#ref-Sasaki2003" role="doc-biblioref">M. S. Sasaki 2003</a>)</span>. In this situation, the dose-effect is approximated by the linear equation:
 <span class="math display" id="eq:dose-response-l">\[\begin{align}
   \lambda = C + \alpha D.
-  \tag{6.2}
+  \tag{7.2}
 \end{align}\]</span></p>
 <p>In both equations <span class="math inline">\(C\)</span> is interpreted as the fitted background level.</p>
-<div id="dose-effect-curve-fitting" class="section level2" number="6.1">
+<div id="dose-effect-curve-fitting" class="section level2" number="7.1">
 <h2>
-<span class="header-section-number">6.1</span> Dose-effect curve fitting<a class="anchor" aria-label="anchor" href="#dose-effect-curve-fitting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.1</span> Dose-effect curve fitting<a class="anchor" aria-label="anchor" href="#dose-effect-curve-fitting"><i class="fas fa-link"></i></a>
 </h2>
-<p>The objective of dose-effect or curve fitting is to determine those values of the coefficients <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> which best fit the calibration data points. For dicentrics (for more details see Chapter <a href="stats-fitting.html#stats-fitting">7</a>), simulated whole-body irradiation of blood in test tubes with X-rays or <span class="math inline">\(\gamma\)</span>-rays produces aberration counts which are very well represented by the Poisson distribution <span class="citation">(<a href="references.html#ref-Edwards1979" role="doc-biblioref">A. A. Edwards, Lloyd, and Purrott 1979</a>)</span>. In contrast, neutrons and other types of high-LET radiation produce distributions which display overdispersion, where the sample variance exceeds the sample mean. Rather than choosing a more suitable distribution, this is usually dealt with by adjusting the calculating the overdispersion and then adjusting the uncertainty accordingly <span class="citation">(<a href="references.html#ref-IAEA2011" role="doc-biblioref">International Atomic Energy Agency 2011</a>)</span>.</p>
+<p>The objective of dose-effect or curve fitting is to determine those values of the coefficients <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> which best fit the calibration data points. For dicentrics (for more details see Chapter <a href="stats-fitting.html#stats-fitting">8</a>), simulated whole-body irradiation of blood in test tubes with X-rays or <span class="math inline">\(\gamma\)</span>-rays produces aberration counts which are very well represented by the Poisson distribution <span class="citation">(<a href="references.html#ref-Edwards1979" role="doc-biblioref">A. A. Edwards, Lloyd, and Purrott 1979</a>)</span>. In contrast, neutrons and other types of high-LET radiation produce distributions which display overdispersion, where the sample variance exceeds the sample mean. Rather than choosing a more suitable distribution, this is usually dealt with by adjusting the calculating the overdispersion and then adjusting the uncertainty accordingly <span class="citation">(<a href="references.html#ref-IAEA2011" role="doc-biblioref">International Atomic Energy Agency 2011</a>)</span>.</p>
 </div>
-<div id="poisson-distribution" class="section level2" number="6.2">
+<div id="poisson-distribution" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">6.2</span> Poisson distribution<a class="anchor" aria-label="anchor" href="#poisson-distribution"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> Poisson distribution<a class="anchor" aria-label="anchor" href="#poisson-distribution"><i class="fas fa-link"></i></a>
 </h2>
 <p>In a wide range of situations, the Poisson distribution is used to model count data. Rutherford and Geiger, for example, utilised it in their famous experiment in 1910, in which they counted the number of <span class="math inline">\(\alpha\)</span>-particles emitted from a polonium source over a period of time. In Biodosimetry, the Poisson distribution is commonly employed.</p>
 <p>If <span class="math inline">\(Y \sim \operatorname{Pois}(\lambda)\)</span>, a discrete random variable, <span class="math inline">\(Y\)</span>, follows a Poisson distribution with rate <span class="math inline">\(\lambda &gt; 0\)</span>, then its probability mass function is:
@@ -124,19 +125,19 @@
   \Pr(Y = k) =
   \frac{\lambda^{k} e^{-\lambda}}{k!}
   ,\quad k \in \{ 0, 1, 2, \dots \}
-\tag{6.3}
+\tag{7.3}
 \end{align}\]</span></p>
 <p>Both the expected value and the variance of <span class="math inline">\(Y\)</span> are equal to the rate <span class="math inline">\(\lambda\)</span>, :
 <span class="math display" id="eq:variance-poisson">\[\begin{align}
   \operatorname{E}(Y) = \lambda
   ,\quad
   \sigma^{2} = \operatorname{Var}(Y) = \lambda.
-  \tag{6.4}
+  \tag{7.4}
 \end{align}\]</span></p>
 <p>For real count data, the usual estimators of the rate parameter and the variance are,
 <span class="math display" id="eq:mean-estimator">\[\begin{align}
   \hat{\lambda} = \bar{y} = \frac{X}{N},
-  \tag{6.5}
+  \tag{7.5}
 \end{align}\]</span>
 <span class="math display" id="eq:variance-estimator">\[\begin{align}
 \begin{aligned}
@@ -144,33 +145,33 @@
   &amp;= \frac{1}{N - 1} \left[ \sum_{k=1}^{M} k^{2} C_{k} - N \bar{y}^{2} \right] \\
   &amp;= \frac{1}{N - 1} \left[ \sum_{k=1}^{M} k^{2} C_{k} - \frac{1}{N} \left( \sum_{k=1}^{M} k C_{k} \right)^{2} \right],
 \end{aligned}
-  \tag{6.6}
+  \tag{7.6}
 \end{align}\]</span>
 where <span class="math inline">\(C_{k}\)</span> is the count of cells where <span class="math inline">\(k\)</span> chromosomal aberrations were detected, <span class="math inline">\(M\)</span> is the maximum count realisation, <span class="math inline">\(N = \sum_{k=0}^{M} C_{k}\)</span> is the total number of cells analysed, and <span class="math inline">\(X = \sum_{k=1}^{M} k C_{k}\)</span> is the total number of chromosomal aberrations.</p>
 </div>
-<div id="testing-for-poisson" class="section level2" number="6.3">
+<div id="testing-for-poisson" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">6.3</span> Testing for Poisson<a class="anchor" aria-label="anchor" href="#testing-for-poisson"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> Testing for Poisson<a class="anchor" aria-label="anchor" href="#testing-for-poisson"><i class="fas fa-link"></i></a>
 </h2>
-<p>Because most curve fitting methods rely on Poisson statistics, the dicentric cell distribution should be checked for Poisson compliance for each dose used to build the calibration curve. This should also be checked for the sample tested for an exposure. Although recently in the field of biological dosimetry different tests have been proposed to check the Poisson distribution <span class="citation">(<a href="references.html#ref-Higueras2018" role="doc-biblioref">Higueras et al. 2018</a>; <a href="references.html#ref-Duran2002" role="doc-biblioref">Duran et al. 2002</a>)</span>, the most widely used test is the <span class="math inline">\(u\)</span>-test <span class="citation">(<a href="references.html#ref-Rao1956" role="doc-biblioref">Rao and Chakravarti 1956</a>; <a href="references.html#ref-Savage1970" role="doc-biblioref">Savage 1970</a>)</span>. The <span class="math inline">\(u\)</span>-test statistic <a href="stats-considerations.html#eq:u-value">(6.7)</a> is a normalised unit of the dispersion index (<span class="math inline">\(\hat{\sigma}^{2}/\bar{y}\)</span>), which for a Poisson distribution should be close to 1:
+<p>Because most curve fitting methods rely on Poisson statistics, the dicentric cell distribution should be checked for Poisson compliance for each dose used to build the calibration curve. This should also be checked for the sample tested for an exposure. Although recently in the field of biological dosimetry different tests have been proposed to check the Poisson distribution <span class="citation">(<a href="references.html#ref-Higueras2018" role="doc-biblioref">Higueras et al. 2018</a>; <a href="references.html#ref-Duran2002" role="doc-biblioref">Duran et al. 2002</a>)</span>, the most widely used test is the <span class="math inline">\(u\)</span>-test <span class="citation">(<a href="references.html#ref-Rao1956" role="doc-biblioref">Rao and Chakravarti 1956</a>; <a href="references.html#ref-Savage1970" role="doc-biblioref">Savage 1970</a>)</span>. The <span class="math inline">\(u\)</span>-test statistic <a href="stats-considerations.html#eq:u-value">(7.7)</a> is a normalised unit of the dispersion index (<span class="math inline">\(\hat{\sigma}^{2}/\bar{y}\)</span>), which for a Poisson distribution should be close to 1:
 <span class="math display" id="eq:u-value">\[\begin{align}
   u = (\hat{\sigma}^{2} / \bar{y} - 1) \sqrt{\frac{N - 1}{2 (1 - 1 / X)}}.
-  \tag{6.7}
+  \tag{7.7}
 \end{align}\]</span></p>
 <p>When <span class="math inline">\(-1.96 \le u \le 1.96\)</span> the assumption of equidispersion is not rejected with a two-tailed significance level of <span class="math inline">\(\alpha = 0.05\)</span>. A <span class="math inline">\(u\)</span>-value higher than 1.96 indicates overdispersion, whilst <span class="math inline">\(u\)</span>-values lower than -1.96 indicate underdispersion. Underdispersion is an extraordinary occurrence in Biodosimetry. However, <span class="citation">Pujol et al. (<a href="references.html#ref-Pujol2014" role="doc-biblioref">2014</a>)</span> claimed that, after high dose exposure (&gt; 5 Gy), the underdispersion detected in their datasets was caused probably for two reasons. The first, due to the number of chromosomes that the cells possess and the limitation of forming cells with a very high number of dicentrics. The second is that at high doses fewer cells with 0 or 1 dicentric than expected were observed, possibly indicating a lower efficiency in repairing genetic damage at high doses.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="manual-use-r.html"><span class="header-section-number">5</span> Usage (R API)</a></div>
-<div class="next"><a href="stats-fitting.html"><span class="header-section-number">7</span> Dose-effect curve fitting</a></div>
+<div class="prev"><a href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></div>
+<div class="next"><a href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#stats-considerations"><span class="header-section-number">6</span> Statistical considerations</a></li>
-<li><a class="nav-link" href="#dose-effect-curve-fitting"><span class="header-section-number">6.1</span> Dose-effect curve fitting</a></li>
-<li><a class="nav-link" href="#poisson-distribution"><span class="header-section-number">6.2</span> Poisson distribution</a></li>
-<li><a class="nav-link" href="#testing-for-poisson"><span class="header-section-number">6.3</span> Testing for Poisson</a></li>
+<li><a class="nav-link" href="#stats-considerations"><span class="header-section-number">7</span> Statistical considerations</a></li>
+<li><a class="nav-link" href="#dose-effect-curve-fitting"><span class="header-section-number">7.1</span> Dose-effect curve fitting</a></li>
+<li><a class="nav-link" href="#poisson-distribution"><span class="header-section-number">7.2</span> Poisson distribution</a></li>
+<li><a class="nav-link" href="#testing-for-poisson"><span class="header-section-number">7.3</span> Testing for Poisson</a></li>
 </ul>
 
       <div class="book-extra">

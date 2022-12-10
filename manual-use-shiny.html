@@ -78,10 +78,11 @@
 <li><a class="" href="manual-get.html"><span class="header-section-number">3</span> Getting Biodose Tools</a></li>
 <li><a class="active" href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></li>
 <li><a class="" href="manual-use-r.html"><span class="header-section-number">5</span> Usage (R API)</a></li>
+<li><a class="" href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></li>
 <li class="book-part">Statistical Methods</li>
-<li><a class="" href="stats-considerations.html"><span class="header-section-number">6</span> Statistical considerations</a></li>
-<li><a class="" href="stats-fitting.html"><span class="header-section-number">7</span> Dose-effect curve fitting</a></li>
-<li><a class="" href="stats-estimation.html"><span class="header-section-number">8</span> Uncertainty on dose estimation</a></li>
+<li><a class="" href="stats-considerations.html"><span class="header-section-number">7</span> Statistical considerations</a></li>
+<li><a class="" href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></li>
+<li><a class="" href="stats-estimation.html"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></li>
 <li><a class="" href="appendix-cite.html"><span class="header-section-number">B</span> How to cite Biodose Tools</a></li>
@@ -102,22 +103,224 @@
 <h2>
 <span class="header-section-number">4.1</span> Dicentrics dose-effect fitting<a class="anchor" aria-label="anchor" href="#dicentrics-dose-effect-fitting"><i class="fas fa-link"></i></a>
 </h2>
+<div id="input-count-data" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> Input count data<a class="anchor" aria-label="anchor" href="#input-count-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>The first step is to input the count data. On the {shiny} app, we can select to either load the count data from a file (supported formats are <code>.csv</code>, <code>.dat</code>, and <code>.txt</code>) or to input the data manually (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-01">4.1</a>). Once the table is generated and filled (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-03">4.2</a>), the “Calculate parameters” button will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{y}\)</span>), variance (<span class="math inline">\(\sigma^{2}\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), and <span class="math inline">\(u\)</span>-value.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-fit-01"></span>
+<img src="images/screenshot-dicentrics-fit-01.png" alt="'Data input options' and 'Fitting options' boxes in the dose-effect fitting module. For dicentrics, the 'Automatic' fitting model will select a quasi-Poisson model if there is overdispersion on the fitting, otherwise it will select a Poisson model assuming equidispersion." width="100%"><p class="caption">
+Figure 4.1: ‘Data input options’ and ‘Fitting options’ boxes in the dose-effect fitting module. For dicentrics, the ‘Automatic’ fitting model will select a quasi-Poisson model if there is overdispersion on the fitting, otherwise it will select a Poisson model assuming equidispersion.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-fit-03"></span>
+<img src="images/screenshot-dicentrics-fit-03.png" alt="`Data input' box in the dose-effect fitting module." width="75%"><p class="caption">
+Figure 4.2: `Data input’ box in the dose-effect fitting module.
+</p>
+</div>
+</div>
+<div id="irradiation-conditions" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> Irradiation conditions<a class="anchor" aria-label="anchor" href="#irradiation-conditions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Because irradiation conditions during calibration may influence future dose estimates <span class="citation">(<a href="references.html#ref-Trompier2017" role="doc-biblioref">Trompier et al. 2017</a>)</span>, and for a better traceability, the user can input the conditions under which the samples used to construct the curve were irradiated. This option is only available in the {shiny} app (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-02">4.3</a>), so that these can be saved into the generated reports.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-fit-02"></span>
+<img src="images/screenshot-dicentrics-fit-02.png" alt="'Irradiation conditions' box in the dose-effect fitting module." width="100%"><p class="caption">
+Figure 4.3: ‘Irradiation conditions’ box in the dose-effect fitting module.
+</p>
+</div>
+</div>
+<div id="perform-fitting" class="section level3" number="4.1.3">
+<h3>
+<span class="header-section-number">4.1.3</span> Perform fitting<a class="anchor" aria-label="anchor" href="#perform-fitting"><i class="fas fa-link"></i></a>
+</h3>
+<p>To perform the fitting the user needs to select the appropriate fitting options (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-01">4.1</a>), and then click on the “Calculate fitting” button on the “Data input” box (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-03">4.2</a>). The fitting results and summary statistics are shown in the “Results” tabbed box, and the dose-effect curve is displayed in the “Curve plot” box (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-04">4.4</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-fit-04"></span>
+<img src="images/screenshot-dicentrics-fit-04.png" alt="'Results' tabbed box, 'Curve plot' and 'Export results' boxes in the dose-effect fitting module." width="100%"><p class="caption">
+Figure 4.4: ‘Results’ tabbed box, ‘Curve plot’ and ‘Export results’ boxes in the dose-effect fitting module.
+</p>
+</div>
+<p>The “Export results” box (Figure <a href="manual-use-shiny.html#fig:sc-dic-fit-04">4.4</a>) shows two buttons: (a) “Save fitting data”, and (b) “Download report”. The “Save fitting data” will generate an <code>.rds</code> file that contains all information about the count data, irradiation conditions, and options selected when performing the fitting. This file can then be loaded in the dose estimation module to load the dose-effect curve coefficients. Similarly, the “Download report” will generate a <code>.pdf</code> or a <code>.docx</code> report containing all inputs and fitting results.</p>
+</div>
 </div>
 <div id="dicentrics-dose-estimation" class="section level2" number="4.2">
 <h2>
 <span class="header-section-number">4.2</span> Dicentrics dose estimation<a class="anchor" aria-label="anchor" href="#dicentrics-dose-estimation"><i class="fas fa-link"></i></a>
 </h2>
+<div id="load-pre-calculated-curve" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Load pre-calculated curve<a class="anchor" aria-label="anchor" href="#load-pre-calculated-curve"><i class="fas fa-link"></i></a>
+</h3>
+<p>The first step is to either load the pre-calculated curve in <code>.rds</code> format obtained in the dose-effect fitting module (Figure <a href="manual-use-shiny.html#fig:sc-dic-estimate-01">4.5</a>) or input the curve coefficients manually (Figure <a href="manual-use-shiny.html#fig:sc-dic-estimate-01b">4.6</a>) in case the user wants to use a pre-existing curve calculated outside of Biodose Tools. Clicking on “Preview data” will load the curve into the app and display it on the “Results” tabbed box.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-estimate-01"></span>
+<img src="images/screenshot-dicentrics-estimate-01.png" alt="'Curve fitting data options' box and 'Results' tabbed box in the dose estimation module when loading curve from an \texttt{.rds} file." width="100%"><p class="caption">
+Figure 4.5: ‘Curve fitting data options’ box and ‘Results’ tabbed box in the dose estimation module when loading curve from an file.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-estimate-01b"></span>
+<img src="images/screenshot-dicentrics-estimate-01b.png" alt="'Curve fitting data options' box and 'Results' tabbed box in the dose estimation module when inputting curve coefficients manually. Note that if no variance-covariance matrix is provided, only the variances calculated from the coefficients' standard errors will be used in \@ref(eq:merkle-dose-estimation-error), \@ref(eq:delta-method-dose-var), and \@ref(eq:dolphin-method-fraction-F-var)." width="100%"><p class="caption">
+Figure 4.6: ‘Curve fitting data options’ box and ‘Results’ tabbed box in the dose estimation module when inputting curve coefficients manually. Note that if no variance-covariance matrix is provided, only the variances calculated from the coefficients’ standard errors will be used in <a href="stats-estimation.html#eq:merkle-dose-estimation-error">(9.1)</a>, <a href="stats-estimation.html#eq:delta-method-dose-var">(9.4)</a>, and <a href="stats-estimation.html#eq:dolphin-method-fraction-F-var">(9.14)</a>.
+</p>
+</div>
+</div>
+<div id="input-case-data" class="section level3" number="4.2.2">
+<h3>
+<span class="header-section-number">4.2.2</span> Input case data<a class="anchor" aria-label="anchor" href="#input-case-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Next we can choose to either load the case data from a file (supported formats are <code>.csv</code>, <code>.dat</code>, and <code>.txt</code>) or to input the data manually (Figure <a href="manual-use-shiny.html#fig:sc-dic-estimate-02">4.7</a>). Once the table is generated and filled, the “Calculate parameters” button will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{y}\)</span>), standard error (<span class="math inline">\(\sigma\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), and <span class="math inline">\(u\)</span>-value.</p>
+<p>The {shiny} app also includes the option to include the information about the incident that is being evaluated. This information may be relevant to explain the results obtained and is included in the generated reports.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-estimate-02"></span>
+<img src="images/screenshot-dicentrics-estimate-02.png" alt="'Data input options' and 'Data input' boxes in the dose estimation module." width="100%"><p class="caption">
+Figure 4.7: ‘Data input options’ and ‘Data input’ boxes in the dose estimation module.
+</p>
+</div>
+</div>
+<div id="perform-dose-estimation" class="section level3" number="4.2.3">
+<h3>
+<span class="header-section-number">4.2.3</span> Perform dose estimation<a class="anchor" aria-label="anchor" href="#perform-dose-estimation"><i class="fas fa-link"></i></a>
+</h3>
+<p>The final step is to select the dose estimation options depending on the characteristics of the accident. In the “Dose estimation options” box (Figure <a href="manual-use-shiny.html#fig:sc-dic-estimate-03">4.8</a>) we can select type of exposure (acute, protracted, and highly protracted), type of assessment (whole-body, partial-body, or heterogeneous), and error methods for each type of assessment.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-estimate-03"></span>
+<img src="images/screenshot-dicentrics-estimate-03.png" alt="'Dose estimation options' box in the dose estimation module." width="60%"><p class="caption">
+Figure 4.8: ‘Dose estimation options’ box in the dose estimation module.
+</p>
+</div>
+<p>The dose estimation results are shown in Figure <a href="manual-use-shiny.html#fig:sc-dic-estimate-04">4.9</a>. Once the estimation is done the app also incorporates the possibility to describe the results obtained in the “Save results” box. All information, the calibration curve used, the data of the case, the different estimated doses, as well as the description of the case and the interpretation of the results can be saved generating a <code>.pdf</code> or a <code>.docx</code> report via the “Download report” button.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-dic-estimate-04"></span>
+<img src="images/screenshot-dicentrics-estimate-04.png" alt="'Results' tabbed box, 'Curve plot' and 'Save results' boxes in the dose estimation module." width="100%"><p class="caption">
+Figure 4.9: ‘Results’ tabbed box, ‘Curve plot’ and ‘Save results’ boxes in the dose estimation module.
+</p>
+</div>
+<p>It is important to note that {biodosetools} can be used not only to estimate the doses, but also to draft a report of the accident being evaluated with full traceability. This can be further adapted and customised to each laboratory’s internal needs thanks to the open-source nature of the project.</p>
+</div>
 </div>
 <div id="translocations-dose-effect-fitting" class="section level2" number="4.3">
 <h2>
 <span class="header-section-number">4.3</span> Translocations dose-effect fitting<a class="anchor" aria-label="anchor" href="#translocations-dose-effect-fitting"><i class="fas fa-link"></i></a>
 </h2>
+<div id="calculate-genomic-conversion-factor" class="section level3" number="4.3.1">
+<h3>
+<span class="header-section-number">4.3.1</span> Calculate genomic conversion factor<a class="anchor" aria-label="anchor" href="#calculate-genomic-conversion-factor"><i class="fas fa-link"></i></a>
+</h3>
+<p>To be able to fit the equivalent full genome dose-effect curve, we need to calculate the genomic conversion factor.</p>
+<p>To do this, in the “Stain color options” (Figure <a href="manual-use-shiny.html#fig:sc-trans-fit-01">4.10</a>) box we select the sex of the individual, and the list of chromosomes and stains used for the translocation assay. Clicking on “Generate table” will show a table in the “Chromosome data” box in which we select the chromosome-stain pairs. Clicking on the “Calculate fraction” will calculate the genomic conversion factor.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-fit-01"></span>
+<img src="images/screenshot-translocations-fit-01.png" alt="'Stains color options', 'Chromosome data' and 'Genomic conversion factor' boxes in the dose-effect fitting module." width="100%"><p class="caption">
+Figure 4.10: ‘Stains color options’, ‘Chromosome data’ and ‘Genomic conversion factor’ boxes in the dose-effect fitting module.
+</p>
+</div>
+</div>
+<div id="input-count-data-1" class="section level3" number="4.3.2">
+<h3>
+<span class="header-section-number">4.3.2</span> Input count data<a class="anchor" aria-label="anchor" href="#input-count-data-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Once the genomic conversion factor has been calculated, we can input the count data. On the {shiny} app, we can select to either load the count data from a file (supported formats are <code>.csv</code>, <code>.dat</code>, and <code>.txt</code>) or to input the data manually (Figure <a href="manual-use-shiny.html#fig:sc-trans-fit-02">4.11</a>). Once the table is generated and filled @ref(Figure (fig:sc-trans-fit-03)), the “Calculate parameters” button will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{y}\)</span>), variance (<span class="math inline">\(\sigma^{2}\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), and <span class="math inline">\(u\)</span>-value.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-fit-02"></span>
+<img src="images/screenshot-translocations-fit-02.png" alt="'Data input options' and 'Fitting options' boxes in the dose-effect fitting module." width="100%"><p class="caption">
+Figure 4.11: ‘Data input options’ and ‘Fitting options’ boxes in the dose-effect fitting module.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-fit-03"></span>
+<img src="images/screenshot-translocations-fit-03.png" alt="'Data input' box in the dose-effect fitting module." width="75%"><p class="caption">
+Figure 4.12: ‘Data input’ box in the dose-effect fitting module.
+</p>
+</div>
+</div>
+<div id="perform-fitting-1" class="section level3" number="4.3.3">
+<h3>
+<span class="header-section-number">4.3.3</span> Perform fitting<a class="anchor" aria-label="anchor" href="#perform-fitting-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>To perform the fitting the user needs to select the appropriate fitting options (Figure <a href="manual-use-shiny.html#fig:sc-trans-fit-02">4.11</a>) to click the “Calculate fitting” button on the “Data input” box (Figure <a href="manual-use-shiny.html#fig:sc-trans-fit-03">4.12</a>). The fit can be done either using the full genome translocations, or those measured by FISH. This will not impact any future dose estimation, as the results internally use the full genome translocations. The fitting results and summary statistics are shown in the “Results” tabbed box, and the dose-effect curve is displayed in the “Curve plot” box (Figure <a href="manual-use-shiny.html#fig:sc-trans-fit-04">4.13</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-fit-04"></span>
+<img src="images/screenshot-translocations-fit-04.png" alt="'Results' tabbed box, 'Curve plot' and 'Export results' boxes in the dose-effect fitting module." width="100%"><p class="caption">
+Figure 4.13: ‘Results’ tabbed box, ‘Curve plot’ and ‘Export results’ boxes in the dose-effect fitting module.
+</p>
+</div>
+<p>The “Export results” box (Figure <a href="manual-use-shiny.html#fig:sc-trans-fit-04">4.13</a>) shows two buttons: (a) “Save fitting data”, and (b) “Download report”. The “Save fitting data” will generate an <code>.rds</code> file that contains all information about the count data, irradiation conditions, and options selected when performing the fitting. This file can be then loaded in the dose estimation module to load the dose-effect curve coefficients. Similarly, the “Download report” will generate a <code>.pdf</code> or a <code>.docx</code> report containing all inputs and fitting results.</p>
+</div>
 </div>
 <div id="translocations-dose-estimation" class="section level2" number="4.4">
 <h2>
 <span class="header-section-number">4.4</span> Translocations dose estimation<a class="anchor" aria-label="anchor" href="#translocations-dose-estimation"><i class="fas fa-link"></i></a>
 </h2>
+<div id="load-pre-calculated-curve-1" class="section level3" number="4.4.1">
+<h3>
+<span class="header-section-number">4.4.1</span> Load pre-calculated curve<a class="anchor" aria-label="anchor" href="#load-pre-calculated-curve-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>The first step is to either load the pre-calculated curve in <code>.rds</code> format obtained in the dose-effect fitting module (Figure <a href="manual-use-shiny.html#fig:sc-trans-estimate-01">4.14</a>) or input the curve coefficients manually (Figure <a href="manual-use-shiny.html#fig:sc-trans-estimate-01b">4.15</a>) in case the user wants to use a pre-existing curve calculated outside of Biodose Tools. Clicking on “Preview data” will load the curve into the app and display it on the “Results” tabbed box.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-estimate-01"></span>
+<img src="images/screenshot-translocations-estimate-01.png" alt="'Curve fitting data options' box and 'Results' tabbed box in the dose estimation module when loading curve from an `.rds` file." width="100%"><p class="caption">
+Figure 4.14: ‘Curve fitting data options’ box and ‘Results’ tabbed box in the dose estimation module when loading curve from an <code>.rds</code> file.
+</p>
+</div>
+<div class="figure">
+<span style="display:block;" id="fig:sc-trans-estimate-01b"></span>
+<img src="images/screenshot-translocations-estimate-01b.png" alt="'Curve fitting data options' box and 'Results' tabbed box in the dose estimation module when inputting curve coefficients manually. Note that if no variance-covariance matrix is provided, only the variances calculated from the coefficients' standard errors will be used in \@ref(eq:merkle-dose-estimation-error), \@ref(eq:delta-method-dose-var), and \@ref(eq:dolphin-method-fraction-F-var)." width="100%"><p class="caption">
+Figure 4.15: ‘Curve fitting data options’ box and ‘Results’ tabbed box in the dose estimation module when inputting curve coefficients manually. Note that if no variance-covariance matrix is provided, only the variances calculated from the coefficients’ standard errors will be used in <a href="stats-estimation.html#eq:merkle-dose-estimation-error">(9.1)</a>, <a href="stats-estimation.html#eq:delta-method-dose-var">(9.4)</a>, and <a href="stats-estimation.html#eq:dolphin-method-fraction-F-var">(9.14)</a>.
+</p>
+</div>
+</div>
+<div id="calculate-genomic-conversion-factor-1" class="section level3" number="4.4.2">
+<h3>
+<span class="header-section-number">4.4.2</span> Calculate genomic conversion factor<a class="anchor" aria-label="anchor" href="#calculate-genomic-conversion-factor-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>To be able to fit the equivalent full genome case data, we need to calculate the genomic conversion factor.</p>
+<p>To do this, in the “Stain color options” box (Figure <a href="manual-use-shiny.html#fig:sc-trans-estimate-02">4.16</a>) we select the sex of the individual, and the list of chromosomes and stains used for the translocation assay. Clicking on “Generate table” will show a table in the “Chromosome data” box in which we select the chromosome-stain pairs. Clicking on the “Calculate fraction” will calculate the genomic conversion factor.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-estimate-02"></span>
+<img src="images/screenshot-translocations-estimate-02.png" alt="'Stains color options', 'Chromosome data' and 'Genomic conversion factor' boxes in the dose estimation module." width="100%"><p class="caption">
+Figure 4.16: ‘Stains color options’, ‘Chromosome data’ and ‘Genomic conversion factor’ boxes in the dose estimation module.
+</p>
+</div>
+</div>
+<div id="input-case-data-1" class="section level3" number="4.4.3">
+<h3>
+<span class="header-section-number">4.4.3</span> Input case data<a class="anchor" aria-label="anchor" href="#input-case-data-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Next we can choose to either load the case data from a file (supported formats are <code>.csv</code>, <code>.dat</code>, and <code>.txt</code>) or to input the data manually (Figure <a href="manual-use-shiny.html#fig:sc-trans-estimate-03">4.17</a>). If needed, the user can select to use confounders (either using Sigurdson’s method, or by inputting the translocation frequency per cell). Once the table is generated and filled, the “Calculate parameters” button will calculate the total number of cells (<span class="math inline">\(N\)</span>), total number of aberrations (<span class="math inline">\(X\)</span>), as well as mean (<span class="math inline">\(\bar{F}_{p}\)</span>), standard error (<span class="math inline">\(\sigma_{p}\)</span>), dispersion index (<span class="math inline">\(\sigma^{2}/\bar{y}\)</span>), <span class="math inline">\(u\)</span>-value, expected translocation rate (<span class="math inline">\(X_{c}\)</span>), full genome mean (<span class="math inline">\(\bar{F}_{g}\)</span>), and full genome error (<span class="math inline">\(\sigma_{g}\)</span>).</p>
+<p>The {shiny} app also includes the option to include the information about the incident that is being evaluated. This information may be relevant to explain the results obtained and is included in the generated reports.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-estimate-03"></span>
+<img src="images/screenshot-translocations-estimate-03.png" alt="'Data input options' and 'Data input' boxes in the dose estimation module." width="100%"><p class="caption">
+Figure 4.17: ‘Data input options’ and ‘Data input’ boxes in the dose estimation module.
+</p>
+</div>
+</div>
+<div id="perform-dose-estimation-1" class="section level3" number="4.4.4">
+<h3>
+<span class="header-section-number">4.4.4</span> Perform dose estimation<a class="anchor" aria-label="anchor" href="#perform-dose-estimation-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>The final step is to select the dose estimation options depending on the characteristics of the accident. In the “Dose estimation options” box (Figure <a href="manual-use-shiny.html#fig:sc-trans-estimate-04">4.18</a>) we can select type of exposure (acute or protracted), type of assessment (whole-body or partial-body), and error methods for each type of assessment.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-estimate-04"></span>
+<img src="images/screenshot-translocations-estimate-04.png" alt="'Dose estimation options' box in the dose estimation module." width="60%"><p class="caption">
+Figure 4.18: ‘Dose estimation options’ box in the dose estimation module.
+</p>
+</div>
+<p>The dose estimation results are shown in Figure <a href="manual-use-shiny.html#fig:sc-trans-estimate-05">4.19</a>. Once the estimation is done the app also incorporates the possibility to describe the results obtained in the “Save results” box. All information, the calibration curve used, the data of the case, the different estimated doses, as well as the description of the case and the interpretation of the results can be saved generating a .pdf or a .docx report via the “Download report” button.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sc-trans-estimate-05"></span>
+<img src="images/screenshot-translocations-estimate-05.png" alt="'Results' tabbed box, 'Curve plot' and 'Save results' boxes in the dose estimation module." width="100%"><p class="caption">
+Figure 4.19: ‘Results’ tabbed box, ‘Curve plot’ and ‘Save results’ boxes in the dose estimation module.
+</p>
+</div>
+<p>It is important to note that {biodosetools} can be used not only to estimate the doses, but also to draft a report of the accident being evaluated with full traceability. This can be further adapted and customised to each laboratory’s internal needs thanks to the open-source nature of the project.</p>
 
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -127,10 +330,35 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#manual-use-shiny"><span class="header-section-number">4</span> Usage (web UI)</a></li>
-<li><a class="nav-link" href="#dicentrics-dose-effect-fitting"><span class="header-section-number">4.1</span> Dicentrics dose-effect fitting</a></li>
-<li><a class="nav-link" href="#dicentrics-dose-estimation"><span class="header-section-number">4.2</span> Dicentrics dose estimation</a></li>
-<li><a class="nav-link" href="#translocations-dose-effect-fitting"><span class="header-section-number">4.3</span> Translocations dose-effect fitting</a></li>
-<li><a class="nav-link" href="#translocations-dose-estimation"><span class="header-section-number">4.4</span> Translocations dose estimation</a></li>
+<li>
+<a class="nav-link" href="#dicentrics-dose-effect-fitting"><span class="header-section-number">4.1</span> Dicentrics dose-effect fitting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#input-count-data"><span class="header-section-number">4.1.1</span> Input count data</a></li>
+<li><a class="nav-link" href="#irradiation-conditions"><span class="header-section-number">4.1.2</span> Irradiation conditions</a></li>
+<li><a class="nav-link" href="#perform-fitting"><span class="header-section-number">4.1.3</span> Perform fitting</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#dicentrics-dose-estimation"><span class="header-section-number">4.2</span> Dicentrics dose estimation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#load-pre-calculated-curve"><span class="header-section-number">4.2.1</span> Load pre-calculated curve</a></li>
+<li><a class="nav-link" href="#input-case-data"><span class="header-section-number">4.2.2</span> Input case data</a></li>
+<li><a class="nav-link" href="#perform-dose-estimation"><span class="header-section-number">4.2.3</span> Perform dose estimation</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#translocations-dose-effect-fitting"><span class="header-section-number">4.3</span> Translocations dose-effect fitting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calculate-genomic-conversion-factor"><span class="header-section-number">4.3.1</span> Calculate genomic conversion factor</a></li>
+<li><a class="nav-link" href="#input-count-data-1"><span class="header-section-number">4.3.2</span> Input count data</a></li>
+<li><a class="nav-link" href="#perform-fitting-1"><span class="header-section-number">4.3.3</span> Perform fitting</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#translocations-dose-estimation"><span class="header-section-number">4.4</span> Translocations dose estimation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#load-pre-calculated-curve-1"><span class="header-section-number">4.4.1</span> Load pre-calculated curve</a></li>
+<li><a class="nav-link" href="#calculate-genomic-conversion-factor-1"><span class="header-section-number">4.4.2</span> Calculate genomic conversion factor</a></li>
+<li><a class="nav-link" href="#input-case-data-1"><span class="header-section-number">4.4.3</span> Input case data</a></li>
+<li><a class="nav-link" href="#perform-dose-estimation-1"><span class="header-section-number">4.4.4</span> Perform dose estimation</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">

@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 8 Uncertainty on dose estimation | Biodose Tools</title>
+<title>Chapter 9 Uncertainty on dose estimation | Biodose Tools</title>
 <meta name="author" content="Alfredo Hernández, Joan Francesc Barquinero">
 <meta name="description" content="While it is simple to determine a dose from a measured yield of dicentrics, the associated uncertainty can be calculated using a variety of methods. Calculating 95% confidence limits is a common...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
-<meta property="og:title" content="Chapter 8 Uncertainty on dose estimation | Biodose Tools">
+<meta property="og:title" content="Chapter 9 Uncertainty on dose estimation | Biodose Tools">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/images/cover.png">
 <meta property="og:description" content="While it is simple to determine a dose from a measured yield of dicentrics, the associated uncertainty can be calculated using a variety of methods. Calculating 95% confidence limits is a common...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 8 Uncertainty on dose estimation | Biodose Tools">
+<meta name="twitter:title" content="Chapter 9 Uncertainty on dose estimation | Biodose Tools">
 <meta name="twitter:description" content="While it is simple to determine a dose from a measured yield of dicentrics, the associated uncertainty can be calculated using a variety of methods. Calculating 95% confidence limits is a common...">
 <meta name="twitter:image" content="/images/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -78,10 +78,11 @@
 <li><a class="" href="manual-get.html"><span class="header-section-number">3</span> Getting Biodose Tools</a></li>
 <li><a class="" href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></li>
 <li><a class="" href="manual-use-r.html"><span class="header-section-number">5</span> Usage (R API)</a></li>
+<li><a class="" href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></li>
 <li class="book-part">Statistical Methods</li>
-<li><a class="" href="stats-considerations.html"><span class="header-section-number">6</span> Statistical considerations</a></li>
-<li><a class="" href="stats-fitting.html"><span class="header-section-number">7</span> Dose-effect curve fitting</a></li>
-<li><a class="active" href="stats-estimation.html"><span class="header-section-number">8</span> Uncertainty on dose estimation</a></li>
+<li><a class="" href="stats-considerations.html"><span class="header-section-number">7</span> Statistical considerations</a></li>
+<li><a class="" href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></li>
+<li><a class="active" href="stats-estimation.html"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></li>
 <li><a class="" href="appendix-cite.html"><span class="header-section-number">B</span> How to cite Biodose Tools</a></li>
@@ -93,9 +94,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stats-estimation" class="section level1" number="8">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stats-estimation" class="section level1" number="9">
 <h1>
-<span class="header-section-number">8</span> Uncertainty on dose estimation<a class="anchor" aria-label="anchor" href="#stats-estimation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> Uncertainty on dose estimation<a class="anchor" aria-label="anchor" href="#stats-estimation"><i class="fas fa-link"></i></a>
 </h1>
 <p>While it is simple to determine a dose from a measured yield of dicentrics, the associated uncertainty can be calculated using a variety of methods. Calculating 95% confidence limits is a common procedure for expressing uncertainty in terms of a confidence interval. A frequentist 95% confidence interval means that with a large number of repeated samples, 95% of such calculated confidence intervals would include the true value of the dose. The problem in estimating confidence limits for dicentrics and translocations after low-LET exposure comes from two sources of uncertainty: the uncertainty from the aberration yield of the person to be examined, and uncertainties associated with the calibration curve. This issue has been discussed in the literature <span class="citation">(<a href="references.html#ref-Merkle1983" role="doc-biblioref">Merkle 1983</a>; <a href="references.html#ref-Savage2000" role="doc-biblioref">Savage et al. 2000</a>; <a href="references.html#ref-Szuinska2007" role="doc-biblioref">Szłuińska, Edwards, and Lloyd 2007</a>)</span>.</p>
 <p>Depending on the type of exposure, methods for whole-body assessment, partial-body assessment, and heterogeneous exposures with two different doses were implemented in the {biodosetools} package, using the following methods. The {biodosetools} package implements the following assessment methods, which are indicated in <span class="citation">International Atomic Energy Agency (<a href="references.html#ref-IAEA2001" role="doc-biblioref">2001</a>)</span> and <span class="citation">International Atomic Energy Agency (<a href="references.html#ref-IAEA2011" role="doc-biblioref">2011</a>)</span>:</p>
@@ -105,12 +106,12 @@
 <li>Partial-body assessment: Dolphin’s method <span class="citation">(<a href="references.html#ref-Dolphin1969" role="doc-biblioref">Dolphin 1969</a>)</span>.</li>
 </ul>
 <p>In addition {biodosetools} also includes a method to assess heterogeneous exposures using a mixed Poisson model <span class="citation">(<a href="references.html#ref-Pujol2016" role="doc-biblioref">Pujol et al. 2016</a>)</span>. That was used in a recent RENEB/EURADOS field exercise <span class="citation">(<a href="references.html#ref-Endesfelder2021" role="doc-biblioref">Endesfelder et al. 2021</a>)</span>.</p>
-<div id="whole-body-assessment-merkles-method" class="section level2" number="8.1">
+<div id="whole-body-assessment-merkles-method" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">8.1</span> Whole-body assessment: Merkle’s method<a class="anchor" aria-label="anchor" href="#whole-body-assessment-merkles-method"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Whole-body assessment: Merkle’s method<a class="anchor" aria-label="anchor" href="#whole-body-assessment-merkles-method"><i class="fas fa-link"></i></a>
 </h2>
 <p>The simplest solution for whole-body assessment was proposed by <span class="citation">Merkle (<a href="references.html#ref-Merkle1983" role="doc-biblioref">1983</a>)</span>, it allows both the Poisson error on the yield and the errors on the calibration curve to be taken into account.</p>
-<p>Merkle’s approach, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-merkle-curve">8.1</a>, involves the following steps:</p>
+<p>Merkle’s approach, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-merkle-curve">9.1</a>, involves the following steps:</p>
 <ol style="list-style-type: decimal">
 <li>Assuming the Poisson (or quasi-Poisson) distribution, calculate the yields corresponding to lower and upper confidence limits on the observed yield <span class="math inline">\(\lambda\)</span> (<span class="math inline">\(\lambda_{L}\)</span> and <span class="math inline">\(\lambda_{U}\)</span>).</li>
 <li>Calculate the confidence limits of the dose-effect calibration curve according to:
@@ -129,13 +130,13 @@
 \end{aligned}
   },
 \end{aligned}
-  \tag{8.1}
+  \tag{9.1}
 \end{align}\]</span>
 where <span class="math inline">\(R^{2}\)</span> is the confidence factor, defined as an upper-confidence limit of a chi-square distribution, <span class="math inline">\(\chi^{2}(\nu)\)</span>, with 2 or 3 degrees of freedom (<span class="math inline">\(\nu\)</span>).</li>
 <li>Calculate the dose at which <span class="math inline">\(\lambda\)</span> crosses the dose-effect calibration curve. This is the estimated dose (<span class="math inline">\(D\)</span>). For this we can simply take the inverse of the LQ dose-effect calibration curve, as follows:
 <span class="math display" id="eq:merkle-dose-estimation">\[\begin{align}
   D = \frac{-\alpha + \sqrt{\alpha^{2} + 4 \beta G(x) (\lambda - C)}}{2 \beta G(x)}.
-  \tag{8.2}
+  \tag{9.2}
 \end{align}\]</span>
 </li>
 <li>Calculate the dose at which <span class="math inline">\(\lambda_{L}\)</span> crosses the upper curve. This is the lower confidence limit of the dose (<span class="math inline">\(D_{L}\)</span>).</li>
@@ -144,14 +145,14 @@ where <span class="math inline">\(R^{2}\)</span> is the confidence factor, defin
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:th-dose-merkle-curve"></span>
 <img src="biodose-tools_files/figure-html/th-dose-merkle-curve-1.png" alt="A dose-effect calibration curve with its 83\% confidence limits, used to estimate dose uncertainties using Merkle's method." width="100%"><p class="caption">
-Figure 8.1: A dose-effect calibration curve with its 83% confidence limits, used to estimate dose uncertainties using Merkle’s method.
+Figure 9.1: A dose-effect calibration curve with its 83% confidence limits, used to estimate dose uncertainties using Merkle’s method.
 </p>
 </div>
 <p>As suggested by some authors, in order to reduce a possible overestimation of the uncertainty <span class="citation">(<a href="references.html#ref-Schenker2001" role="doc-biblioref">Schenker and Gentleman 2001</a>; <a href="references.html#ref-Austin2002" role="doc-biblioref">Austin and Hux 2002</a>)</span>, it is recommended to use an 83% confidence limit of the regression curve when overlapped with the Poisson 83% confidence limits, as this tends to yield a global 95% confidence interval for the dose estimation.</p>
 </div>
-<div id="whole-body-assessment-delta-method" class="section level2" number="8.2">
+<div id="whole-body-assessment-delta-method" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">8.2</span> Whole-body assessment: delta method<a class="anchor" aria-label="anchor" href="#whole-body-assessment-delta-method"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Whole-body assessment: delta method<a class="anchor" aria-label="anchor" href="#whole-body-assessment-delta-method"><i class="fas fa-link"></i></a>
 </h2>
 <p>Another approach for whole-body assessment is using the delta method <span class="citation">(<a href="references.html#ref-IAEA2001" role="doc-biblioref">International Atomic Energy Agency 2001</a>)</span>. It also allows both the Poisson error on the yield and the errors on the calibration curve to be taken into account.</p>
 <p>The delta method expands a function of a set of random variables <span class="math inline">\(f(X_{1}, X_{2}, \dots, X_{n})\)</span> about its mean, usually with a first-order Taylor expansion, and then takes the variance. Using the delta method, the variance <span class="math inline">\(\sigma_{f}^{2}\)</span> of <span class="math inline">\(f(X_{1}, X_{2}, \dots, X_{n})\)</span> can be expressed as follows <span class="citation">(<a href="references.html#ref-Klein1953" role="doc-biblioref">Klein 1953</a>)</span>:
@@ -159,11 +160,11 @@ Figure 8.1: A dose-effect calibration curve with its 83% confidence limits, used
   \sigma_{f}^{2} =
   \sum_{i}^{n} \left(\frac{\partial f}{\partial X_{i}} \right)^{2} \sigma_{X_{i}}^{2} +
   \sum_{i}^{n} \sum_{j \neq i}^{n} \frac{\partial f}{\partial X_{i}} \frac{\partial f}{\partial X_{j}} \sigma_{X_{i}, X_{j}}.
-  \tag{8.3}
+  \tag{9.3}
 \end{align}\]</span></p>
-<p>The approach using the delta method, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-delta-curve">8.2</a>, involves the following steps:</p>
+<p>The approach using the delta method, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-delta-curve">9.2</a>, involves the following steps:</p>
 <ol style="list-style-type: decimal">
-<li>Calculate the dose at which <span class="math inline">\(\lambda\)</span> crosses the dose-effect calibration curve. This is the estimated dose (<span class="math inline">\(D\)</span>). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in <a href="stats-estimation.html#eq:merkle-dose-estimation">(8.2)</a>.</li>
+<li>Calculate the dose at which <span class="math inline">\(\lambda\)</span> crosses the dose-effect calibration curve. This is the estimated dose (<span class="math inline">\(D\)</span>). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in <a href="stats-estimation.html#eq:merkle-dose-estimation">(9.2)</a>.</li>
 <li>By differentiation of the above equation, express the variance on the estimated dose (<span class="math inline">\(\sigma_{D}^{2}\)</span>) in terms of the variances and co-variances of <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, and <span class="math inline">\(\lambda\)</span>. The formal expression is as follows:
 <span class="math display" id="eq:delta-method-dose-var">\[\begin{align}
 \begin{aligned}
@@ -176,36 +177,36 @@ Figure 8.1: A dose-effect calibration curve with its 83% confidence limits, used
   2 \frac{\partial D}{\partial C} \frac{\partial D}{\partial \beta} \sigma_{C, \beta} +
   2 \frac{\partial D}{\partial \alpha} \frac{\partial D}{\partial \beta} \sigma_{\alpha, \beta}.
 \end{aligned}
-  \tag{8.4}
+  \tag{9.4}
 \end{align}\]</span>
-Note that this derivation assumes that the covariances <span class="math inline">\(\sigma_{\lambda, C}\)</span>, <span class="math inline">\(\sigma_{\lambda, \alpha}\)</span>, and <span class="math inline">\(\sigma_{\lambda, \beta}\)</span> are all zero. This is appropriate because, in general, the measurements used to calculate the calibration curve and those used to determine the patient’s yield are independent. The variance and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variance on <span class="math inline">\(\lambda\)</span> is derived according to <a href="stats-considerations.html#eq:variance-estimator">(6.6)</a>.</li>
+Note that this derivation assumes that the covariances <span class="math inline">\(\sigma_{\lambda, C}\)</span>, <span class="math inline">\(\sigma_{\lambda, \alpha}\)</span>, and <span class="math inline">\(\sigma_{\lambda, \beta}\)</span> are all zero. This is appropriate because, in general, the measurements used to calculate the calibration curve and those used to determine the patient’s yield are independent. The variance and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variance on <span class="math inline">\(\lambda\)</span> is derived according to <a href="stats-considerations.html#eq:variance-estimator">(7.6)</a>.</li>
 <li>The lower and upper 95% confidence limits of the dose estimation (<span class="math inline">\(D_{L}\)</span> and <span class="math inline">\(D_{U}\)</span>) and the yield (<span class="math inline">\(\lambda_{L}\)</span> and <span class="math inline">\(\lambda_{U}\)</span>) are then calculated as follows:
 <span class="math display" id="eq:conf-int-yield">\[\begin{align}
   D_{L, U} = D \pm 1.96 \sigma_{D},
-  \tag{8.5}
+  \tag{9.5}
   \\
   \lambda_{L, U} = \lambda \pm 1.96 \sigma_{\lambda}.
-  \tag{8.6}
+  \tag{9.6}
 \end{align}\]</span>
 </li>
 </ol>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:th-dose-delta-curve"></span>
 <img src="biodose-tools_files/figure-html/th-dose-delta-curve-1.png" alt="A dose-effect calibration curve used to estimate dose uncertainties using delta method." width="100%"><p class="caption">
-Figure 8.2: A dose-effect calibration curve used to estimate dose uncertainties using delta method.
+Figure 9.2: A dose-effect calibration curve used to estimate dose uncertainties using delta method.
 </p>
 </div>
 </div>
-<div id="partial-body-assessment-dolphins-method" class="section level2" number="8.3">
+<div id="partial-body-assessment-dolphins-method" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">8.3</span> Partial-body assessment: Dolphin’s method<a class="anchor" aria-label="anchor" href="#partial-body-assessment-dolphins-method"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> Partial-body assessment: Dolphin’s method<a class="anchor" aria-label="anchor" href="#partial-body-assessment-dolphins-method"><i class="fas fa-link"></i></a>
 </h2>
 <p>This method was first proposed by <span class="citation">Dolphin (<a href="references.html#ref-Dolphin1969" role="doc-biblioref">1969</a>)</span> and is based on a contaminated Poisson
 method. The chromosomal aberrations distribution of a partial-body irradiation is expected to be overdispersed (<span class="math inline">\(u &gt; 1.96\)</span>). The observed distribution is considered to be the mixture of (a) a Poisson distribution which represents the irradiated fraction of the body and (b) the remaining unexposed fraction. This method assumes that the background level in the unirradiated part is zero. Undamaged cells will comprise two subpopulations: those from the unexposed fraction and irradiated cells which received no damage.</p>
 <p>The distribution of the damage in the irradiated cells can be described by a zero-truncated Poisson distribution with probability function,
 <span class="math display" id="eq:dolphin-method-ztp">\[\begin{align}
   \Pr(Y = k \mid Y &gt; 0) = \frac{P(Y = k)}{1 - P(Y = 0)} = \frac{\lambda^{k}}{(e^{\lambda} - 1)k!}
-\tag{8.7}
+\tag{9.7}
 \end{align}\]</span></p>
 <p>where <span class="math inline">\(k \in \{ 1, 2, \dots \}\)</span> and <span class="math inline">\(Y \sim \operatorname{Pois}(\lambda)\)</span>. The distribution of the total number of dicentrics in all the cells can be understood as a zero-inflated Poisson distribution <span class="math inline">\(Z \sim \operatorname{ZIP}(\lambda, \pi)\)</span> with probability function,
 <span class="math display" id="eq:dolphin-method-zip">\[\begin{align}
@@ -214,21 +215,21 @@ method. The chromosomal aberrations distribution of a partial-body irradiation i
     \pi + (1 - \pi) e^{-\lambda} ,\quad k = 0 \\
     (1 - \pi) \dfrac{\lambda^{k} e^{-\lambda}}{k!} ,\quad k \in \{ 1, 2, \dots \}
   \end{cases}
-  \tag{8.8}
+  \tag{9.8}
 \end{align}\]</span>
 where <span class="math inline">\(\pi\)</span> is the proportion of extra zeros.</p>
-<p>The approach using Dolphin’s method, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-partial-curve">8.3</a>, involves the following steps:</p>
+<p>The approach using Dolphin’s method, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-partial-curve">9.3</a>, involves the following steps:</p>
 <ol style="list-style-type: decimal">
 <li>Calculate the yield of dicentrics (<span class="math inline">\(\lambda\)</span>) in the irradiated fraction by solving the equation,
 <span class="math display" id="eq:dolphin-method-mean">\[\begin{align}
   \frac{X}{N - C_{0}} = \frac{\lambda}{1 - e^{-\lambda}},
-  \tag{8.9}
+  \tag{9.9}
 \end{align}\]</span>
-where <span class="math inline">\(X\)</span> is the total number of dicentrics observed, <span class="math inline">\(N\)</span> is the total number of cells, and <span class="math inline">\(C_{0}\)</span> is the number of cells free of dicentrics. The solution <span class="math inline">\(\lambda\)</span> of this equation is the maximum likelihood estimator (MLE) of the mean yield of dicentrics <span class="math inline">\(\lambda\)</span> of the zero-truncated Poisson distribution <a href="stats-estimation.html#eq:dolphin-method-ztp">(8.7)</a>.</li>
+where <span class="math inline">\(X\)</span> is the total number of dicentrics observed, <span class="math inline">\(N\)</span> is the total number of cells, and <span class="math inline">\(C_{0}\)</span> is the number of cells free of dicentrics. The solution <span class="math inline">\(\lambda\)</span> of this equation is the maximum likelihood estimator (MLE) of the mean yield of dicentrics <span class="math inline">\(\lambda\)</span> of the zero-truncated Poisson distribution <a href="stats-estimation.html#eq:dolphin-method-ztp">(9.7)</a>.</li>
 <li>Calculate the fraction of cells scored which were irradiated (<span class="math inline">\(f = 1 - \pi\)</span>) as follows:
 <span class="math display" id="eq:dolphin-method-fraction-f">\[\begin{align}
   f = \frac{X}{N \lambda}.
-  \tag{8.10}
+  \tag{9.10}
 \end{align}\]</span>
 </li>
 <li>Calculate the variance on the yield (<span class="math inline">\(\sigma_{\lambda}^{2}\)</span>), the fraction of cells scored which were irradiated (<span class="math inline">\(\sigma_{f}^{2}\)</span>), and their covariance (<span class="math inline">\(\sigma_{f, \lambda}\)</span>) by inverting the observed Fisher information matrix (<span class="math inline">\(I\)</span>) of the zero-inflated model:
@@ -238,7 +239,7 @@ where <span class="math inline">\(X\)</span> is the total number of dicentrics o
 \sigma_{f, \lambda} &amp; \sigma^{2}_{f}
   \end{pmatrix}
   = I^{-1}(\lambda, \pi = 1 - f),
-  \tag{8.11}
+  \tag{9.11}
 \end{align}\]</span>
 where
 <span class="math display" id="eq:dolphin-method-fisher-info-mat">\[\begin{align}
@@ -249,17 +250,17 @@ where
 \frac{N}{f + (1 - f) e^{\lambda}} &amp;
 \frac{N (e^{\lambda} - 1)}{f (f + (1 - f) e^{\lambda})}
   \end{pmatrix}.
-  \tag{8.12}
+  \tag{9.12}
 \end{align}\]</span>
 </li>
-<li>Calculate the dose at which <span class="math inline">\(\lambda\)</span> crosses the dose-effect calibration curve. This is the estimated dose (<span class="math inline">\(D\)</span>). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in <a href="stats-estimation.html#eq:merkle-dose-estimation">(8.2)</a>.</li>
-<li>Calculate the variance on the estimated dose (<span class="math inline">\(\sigma_{D}^{2}\)</span>) using the delta method, as shown in <a href="stats-estimation.html#eq:delta-method-dose-var">(8.4)</a>. The variance and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variance on <span class="math inline">\(\lambda\)</span> is derived from the inverse of the observed Fisher information matrix <a href="stats-estimation.html#eq:dolphin-method-var-fisher-info-mat">(8.11)</a>.</li>
+<li>Calculate the dose at which <span class="math inline">\(\lambda\)</span> crosses the dose-effect calibration curve. This is the estimated dose (<span class="math inline">\(D\)</span>). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in <a href="stats-estimation.html#eq:merkle-dose-estimation">(9.2)</a>.</li>
+<li>Calculate the variance on the estimated dose (<span class="math inline">\(\sigma_{D}^{2}\)</span>) using the delta method, as shown in <a href="stats-estimation.html#eq:delta-method-dose-var">(9.4)</a>. The variance and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variance on <span class="math inline">\(\lambda\)</span> is derived from the inverse of the observed Fisher information matrix <a href="stats-estimation.html#eq:dolphin-method-var-fisher-info-mat">(9.11)</a>.</li>
 <li>Calculate the initial fraction of irradiated cells (<span class="math inline">\(F\)</span>):
 <span class="math display" id="eq:dolphin-method-fraction-F">\[\begin{align}
   F = \frac{f}{f + (1 - f) e^{-D / D_{0}}},
-  \tag{8.13}
+  \tag{9.13}
 \end{align}\]</span>
-where <span class="math inline">\(f\)</span> is the fraction of cells scored which were irradiated, <span class="math inline">\(D\)</span> is the expression of the estimated dose <a href="stats-estimation.html#eq:merkle-dose-estimation">(8.2)</a>, and <span class="math inline">\(D_{0}\)</span> is the survival coefficient with experimental values between 2.7 and 3.5 <span class="citation">(<a href="references.html#ref-Lloyd1973" role="doc-biblioref">D. C. Lloyd, Purrott, and Dolphin 1973</a>; <a href="references.html#ref-Barquinero1997" role="doc-biblioref">J. F. Barquinero et al. 1997</a>)</span>.</li>
+where <span class="math inline">\(f\)</span> is the fraction of cells scored which were irradiated, <span class="math inline">\(D\)</span> is the expression of the estimated dose <a href="stats-estimation.html#eq:merkle-dose-estimation">(9.2)</a>, and <span class="math inline">\(D_{0}\)</span> is the survival coefficient with experimental values between 2.7 and 3.5 <span class="citation">(<a href="references.html#ref-Lloyd1973" role="doc-biblioref">D. C. Lloyd, Purrott, and Dolphin 1973</a>; <a href="references.html#ref-Barquinero1997" role="doc-biblioref">J. F. Barquinero et al. 1997</a>)</span>.</li>
 <li>Calculate the variance on the initial fraction of irradiated cells (<span class="math inline">\(\sigma_{F}^{2}\)</span>) using the delta method:
 <span class="math display" id="eq:dolphin-method-fraction-F-var">\[\begin{align}
 \begin{aligned}
@@ -274,37 +275,37 @@ where <span class="math inline">\(f\)</span> is the fraction of cells scored whi
   2 \frac{\partial F}{\partial C} \frac{\partial F}{\partial \beta} \sigma_{C, \beta} +
   2 \frac{\partial F}{\partial \alpha} \frac{\partial F}{\partial \beta} \sigma_{\alpha, \beta}.
 \end{aligned}
-  \tag{8.14}
+  \tag{9.14}
 \end{align}\]</span>
-Note that this derivation assumes that the covariances <span class="math inline">\(\sigma_{\lambda, C}\)</span>, <span class="math inline">\(\sigma_{\lambda, \alpha}\)</span>, <span class="math inline">\(\sigma_{\lambda, \beta}\)</span>, <span class="math inline">\(\sigma_{f, C}\)</span>, <span class="math inline">\(\sigma_{f, \alpha}\)</span>, and <span class="math inline">\(\sigma_{f, \beta}\)</span> are all zero. The variance and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variances on <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(f\)</span> and covariance <span class="math inline">\(\sigma_{f, \lambda}\)</span> are derived from the inverse of the observed Fisher information matrix <a href="stats-estimation.html#eq:dolphin-method-var-fisher-info-mat">(8.11)</a>.</li>
-<li>The lower and upper 95% confidence limits of the dose estimation (<span class="math inline">\(D_{L}\)</span> and <span class="math inline">\(D_{U}\)</span>), the yield (<span class="math inline">\(\lambda_{L}\)</span> and <span class="math inline">\(\lambda_{U}\)</span>) are calculated following <a href="stats-estimation.html#eq:conf-int-dose">(8.5)</a> and <a href="stats-estimation.html#eq:conf-int-yield">(8.6)</a>, respectively, and the initial fraction of irradiated cells (<span class="math inline">\(F_{L}\)</span> and <span class="math inline">\(F_{U}\)</span>) is then calculated as follows:
+Note that this derivation assumes that the covariances <span class="math inline">\(\sigma_{\lambda, C}\)</span>, <span class="math inline">\(\sigma_{\lambda, \alpha}\)</span>, <span class="math inline">\(\sigma_{\lambda, \beta}\)</span>, <span class="math inline">\(\sigma_{f, C}\)</span>, <span class="math inline">\(\sigma_{f, \alpha}\)</span>, and <span class="math inline">\(\sigma_{f, \beta}\)</span> are all zero. The variance and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variances on <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(f\)</span> and covariance <span class="math inline">\(\sigma_{f, \lambda}\)</span> are derived from the inverse of the observed Fisher information matrix <a href="stats-estimation.html#eq:dolphin-method-var-fisher-info-mat">(9.11)</a>.</li>
+<li>The lower and upper 95% confidence limits of the dose estimation (<span class="math inline">\(D_{L}\)</span> and <span class="math inline">\(D_{U}\)</span>), the yield (<span class="math inline">\(\lambda_{L}\)</span> and <span class="math inline">\(\lambda_{U}\)</span>) are calculated following <a href="stats-estimation.html#eq:conf-int-dose">(9.5)</a> and <a href="stats-estimation.html#eq:conf-int-yield">(9.6)</a>, respectively, and the initial fraction of irradiated cells (<span class="math inline">\(F_{L}\)</span> and <span class="math inline">\(F_{U}\)</span>) is then calculated as follows:
 <span class="math display" id="eq:conf-int-fraction-F">\[\begin{align}
   F_{L, U} = F \pm 1.96 \sigma_{F}.
-  \tag{8.15}
+  \tag{9.15}
 \end{align}\]</span>
 </li>
 </ol>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:th-dose-partial-curve"></span>
 <img src="biodose-tools_files/figure-html/th-dose-partial-curve-1.png" alt="A dose-effect calibration curve used to estimate dose uncertainties using Dolphin's method." width="100%"><p class="caption">
-Figure 8.3: A dose-effect calibration curve used to estimate dose uncertainties using Dolphin’s method.
+Figure 9.3: A dose-effect calibration curve used to estimate dose uncertainties using Dolphin’s method.
 </p>
 </div>
 </div>
-<div id="heterogeneous-assessment-mixed-poisson-model" class="section level2" number="8.4">
+<div id="heterogeneous-assessment-mixed-poisson-model" class="section level2" number="9.4">
 <h2>
-<span class="header-section-number">8.4</span> Heterogeneous assessment: mixed Poisson model<a class="anchor" aria-label="anchor" href="#heterogeneous-assessment-mixed-poisson-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.4</span> Heterogeneous assessment: mixed Poisson model<a class="anchor" aria-label="anchor" href="#heterogeneous-assessment-mixed-poisson-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>So far, all non-homogeneous exposures have been handled as partial-body exposures with one fraction of the body uniformly irradiated at a certain dose, while the rest of the body is not exposed and hence without chromosome aberrations. This, however, represents a rather idealised situation, since the majority of accidents involve non-uniform exposures, where mixing of almost homogeneously irradiated and nonirradiated blood is extremely unlikely.</p>
-<p>To remedy this, a mathematical approach based on a mixed Poisson model <a href="stats-estimation.html#eq:poisson-dist-mixture">(8.16)</a> that can be used in cases of suspected non-homogeneous exposures with two different doses was proposed by <span class="citation">Pujol et al. (<a href="references.html#ref-Pujol2016" role="doc-biblioref">2016</a>)</span>. This model allows to infer two different distributions from an observed dicentric cell distribution.</p>
-<p>For a heterogeneous exposure with two radiation doses <span class="math inline">\(x_{1}\)</span> and <span class="math inline">\(x_{2}\)</span>, the distribution outcome of dicentrics is a mixture of two Poisson distributions <a href="stats-considerations.html#eq:poisson-dist">(6.3)</a>. A random variable <span class="math inline">\(Y\)</span> distributed as a mixture of two independent Poisson distributions with rates <span class="math inline">\(\lambda_{1}\)</span> and <span class="math inline">\(\lambda_{2}\)</span> has the following probability mass function:
+<p>To remedy this, a mathematical approach based on a mixed Poisson model <a href="stats-estimation.html#eq:poisson-dist-mixture">(9.16)</a> that can be used in cases of suspected non-homogeneous exposures with two different doses was proposed by <span class="citation">Pujol et al. (<a href="references.html#ref-Pujol2016" role="doc-biblioref">2016</a>)</span>. This model allows to infer two different distributions from an observed dicentric cell distribution.</p>
+<p>For a heterogeneous exposure with two radiation doses <span class="math inline">\(x_{1}\)</span> and <span class="math inline">\(x_{2}\)</span>, the distribution outcome of dicentrics is a mixture of two Poisson distributions <a href="stats-considerations.html#eq:poisson-dist">(7.3)</a>. A random variable <span class="math inline">\(Y\)</span> distributed as a mixture of two independent Poisson distributions with rates <span class="math inline">\(\lambda_{1}\)</span> and <span class="math inline">\(\lambda_{2}\)</span> has the following probability mass function:
 <span class="math display" id="eq:poisson-dist-mixture">\[\begin{align}
   \Pr(Y = k) = \omega \frac{\lambda_{1}^{k} e^{-\lambda_{1}}}{k!} + (1 - \omega) \frac{\lambda_{2}^{k} e^{-\lambda_{2}}}{k!},
-  \tag{8.16}
+  \tag{9.16}
 \end{align}\]</span>
 where <span class="math inline">\(\lambda_{1}\)</span> represents the yield of dicentrics for the dose <span class="math inline">\(x_{1}\)</span>, <span class="math inline">\(\lambda_{2}\)</span>
 represents the yield for the dose <span class="math inline">\(x_{2}\)</span> and <span class="math inline">\(\omega\)</span>, a parameter between 0 and 1, represents the population proportion of scored cells that have received a dose <span class="math inline">\(x_{1}\)</span>. Similarly, <span class="math inline">\(1 - \omega\)</span> can be understood as the population proportion of scored cells that have received a dose <span class="math inline">\(x_{2}\)</span>.</p>
-<p>The approach using the mixed Poisson model, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-hetero-curve">8.4</a>, involves the following steps:</p>
+<p>The approach using the mixed Poisson model, illustrated in Figure <a href="stats-estimation.html#fig:th-dose-hetero-curve">9.4</a>, involves the following steps:</p>
 <ol style="list-style-type: decimal">
 <li>Calculate the maximum likelihood estimates for the yields (<span class="math inline">\(\lambda_{1}\)</span> and <span class="math inline">\(\lambda_{2}\)</span>) and the fraction of scored cells that have received a dose <span class="math inline">\(D_{1}\)</span> (<span class="math inline">\(f_{1} = \omega\)</span>) using an optimisation method, such as Limited-memory BFGS-B <span class="citation">(<a href="references.html#ref-Byrd1995" role="doc-biblioref">Byrd et al. 1995</a>)</span>.</li>
 <li>Calculate the variances on the yields and the fraction of scored cells that have received a dose <span class="math inline">\(D_{1}\)</span> (<span class="math inline">\(\sigma_{\lambda_{1}}^{2}\)</span>, <span class="math inline">\(\sigma_{\lambda_{2}}^{2}\)</span>, and <span class="math inline">\(\sigma_{f_{1}}^{2}\)</span>) by inverting the observed Fisher information matrix (<span class="math inline">\(I\)</span>) resulting from the aforementioned optimisation method:
@@ -315,17 +316,17 @@ represents the yield for the dose <span class="math inline">\(x_{2}\)</span> and
 \sigma_{f_{1}, \lambda_{2}} &amp; \sigma_{\lambda_{1}, \lambda_{2}} &amp;\sigma^{2}_{\lambda_{2}}
   \end{pmatrix}
   = I^{-1}.
-  \tag{8.17}
+  \tag{9.17}
 \end{align}\]</span>
 </li>
-<li>Calculate doses at which <span class="math inline">\(\lambda_{1}\)</span> and <span class="math inline">\(\lambda_{2}\)</span> cross the dose-effect calibration curve. These are the estimated doses (<span class="math inline">\(D_{1}\)</span> and <span class="math inline">\(D_{2}\)</span>). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in <a href="stats-estimation.html#eq:merkle-dose-estimation">(8.2)</a>.</li>
-<li>Calculate the variance on the estimated doses (<span class="math inline">\(\sigma_{D_{i}}^{2}\)</span>) using the delta method, as shown in <a href="stats-estimation.html#eq:delta-method-dose-var">(8.4)</a>. The variances and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variances on <span class="math inline">\(\lambda_{i}\)</span> are derived from the inverse of the observed Fisher information matrix <a href="stats-estimation.html#eq:mixed-poisson-var-fisher-info-mat">(8.17)</a>.</li>
+<li>Calculate doses at which <span class="math inline">\(\lambda_{1}\)</span> and <span class="math inline">\(\lambda_{2}\)</span> cross the dose-effect calibration curve. These are the estimated doses (<span class="math inline">\(D_{1}\)</span> and <span class="math inline">\(D_{2}\)</span>). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in <a href="stats-estimation.html#eq:merkle-dose-estimation">(9.2)</a>.</li>
+<li>Calculate the variance on the estimated doses (<span class="math inline">\(\sigma_{D_{i}}^{2}\)</span>) using the delta method, as shown in <a href="stats-estimation.html#eq:delta-method-dose-var">(9.4)</a>. The variances and co-variances on <span class="math inline">\(C\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are derived from the fitted calibration curve, whereas the variances on <span class="math inline">\(\lambda_{i}\)</span> are derived from the inverse of the observed Fisher information matrix <a href="stats-estimation.html#eq:mixed-poisson-var-fisher-info-mat">(9.17)</a>.</li>
 <li>Calculate the initial fraction of irradiated cells (<span class="math inline">\(F_{1}\)</span>):
 <span class="math display" id="eq:mixed-poisson-model-fraction-F">\[\begin{align}
   F_{1} = \frac{f_{1}}{f_{1} + (1 - f_{1}) e^{-\gamma (D_{1} - D_{2})}}
   ,\quad
   F_{2} = 1 - F_{1},
-  \tag{8.18}
+  \tag{9.18}
 \end{align}\]</span>
 where <span class="math inline">\(f_{1}\)</span> is the fraction of cells scored which were irradiated at the highest dose, <span class="math inline">\(D_{1}\)</span> and <span class="math inline">\(D_{2}\)</span> are the estimated doses, <span class="math inline">\(\gamma = 1 / D_{0}\)</span> is the survival coefficient which is a constant value calculated experimentally from each culture treatment.</li>
 <li>Calculate the variance on the initial fraction of irradiated cells (<span class="math inline">\(\sigma_{F_{1}}^{2} = \sigma_{F_{2}}^{2}\)</span>) using the delta method:
@@ -338,15 +339,15 @@ where <span class="math inline">\(f_{1}\)</span> is the fraction of cells scored
   \left(\frac{\partial F_{1}}{\partial D_{1}} \right)^{2} \sigma_{D_{1}}^{2} +
   \left(\frac{\partial F_{1}}{\partial D_{2}} \right)^{2} \sigma_{D_{2}}^{2},
 \end{aligned}
-  \tag{8.19}
+  \tag{9.19}
 \end{align}\]</span>
 where the variance on <span class="math inline">\(\gamma\)</span> is obtained experimentally, the variance on <span class="math inline">\(f_{1}\)</span> is derived from the optimisation method, and the variances on <span class="math inline">\(D_{i}\)</span> are obtained using the delta method.</li>
-<li>The lower and upper 95% confidence limits of the dose estimations (<span class="math inline">\(D_{i, L}\)</span> and <span class="math inline">\(D_{i, U}\)</span>), the yields (<span class="math inline">\(\lambda_{i, L}\)</span> and <span class="math inline">\(\lambda_{i, U}\)</span>), and the initial fractions of irradiated cells (<span class="math inline">\(F_{i, L}\)</span> and <span class="math inline">\(F_{i, U}\)</span>) are calculated following <a href="stats-estimation.html#eq:conf-int-dose">(8.5)</a>, <a href="stats-estimation.html#eq:conf-int-yield">(8.6)</a>, and <a href="stats-estimation.html#eq:conf-int-fraction-F">(8.15)</a>, respectively.</li>
+<li>The lower and upper 95% confidence limits of the dose estimations (<span class="math inline">\(D_{i, L}\)</span> and <span class="math inline">\(D_{i, U}\)</span>), the yields (<span class="math inline">\(\lambda_{i, L}\)</span> and <span class="math inline">\(\lambda_{i, U}\)</span>), and the initial fractions of irradiated cells (<span class="math inline">\(F_{i, L}\)</span> and <span class="math inline">\(F_{i, U}\)</span>) are calculated following <a href="stats-estimation.html#eq:conf-int-dose">(9.5)</a>, <a href="stats-estimation.html#eq:conf-int-yield">(9.6)</a>, and <a href="stats-estimation.html#eq:conf-int-fraction-F">(9.15)</a>, respectively.</li>
 </ol>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:th-dose-hetero-curve"></span>
 <img src="biodose-tools_files/figure-html/th-dose-hetero-curve-1.png" alt="A dose-effect calibration curve used to estimate dose uncertainties using heterogeneous method." width="100%"><p class="caption">
-Figure 8.4: A dose-effect calibration curve used to estimate dose uncertainties using heterogeneous method.
+Figure 9.4: A dose-effect calibration curve used to estimate dose uncertainties using heterogeneous method.
 </p>
 </div>
 
@@ -356,16 +357,16 @@ Figure 8.4: A dose-effect calibration curve used to estimate dose uncertainties 
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="stats-fitting.html"><span class="header-section-number">7</span> Dose-effect curve fitting</a></div>
+<div class="prev"><a href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></div>
 <div class="next"><a href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#stats-estimation"><span class="header-section-number">8</span> Uncertainty on dose estimation</a></li>
-<li><a class="nav-link" href="#whole-body-assessment-merkles-method"><span class="header-section-number">8.1</span> Whole-body assessment: Merkle’s method</a></li>
-<li><a class="nav-link" href="#whole-body-assessment-delta-method"><span class="header-section-number">8.2</span> Whole-body assessment: delta method</a></li>
-<li><a class="nav-link" href="#partial-body-assessment-dolphins-method"><span class="header-section-number">8.3</span> Partial-body assessment: Dolphin’s method</a></li>
-<li><a class="nav-link" href="#heterogeneous-assessment-mixed-poisson-model"><span class="header-section-number">8.4</span> Heterogeneous assessment: mixed Poisson model</a></li>
+<li><a class="nav-link" href="#stats-estimation"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></li>
+<li><a class="nav-link" href="#whole-body-assessment-merkles-method"><span class="header-section-number">9.1</span> Whole-body assessment: Merkle’s method</a></li>
+<li><a class="nav-link" href="#whole-body-assessment-delta-method"><span class="header-section-number">9.2</span> Whole-body assessment: delta method</a></li>
+<li><a class="nav-link" href="#partial-body-assessment-dolphins-method"><span class="header-section-number">9.3</span> Partial-body assessment: Dolphin’s method</a></li>
+<li><a class="nav-link" href="#heterogeneous-assessment-mixed-poisson-model"><span class="header-section-number">9.4</span> Heterogeneous assessment: mixed Poisson model</a></li>
 </ul>
 
       <div class="book-extra">
