@@ -8,7 +8,7 @@ The full {biodosetools} R API reference detailing the available functions and pa
 
 ### Input count data
 
-The first step is to input the count data. This step is accomplished in \proglang{R} by calling the `calculate_aberr_table()` function. This will calculate the total number of cells ($N$), total number of aberrations ($X$), as well as mean ($\bar{y}$), variance ($\sigma^{2}$), dispersion index ($\sigma^{2}/\bar{y}$), and $u$-value.
+The first step is to input the count data. This step is accomplished in R by calling the `calculate_aberr_table()` function. This will calculate the total number of cells ($N$), total number of aberrations ($X$), as well as mean ($\bar{y}$), variance ($\sigma^{2}$), dispersion index ($\sigma^{2}/\bar{y}$), and $u$-value.
 ```{r dic-count-data}
 count_data <- system.file("extdata", "count-data-barquinero-1995.csv",
   package = "biodosetools"
@@ -23,7 +23,7 @@ count_data
 
 ### Perform fitting
 
-To perform the fitting in \proglang{R} we call the `fit()` function, whilst selecting the appropriate `aberr_module` (`"dicentrics"` in this example), `model_formula` (`"lin-quad"` or `"lin"` for LQ or L models, respectively), and `model_family` (`"automatic"`, `"poisson"`, or `"quasipoisson"`) parameters:
+To perform the fitting in R we call the `fit()` function, whilst selecting the appropriate `aberr_module` (`"dicentrics"` in this example), `model_formula` (`"lin-quad"` or `"lin"` for LQ or L models, respectively), and `model_family` (`"automatic"`, `"poisson"`, or `"quasipoisson"`) parameters:
 ```{r dic-fit-results}
 fit_results <- fit(
   count_data = count_data,
@@ -38,7 +38,7 @@ The `fit_results` object is a list that contains all necessary information about
 names(fit_results)
 ```
 
-In particular, we can see how `fit_coeffs` matches the results obtained in the UI (Figure \@ref(fig:sc-dic-fit-03)):
+In particular, we can see how `fit_coeffs` matches the results obtained in the UI (Figure \@ref(fig:sc-dic-fit-04)):
 
 ```{r dic-fit-coeffs-r}
 fit_results$fit_coeffs
@@ -57,7 +57,7 @@ plot_fit_dose_curve(
 
 ### Input case data
 
-Next we can choose to either load the case data from a file or to input the data manually. The data is then parsed in \proglang{R} by calling the `calculate_aberr_table()` function. This will calculate the total number of cells ($N$), total number of aberrations ($X$), as well as mean ($\bar{y}$), standard error ($\sigma$), dispersion index ($\sigma^{2}/\bar{y}$), and $u$-value.
+Next we can choose to either load the case data from a file or to input the data manually. The data is then parsed in R by calling the `calculate_aberr_table()` function. This will calculate the total number of cells ($N$), total number of aberrations ($X$), as well as mean ($\bar{y}$), standard error ($\sigma$), dispersion index ($\sigma^{2}/\bar{y}$), and $u$-value.
 ```{r dic-case-data}
 case_data <- system.file("extdata", "cases-data-partial.csv",
   package = "biodosetools"
@@ -76,10 +76,10 @@ case_data
 
 ### Perform dose estimation
 
-Finally, to perform the dose estimation in \proglang{R} we can call the adequate `estimate_*()` functions and parameters depending on the characteristics of the accident. In this example, we will use `estimate_whole_body_merkle()` and `estimate_partial_body_dolphin()`. First of all, however, we will need to load the fit coefficients and variance-covariance matrix from the previously calculated `fit_results`:
+Finally, to perform the dose estimation in R we can call the adequate `estimate_*()` functions and parameters depending on the characteristics of the accident. In this example, we will use `estimate_whole_body_merkle()` and `estimate_partial_body_dolphin()`. First of all, however, we will need to load the fit coefficients and variance-covariance matrix from the previously calculated `fit_results`:
 ```{r dic-parse-fit-results}
-fit_coeffs <- fit_results[["fit_coeffs"]]
-fit_var_cov_mat <- fit_results[["fit_var_cov_mat"]]
+fit_coeffs <- fit_results$fit_coeffs
+fit_var_cov_mat <- fit_results$fit_var_cov_mat
 ```
 
 After that is done, we can simply call `estimate_whole_body_merkle()` and `estimate_partial_body_dolphin()`:

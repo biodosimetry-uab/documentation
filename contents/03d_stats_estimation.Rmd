@@ -46,8 +46,8 @@ where $R^{2}$ is the confidence factor, defined as an upper-confidence limit of 
 
 ```{r th-dose-merkle-coeffs, include=FALSE}
 fit_results <- system.file("extdata", "dicentrics-fitting-results.rds", package = "biodosetools") |> readRDS()
-fit_coeffs <- fit_results[["fit_coeffs"]]
-fit_var_cov_mat <- fit_results[["fit_var_cov_mat"]]
+fit_coeffs <- fit_results$fit_coeffs
+fit_var_cov_mat <- fit_results$fit_var_cov_mat
 ```
 
 ```{r th-dose-merkle-case, include=FALSE}

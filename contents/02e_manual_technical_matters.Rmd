@@ -2,7 +2,7 @@
 
 Biodose Tools has been developed following international guidelines of biological dosimetry \citepalias{IAEA2011, ISO19238:2014, ISO20046:2019}.
 
-Despite our best efforts to ensure that {biodosetools} automatically handles mathematical errors behind the scenes, such as using a constraint maximum-likelihood optimisation method [@Oliveira2016] when the fitting using a generalized linear model (GLM) is not possible, or correcting negative dose estimates, if the aberration distributions are not well constructed,the resulting curves may still result in errors (both using the {shiny} app or the R API) when performing dose estimation. As an example, let us consider the following curve, shown in \@ref(tab:dic-count-data-bad) and \@ref(fig:dic-fit-dose-curve-bad). Although at a glance we can already suspect that there is some kind of issue in the observed counts, due to the low number of evaluated cells, one may still decide to proceed and use it for dose estimations.
+Despite our best efforts to ensure that {biodosetools} automatically handles mathematical errors behind the scenes, such as using a constraint maximum-likelihood optimisation method [@Oliveira2016] when the fitting using a generalized linear model (GLM) is not possible, or correcting negative dose estimates, if the aberration distributions are not well constructed,the resulting curves may still result in errors (both using the {shiny} app or the R API) when performing dose estimation. As an example, let us consider the following curve, shown in Table \@ref(tab:dic-count-data-bad) and Figure \@ref(fig:dic-fit-dose-curve-bad). Although at a glance we can already suspect that there is some kind of issue in the observed counts, due to the low number of evaluated cells, one may still decide to proceed and use it for dose estimations.
 
 ```{r dic-count-data-bad, echo=FALSE}
 count_data <- data.frame(
@@ -11,7 +11,7 @@ count_data <- data.frame(
   X = c(0L, 1L, 6L, 10L, 28L, 23L, 70L, 61L)
 )
 
-count_data %>%
+count_data |>
   knitr::kable(
     caption = "Example of dicentric distribution within cells.",
     align = "c"
@@ -28,14 +28,14 @@ fit_results <- fit(
 )
 ```
 
-```{r dic-fit-dose-curve-bad, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="Plot of dose-effect curve constructed from the dicentric distribution in \\@ref(tab:dic-count-data-bad)."}
+```{r dic-fit-dose-curve-bad, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="Plot of dose-effect curve constructed from the dicentric distribution in Table \\@ref(tab:dic-count-data-bad)."}
 plot_fit_dose_curve(
   fit_results,
   aberr_name = "Dicentrics"
 )
 ```
 
-In \@ref(tab:dic-case-data-bad) below we can see an example of a case we may want to estimate the dose for. If we try to estimate the dose using Merkle's method, we encounter an error involving the `uniroot()` function. The function `uniroot()` searches for a root (i.e., zero) of the function $f(x_{1}, \dots, x_{n})$ with respect to its first argument $x_{1}$ within a specified interval. In our example, this error occurs when projecting the upper 95% confidence limit of the yield $\lambda_{U}$ into the lower curve \@ref(eq:merkle-dose-estimation-error). The reason for this is that the lower 95% confidence band of the dose-effect curve is not a monotonically increasing function, meaning that $D_{L}$ has multiple possible numerical solutions, as shown in \@ref(fig:dic-fit-dose-curve-bad-extended).
+In Table \@ref(tab:dic-case-data-bad) below we can see an example of a case we may want to estimate the dose for. If we try to estimate the dose using Merkle's method, we encounter an error involving the `uniroot()` function. The function `uniroot()` searches for a root (i.e., zero) of the function $f(x_{1}, \dots, x_{n})$ with respect to its first argument $x_{1}$ within a specified interval. In our example, this error occurs when projecting the upper 95% confidence limit of the yield $\lambda_{U}$ into the lower curve \@ref(eq:merkle-dose-estimation-error). The reason for this is that the lower 95% confidence band of the dose-effect curve is not a monotonically increasing function, meaning that $D_{L}$ has multiple possible numerical solutions, as shown in Figure \@ref(fig:dic-fit-dose-curve-bad-extended).
 ```{r dic-case-data-bad, warning=FALSE, message=FALSE, echo=FALSE}
 case_data <- calculate_aberr_table(
   data.frame(C0 = 136L, C1 = 11L, C2 = 1L),
@@ -43,24 +43,24 @@ case_data <- calculate_aberr_table(
   aberr_module = "dicentrics"
 )
 
-case_data %>%
-  as.matrix() %>%
-  formatC(format = "f", digits = 3) %>%
-  as.data.frame() %>%
+case_data |>
+  as.matrix() |>
+  formatC(format = "f", digits = 3) |>
+  as.data.frame() |>
   dplyr::mutate(
     dplyr::across(
       .cols = c("N", "X", dplyr::starts_with("C")),
       .fns = as.integer
     )
-  ) %>%
-  biodosetools:::fix_count_data_names(type = "case", output = "kable") %>%
+  ) |>
+  biodosetools:::fix_count_data_names(type = "case", output = "kable") |>
   knitr::kable(
     caption = "Example of dicentric distribution within cells.",
     align = "c"
   )
 ```
 
-```{r dic-fit-dose-curve-bad-extended, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="Plot of dose-effect curve constructed from the dicentric distribution in \\@ref(tab:dic-count-data-bad) over an extended $D$ range."}
+```{r dic-fit-dose-curve-bad-extended, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="Plot of dose-effect curve constructed from the dicentric distribution in Table \\@ref(tab:dic-count-data-bad) over an extended $D$ range."}
 plot_fit_dose_curve_alt(
   fit_results,
   max_dose = 9,

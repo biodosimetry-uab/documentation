@@ -65,7 +65,7 @@ dic_coeffs |>
 
 ## Goodness of fit
 
-The goodness of fit of the fitted curve and significance of estimated coefficients should then be tested, for instance using an appropriate form of the $F$-test, $z$-test or $t$-test. \pkg{biodosetools} implements the $t$-test.
+The goodness of fit of the fitted curve and significance of estimated coefficients should then be tested, for instance using an appropriate form of the $F$-test, $z$-test or $t$-test. {biodosetools} implements the $t$-test.
 
 Let $\hat{\theta}$ be an estimator of the parameter $\theta \in \{ \alpha, \beta, C\}$ in the fit model. Then the $t$-statistic for this parameter is defined as
 \begin{align}
@@ -111,7 +111,7 @@ Given a value of $t$, we can have three protraction cases:
 - Highly protracted exposure when $t$ is high. In this case $G(x)$ reduces virtually to zero. Therefore, even if a high dose (> 1.0 Gy) is involved, the dose-effect equation becomes linear \@ref(eq:dose-response-l).
 - Protracted exposure for any case in between. In this case the effects of $G(x)$ need to be considered.
 
-All dose estimation methods implemented in \pkg{biodosetools} consider protraction, with the extreme of $G(x) = 1$ or $G(x) \approx 0$ being just particular cases. For this reason, all methods described in Chapter \@ref(stats-estimation) are derived using equation \@ref(eq:dose-response-lq-protracted) instead of \@ref(eq:dose-response-lq).
+All dose estimation methods implemented in {biodosetools} consider protraction, with the extreme of $G(x) = 1$ or $G(x) \approx 0$ being just particular cases. For this reason, all methods described in Chapter \@ref(stats-estimation) are derived using equation \@ref(eq:dose-response-lq-protracted) instead of \@ref(eq:dose-response-lq).
 
 ## Genomic equivalence for translocations
 
