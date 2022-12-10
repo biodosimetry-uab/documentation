@@ -1,0 +1,347 @@
+# Uncertainty on dose estimation {#stats-estimation}
+
+While it is simple to determine a dose from a measured yield of dicentrics, the associated uncertainty can be calculated using a variety of methods. Calculating 95% confidence limits is a common procedure for expressing uncertainty in terms of a confidence interval. A frequentist 95% confidence interval means that with a large number of repeated samples, 95% of such calculated confidence intervals would include the true value of the dose. The problem in estimating confidence limits for dicentrics and translocations after low-LET exposure comes from two sources of uncertainty: the uncertainty from the aberration yield of the person to be examined, and uncertainties associated with the calibration curve. This issue has been discussed in the literature [@Merkle1983; @Savage2000; @Szuinska2007].
+
+Depending on the type of exposure, methods for whole-body assessment, partial-body assessment, and heterogeneous exposures with two different doses were implemented in the {biodosetools} package, using the following methods. The {biodosetools} package implements the following assessment methods, which are indicated in @IAEA2001 and @IAEA2011:
+
+- Whole-body assessment: Merkle's method [@Merkle1983].
+- Whole-body assessment: delta method [@IAEA2001].
+- Partial-body assessment: Dolphin's method [@Dolphin1969].
+
+In addition {biodosetools} also includes a method to assess heterogeneous exposures using a mixed Poisson model [@Pujol2016]. That was used in a recent RENEB/EURADOS field exercise [@Endesfelder2021].
+
+## Whole-body assessment: Merkle's method
+
+The simplest solution for whole-body assessment was proposed by @Merkle1983, it allows both the Poisson error on the yield and the errors on the calibration curve to be taken into account.
+
+Merkle's approach, illustrated in Figure \@ref(fig:th-dose-merkle-curve), involves the following steps:
+
+1. Assuming the Poisson (or quasi-Poisson) distribution, calculate the yields corresponding to lower and upper confidence limits on the observed yield $\lambda$ ($\lambda_{L}$ and $\lambda_{U}$).
+1. Calculate the confidence limits of the dose-effect calibration curve according to:
+\begin{align}
+\begin{aligned}
+  \lambda ={}& C + \alpha D + \beta G(x) D^{2} \\
+       &\pm R
+  \sqrt{
+    \begin{aligned}
+      {}& \sigma_{C}^{2} +
+      \sigma_{\alpha}^{2} D^{2} +
+      \sigma_{\beta}^{2} G(x) D^{4} +
+      2 \sigma_{C, \alpha} D \\
+      & + 2 \sigma_{C, \beta} G(x) D^{2} +
+      2 \sigma_{\alpha, \beta} G(x) D^{3}
+    \end{aligned}
+  },
+\end{aligned}
+  (\#eq:merkle-dose-estimation-error)
+\end{align}
+where $R^{2}$ is the confidence factor, defined as an upper-confidence limit of a chi-square distribution, $\chi^{2}(\nu)$, with 2 or 3 degrees of freedom ($\nu$).
+1. Calculate the dose at which $\lambda$ crosses the dose-effect calibration curve. This is the estimated dose ($D$). For this we can simply take the inverse of the LQ dose-effect calibration curve, as follows:
+\begin{align}
+  D = \frac{-\alpha + \sqrt{\alpha^{2} + 4 \beta G(x) (\lambda - C)}}{2 \beta G(x)}.
+  (\#eq:merkle-dose-estimation)
+\end{align}
+1. Calculate the dose at which $\lambda_{L}$ crosses the upper curve. This is the lower confidence limit of the dose ($D_{L}$).
+1. Calculate the dose at which $\lambda_{U}$ crosses the lower curve. This is the upper confidence limit of the dose ($D_{U}$).
+
+```{r th-dose-merkle-coeffs, include=FALSE}
+fit_results <- system.file("extdata", "dicentrics-fitting-results.rds", package = "biodosetools") %>% readRDS()
+fit_coeffs <- fit_results[["fit_coeffs"]]
+fit_var_cov_mat <- fit_results[["fit_var_cov_mat"]]
+```
+
+```{r th-dose-merkle-case, include=FALSE}
+case_data <- system.file("extdata", "cases-data-partial.csv", package = "biodosetools") %>%
+  utils::read.csv(header = TRUE) %>%
+  calculate_aberr_table(
+    type = "case",
+    assessment_u = 1,
+    aberr_module = "dicentrics"
+  )
+```
+
+```{r th-dose-merkle-results, include=FALSE}
+results_whole_merkle <- estimate_whole_body_merkle(
+  case_data,
+  fit_coeffs,
+  fit_var_cov_mat,
+  conf_int_yield = 0.83,
+  conf_int_curve = 0.83,
+  protracted_g_value = 1,
+  aberr_module = "dicentrics"
+)
+```
+
+```{r th-dose-merkle-curve, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="A dose-effect calibration curve with its 83\\% confidence limits, used to estimate dose uncertainties using Merkle's method."}
+theory_plot_estimated_dose_curve(
+  est_doses = list(whole = results_whole_merkle),
+  fit_coeffs,
+  fit_var_cov_mat,
+  protracted_g_value = 1,
+  conf_int_curve = 0.83,
+  aberr_name = "Dicentrics",
+  show_projections = TRUE
+)
+```
+
+As suggested by some authors, in order to reduce a possible overestimation of the uncertainty [@Schenker2001; @Austin2002], it is recommended to use an 83% confidence limit of the regression curve when overlapped with the Poisson 83% confidence limits, as this tends to yield a global 95% confidence interval for the dose estimation.
+
+## Whole-body assessment: delta method
+
+Another approach for whole-body assessment is using the delta method \citepalias{IAEA2001}. It also allows both the Poisson error on the yield and the errors on the calibration curve to be taken into account.
+
+The delta method expands a function of a set of random variables $f(X_{1}, X_{2}, \dots, X_{n})$ about its mean, usually with a first-order Taylor expansion, and then takes the variance. Using the delta method, the variance $\sigma_{f}^{2}$ of $f(X_{1}, X_{2}, \dots, X_{n})$ can be expressed as follows [@Klein1953]:
+\begin{align}
+  \sigma_{f}^{2} =
+  \sum_{i}^{n} \left(\frac{\partial f}{\partial X_{i}} \right)^{2} \sigma_{X_{i}}^{2} +
+  \sum_{i}^{n} \sum_{j \neq i}^{n} \frac{\partial f}{\partial X_{i}} \frac{\partial f}{\partial X_{j}} \sigma_{X_{i}, X_{j}}.
+  (\#eq:delta-method-var)
+\end{align}
+
+The approach using the delta method, illustrated in Figure \@ref(fig:th-dose-delta-curve), involves the following steps:
+
+1. Calculate the dose at which $\lambda$ crosses the dose-effect calibration curve. This is the estimated dose ($D$). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in \@ref(eq:merkle-dose-estimation).
+1. By differentiation of the above equation, express the variance on the estimated dose ($\sigma_{D}^{2}$) in terms of the variances and co-variances of $C$, $\alpha$, $\beta$, and $\lambda$. The formal expression is as follows:
+\begin{align}
+\begin{aligned}
+  \sigma_{D}^{2} ={}&
+  \left(\frac{\partial D}{\partial C} \right)^{2} \sigma_{C}^{2} +
+  \left(\frac{\partial D}{\partial \alpha} \right)^{2} \sigma_{\alpha}^{2} +
+  \left(\frac{\partial D}{\partial \beta} \right)^{2} \sigma_{\beta}^{2} +
+  \left(\frac{\partial D}{\partial \lambda} \right)^{2} \sigma_{\lambda}^{2} \\
+  & + 2 \frac{\partial D}{\partial C} \frac{\partial D}{\partial \alpha} \sigma_{C, \alpha} +
+  2 \frac{\partial D}{\partial C} \frac{\partial D}{\partial \beta} \sigma_{C, \beta} +
+  2 \frac{\partial D}{\partial \alpha} \frac{\partial D}{\partial \beta} \sigma_{\alpha, \beta}.
+\end{aligned}
+  (\#eq:delta-method-dose-var)
+\end{align}
+Note that this derivation assumes that the covariances $\sigma_{\lambda, C}$, $\sigma_{\lambda, \alpha}$, and $\sigma_{\lambda, \beta}$ are all zero. This is appropriate because, in general, the measurements used to calculate the calibration curve and those used to determine the patient's yield are independent. The variance and co-variances on $C$, $\alpha$, and $\beta$ are derived from the fitted calibration curve, whereas the variance on $\lambda$ is derived according to \@ref(eq:variance-estimator).
+1. The lower and upper 95% confidence limits of the dose estimation ($D_{L}$ and $D_{U}$) and the yield ($\lambda_{L}$ and $\lambda_{U}$) are then calculated as follows:
+\begin{align}
+  D_{L, U} = D \pm 1.96 \sigma_{D},
+  (\#eq:conf-int-dose)
+  \\
+  \lambda_{L, U} = \lambda \pm 1.96 \sigma_{\lambda}.
+  (\#eq:conf-int-yield)
+\end{align}
+
+```{r th-dose-delta-results, include=FALSE}
+results_whole_delta <- estimate_whole_body_delta(
+  case_data,
+  fit_coeffs,
+  fit_var_cov_mat,
+  conf_int = 0.83,
+  protracted_g_value = 1,
+  aberr_module = "dicentrics"
+)
+```
+
+```{r th-dose-delta-curve, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="A dose-effect calibration curve used to estimate dose uncertainties using delta method."}
+theory_plot_estimated_dose_curve(
+  est_doses = list(whole = results_whole_delta),
+  fit_coeffs,
+  fit_var_cov_mat,
+  protracted_g_value = 1,
+  conf_int_curve = 0,
+  aberr_name = "Dicentrics",
+  show_projections = FALSE
+)
+```
+
+## Partial-body assessment: Dolphin's method
+
+This method was first proposed by @Dolphin1969 and is based on a contaminated Poisson
+method. The chromosomal aberrations distribution of a partial-body irradiation is expected to be overdispersed ($u > 1.96$). The observed distribution is considered to be the mixture of (a) a Poisson distribution which represents the irradiated fraction of the body and (b) the remaining unexposed fraction. This method assumes that the background level in the unirradiated part is zero. Undamaged cells will comprise two subpopulations: those from the unexposed fraction and irradiated cells which received no damage.
+
+The distribution of the damage in the irradiated cells can be described by a zero-truncated Poisson distribution with probability function,
+\begin{align}
+  \Pr(Y = k \mid Y > 0) = \frac{P(Y = k)}{1 - P(Y = 0)} = \frac{\lambda^{k}}{(e^{\lambda} - 1)k!}
+(\#eq:dolphin-method-ztp)
+\end{align}
+
+where $k \in \{ 1, 2, \dots \}$ and $Y \sim \operatorname{Pois}(\lambda)$. The distribution of the total number of dicentrics in all the cells can be understood as a zero-inflated Poisson distribution $Z \sim \operatorname{ZIP}(\lambda, \pi)$ with probability function,
+\begin{align}
+  P(Z = k) =
+  \begin{cases}
+    \pi + (1 - \pi) e^{-\lambda} ,\quad k = 0 \\
+    (1 - \pi) \dfrac{\lambda^{k} e^{-\lambda}}{k!} ,\quad k \in \{ 1, 2, \dots \}
+  \end{cases}
+  (\#eq:dolphin-method-zip)
+\end{align}
+where $\pi$ is the proportion of extra zeros.
+
+The approach using Dolphin's method, illustrated in Figure \@ref(fig:th-dose-partial-curve), involves the following steps:
+
+1. Calculate the yield of dicentrics ($\lambda$) in the irradiated fraction by solving the equation,
+\begin{align}
+  \frac{X}{N - C_{0}} = \frac{\lambda}{1 - e^{-\lambda}},
+  (\#eq:dolphin-method-mean)
+\end{align}
+where $X$ is the total number of dicentrics observed, $N$ is the total number of cells, and $C_{0}$ is the number of cells free of dicentrics. The solution $\lambda$ of this equation is the maximum likelihood estimator (MLE) of the mean yield of dicentrics $\lambda$ of the zero-truncated Poisson distribution \@ref(eq:dolphin-method-ztp).
+1. Calculate the fraction of cells scored which were irradiated ($f = 1 - \pi$) as follows:
+\begin{align}
+  f = \frac{X}{N \lambda}.
+  (\#eq:dolphin-method-fraction-f)
+\end{align}
+1. Calculate the variance on the yield ($\sigma_{\lambda}^{2}$), the fraction of cells scored which were irradiated ($\sigma_{f}^{2}$), and their covariance ($\sigma_{f, \lambda}$) by inverting the observed Fisher information matrix ($I$) of the zero-inflated model:
+\begin{align}
+  \begin{pmatrix}
+    \sigma^{2}_{\lambda} & \sigma_{f, \lambda} \\
+    \sigma_{f, \lambda} & \sigma^{2}_{f}
+  \end{pmatrix}
+  = I^{-1}(\lambda, \pi = 1 - f),
+  (\#eq:dolphin-method-var-fisher-info-mat)
+\end{align}
+where
+\begin{align}
+  I(\lambda, \pi = 1 - f) =
+  \begin{pmatrix}
+    \frac{N f (f - 1)}{f + (1 - f) e^{\lambda}} + \frac{N f}{\lambda} &
+    \frac{N}{f + (1 - f) e^{\lambda}} \\
+    \frac{N}{f + (1 - f) e^{\lambda}} &
+    \frac{N (e^{\lambda} - 1)}{f (f + (1 - f) e^{\lambda})}
+  \end{pmatrix}.
+  (\#eq:dolphin-method-fisher-info-mat)
+\end{align}
+1. Calculate the dose at which $\lambda$ crosses the dose-effect calibration curve. This is the estimated dose ($D$). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in \@ref(eq:merkle-dose-estimation).
+1. Calculate the variance on the estimated dose ($\sigma_{D}^{2}$) using the delta method, as shown in \@ref(eq:delta-method-dose-var). The variance and co-variances on $C$, $\alpha$, and $\beta$ are derived from the fitted calibration curve, whereas the variance on $\lambda$ is derived from the inverse of the observed Fisher information matrix \@ref(eq:dolphin-method-var-fisher-info-mat).
+1. Calculate the initial fraction of irradiated cells ($F$):
+\begin{align}
+  F = \frac{f}{f + (1 - f) e^{-D / D_{0}}},
+  (\#eq:dolphin-method-fraction-F)
+\end{align}
+where $f$ is the fraction of cells scored which were irradiated, $D$ is the expression of the estimated dose \@ref(eq:merkle-dose-estimation), and $D_{0}$ is the survival coefficient with experimental values between 2.7 and 3.5 [@Lloyd1973; @Barquinero1997].
+1. Calculate the variance on the initial fraction of irradiated cells ($\sigma_{F}^{2}$) using the delta method:
+\begin{align}
+\begin{aligned}
+  \sigma_{F}^{2} ={}&
+  \left(\frac{\partial F}{\partial f} \right)^{2} \sigma_{f}^{2} +
+  \left(\frac{\partial F}{\partial C} \right)^{2} \sigma_{C}^{2} +
+  \left(\frac{\partial F}{\partial \alpha} \right)^{2} \sigma_{\alpha}^{2} \\
+  & + \left(\frac{\partial F}{\partial \beta} \right)^{2} \sigma_{\beta}^{2} +
+  \left(\frac{\partial F}{\partial \lambda} \right)^{2} \sigma_{\lambda}^{2} +
+  2 \frac{\partial F}{\partial f} \frac{\partial F}{\partial \lambda} \sigma_{f, \lambda} \\
+  & + 2 \frac{\partial F}{\partial C} \frac{\partial F}{\partial \alpha} \sigma_{C, \alpha} +
+  2 \frac{\partial F}{\partial C} \frac{\partial F}{\partial \beta} \sigma_{C, \beta} +
+  2 \frac{\partial F}{\partial \alpha} \frac{\partial F}{\partial \beta} \sigma_{\alpha, \beta}.
+\end{aligned}
+  (\#eq:dolphin-method-fraction-F-var)
+\end{align}
+Note that this derivation assumes that the covariances $\sigma_{\lambda, C}$, $\sigma_{\lambda, \alpha}$, $\sigma_{\lambda, \beta}$, $\sigma_{f, C}$, $\sigma_{f, \alpha}$, and $\sigma_{f, \beta}$ are all zero. The variance and co-variances on $C$, $\alpha$, and $\beta$ are derived from the fitted calibration curve, whereas the variances on $\lambda$ and $f$ and covariance $\sigma_{f, \lambda}$ are derived from the inverse of the observed Fisher information matrix \@ref(eq:dolphin-method-var-fisher-info-mat).
+1. The lower and upper 95% confidence limits of the dose estimation ($D_{L}$ and $D_{U}$), the yield ($\lambda_{L}$ and $\lambda_{U}$) are calculated following \@ref(eq:conf-int-dose) and \@ref(eq:conf-int-yield), respectively, and the initial fraction of irradiated cells ($F_{L}$ and $F_{U}$) is then calculated as follows:
+\begin{align}
+  F_{L, U} = F \pm 1.96 \sigma_{F}.
+  (\#eq:conf-int-fraction-F)
+\end{align}
+
+```{r th-dose-partial-results, include=FALSE}
+results_partial_dolphin <- estimate_partial_body_dolphin(
+  case_data,
+  fit_coeffs,
+  fit_var_cov_mat,
+  conf_int = 0.95,
+  protracted_g_value = 1,
+  genome_factor = 1,
+  gamma = 1 / 2.7,
+  aberr_module = "dicentrics"
+)
+```
+
+```{r th-dose-partial-curve, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="A dose-effect calibration curve used to estimate dose uncertainties using Dolphin's method."}
+theory_plot_estimated_dose_curve(
+  est_doses = list(partial = results_partial_dolphin),
+  fit_coeffs,
+  fit_var_cov_mat,
+  protracted_g_value = 1,
+  conf_int_curve = 0,
+  aberr_name = "Dicentrics",
+  show_projections = FALSE
+)
+```
+
+## Heterogeneous assessment: mixed Poisson model
+
+So far, all non-homogeneous exposures have been handled as partial-body exposures with one fraction of the body uniformly irradiated at a certain dose, while the rest of the body is not exposed and hence without chromosome aberrations. This, however, represents a rather idealised situation, since the majority of accidents involve non-uniform exposures, where mixing of almost homogeneously irradiated and nonirradiated blood is extremely unlikely.
+
+To remedy this, a mathematical approach based on a mixed Poisson model \@ref(eq:poisson-dist-mixture) that can be used in cases of suspected non-homogeneous exposures with two different doses was proposed by @Pujol2016. This model allows to infer two different distributions from an observed dicentric cell distribution.
+
+For a heterogeneous exposure with two radiation doses $x_{1}$ and $x_{2}$, the distribution outcome of dicentrics is a mixture of two Poisson distributions \@ref(eq:poisson-dist). A random variable $Y$ distributed as a mixture of two independent Poisson distributions with rates $\lambda_{1}$ and $\lambda_{2}$ has the following probability mass function:
+\begin{align}
+  \Pr(Y = k) = \omega \frac{\lambda_{1}^{k} e^{-\lambda_{1}}}{k!} + (1 - \omega) \frac{\lambda_{2}^{k} e^{-\lambda_{2}}}{k!},
+  (\#eq:poisson-dist-mixture)
+\end{align}
+where $\lambda_{1}$ represents the yield of dicentrics for the dose $x_{1}$, $\lambda_{2}$
+represents the yield for the dose $x_{2}$ and $\omega$, a parameter between 0 and 1, represents the population proportion of scored cells that have received a dose $x_{1}$. Similarly, $1 - \omega$ can be understood as the population proportion of scored cells that have received a dose $x_{2}$.
+
+The approach using the mixed Poisson model, illustrated in Figure \@ref(fig:th-dose-hetero-curve), involves the following steps:
+
+1. Calculate the maximum likelihood estimates for the yields ($\lambda_{1}$ and $\lambda_{2}$) and the fraction of scored cells that have received a dose $D_{1}$ ($f_{1} = \omega$) using an optimisation method, such as Limited-memory BFGS-B [@Byrd1995].
+1. Calculate the variances on the yields and the fraction of scored cells that have received a dose $D_{1}$ ($\sigma_{\lambda_{1}}^{2}$, $\sigma_{\lambda_{2}}^{2}$, and $\sigma_{f_{1}}^{2}$) by inverting the observed Fisher information matrix ($I$) resulting from the aforementioned optimisation method:
+\begin{align}
+  \begin{pmatrix}
+    \sigma^{2}_{f_{1}} & \sigma_{f_{1}, \lambda_{1}} & \sigma_{f_{1}, \lambda_{2}} \\
+    \sigma_{f_{1}, \lambda_{1}} & \sigma^{2}_{\lambda_{1}} & \sigma_{\lambda_{1}, \lambda_{2}} \\
+    \sigma_{f_{1}, \lambda_{2}} & \sigma_{\lambda_{1}, \lambda_{2}} &\sigma^{2}_{\lambda_{2}}
+  \end{pmatrix}
+  = I^{-1}.
+  (\#eq:mixed-poisson-var-fisher-info-mat)
+\end{align}
+1. Calculate doses at which $\lambda_{1}$ and $\lambda_{2}$ cross the dose-effect calibration curve. These are the estimated doses ($D_{1}$ and $D_{2}$). For this we can simply take the inverse of the LQ dose-effect calibration curve, as shown in \@ref(eq:merkle-dose-estimation).
+1. Calculate the variance on the estimated doses ($\sigma_{D_{i}}^{2}$) using the delta method, as shown in \@ref(eq:delta-method-dose-var). The variances and co-variances on $C$, $\alpha$, and $\beta$ are derived from the fitted calibration curve, whereas the variances on $\lambda_{i}$ are derived from the inverse of the observed Fisher information matrix \@ref(eq:mixed-poisson-var-fisher-info-mat).
+1. Calculate the initial fraction of irradiated cells ($F_{1}$):
+\begin{align}
+  F_{1} = \frac{f_{1}}{f_{1} + (1 - f_{1}) e^{-\gamma (D_{1} - D_{2})}}
+  ,\quad
+  F_{2} = 1 - F_{1},
+  (\#eq:mixed-poisson-model-fraction-F)
+\end{align}
+where $f_{1}$ is the fraction of cells scored which were irradiated at the highest dose, $D_{1}$ and $D_{2}$ are the estimated doses, $\gamma = 1 / D_{0}$ is the survival coefficient which is a constant value calculated experimentally from each culture treatment.
+1. Calculate the variance on the initial fraction of irradiated cells ($\sigma_{F_{1}}^{2} = \sigma_{F_{2}}^{2}$) using the delta method:
+\begin{align}
+\begin{aligned}
+  \sigma_{F_{1}}^{2} ={}&
+  \left(\frac{\partial F_{1}}{\partial \gamma} \right)^{2} \sigma_{\gamma}^{2} +
+  \left(\frac{\partial F_{1}}{\partial f_{1}} \right)^{2} \sigma_{f_{1}}^{2} \\
+  & +
+  \left(\frac{\partial F_{1}}{\partial D_{1}} \right)^{2} \sigma_{D_{1}}^{2} +
+  \left(\frac{\partial F_{1}}{\partial D_{2}} \right)^{2} \sigma_{D_{2}}^{2},
+\end{aligned}
+  (\#eq:mixed-poisson-model-fraction-F-var)
+\end{align}
+where the variance on $\gamma$ is obtained experimentally, the variance on $f_{1}$ is derived from the optimisation method, and the variances on $D_{i}$ are obtained using the delta method.
+1. The lower and upper 95% confidence limits of the dose estimations ($D_{i, L}$ and $D_{i, U}$), the yields ($\lambda_{i, L}$ and $\lambda_{i, U}$), and the initial fractions of irradiated cells ($F_{i, L}$ and $F_{i, U}$) are calculated following \@ref(eq:conf-int-dose), \@ref(eq:conf-int-yield), and \@ref(eq:conf-int-fraction-F), respectively.
+
+```{r th-dose-hetero-case, include=FALSE}
+case_data <- system.file("extdata", "cases-data-hetero.csv", package = "biodosetools") %>%
+  utils::read.csv(header = TRUE) %>%
+  calculate_aberr_table(
+    type = "case",
+    assessment_u = 1,
+    aberr_module = "dicentrics"
+  )
+```
+
+```{r th-dose-hetero-results, include=FALSE}
+set.seed(1)
+results_hetero <- estimate_hetero_mixed_poisson(
+  case_data,
+  fit_coeffs,
+  fit_var_cov_mat,
+  conf_int = 0.95,
+  protracted_g_value = 1,
+  gamma = 1 / 2.7,
+  gamma_error = 0
+)
+```
+
+```{r th-dose-hetero-curve, echo=FALSE, out.width="100%", fig.dpi=300, fig.align="center", fig.height=3, fig.width=6, fig.cap="A dose-effect calibration curve used to estimate dose uncertainties using heterogeneous method."}
+theory_plot_estimated_dose_curve(
+  est_doses = list(hetero = results_hetero),
+  fit_coeffs,
+  fit_var_cov_mat,
+  protracted_g_value = 1,
+  conf_int_curve = 0.83,
+  aberr_name = "Dicentrics",
+  show_projections = TRUE
+)
+```
