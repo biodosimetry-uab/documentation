@@ -7,13 +7,11 @@ If you want to cite Biodose Tools, you can copy or [download](https://biodosetoo
   author        = {Alfredo Hern{'{a}}ndez and David Endesfelder and Jochen Einbeck and Pedro Puig and Mohamed Amine Benadjaoud and Manuel Higueras and Elizabeth Ainsbury and Ga{"{e}}tan Gruel and Ursula Oestreicher and Leonardo Barrios and Joan Francesc Barquinero},
   title         = {{Biodose Tools: an R shiny application for biological dosimetry}},
   journal       = {International Journal of Radiation Biology},
-  volume        = {0},
-  number        = {0},
   pages         = {1-13},
   year          = {2023},
   publisher     = {Taylor & Francis},
   doi           = {10.1080/09553002.2023.2176564},
-  note          ={PMID: 36731491},
+  note          = {PMID: 36731491},
   URL           = {https://doi.org/10.1080/09553002.2023.2176564},
   eprint        = {https://doi.org/10.1080/09553002.2023.2176564}
 }
@@ -21,4 +19,4 @@ If you want to cite Biodose Tools, you can copy or [download](https://biodosetoo
 
 Alternatively, you can use:
 
-> Hernández A, Endesfelder D, Einbeck J, Puig, P, Benadjaoud MA, Higueras M, Ainsbury E, Gruel G, Oestreicher U, Barrios L & Barquinero JF (2023). Biodose Tools: an R shiny application for biological dosimetry. International Journal of Radiation Biology, 0(0), 1-13. https://doi.org/10.1080/09553002.2023.2176564
+> Hernández, A., Endesfelder, D., Einbeck, J., Puig, P., Benadjaoud, M. A., Higueras, M., Ainsbury, E., Gruel, G., Oestreicher, U., Barrios, L., & Barquinero, J. F. (2023). Biodose Tools: an R shiny application for biological dosimetry. International Journal of Radiation Biology, 1-13. https://doi.org/10.1080/09553002.2023.2176564
