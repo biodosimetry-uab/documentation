@@ -2,14 +2,14 @@
 
 ## Structure of the book {-}
 
-<!-- Chapter \@ref(intro) gives a brief background on the software used in the past in Biological Dosimetry and outlines the reasons to use R and R Shiny as the basis of Biodose Tools. -->
+Chapter \@ref(intro) gives a brief background on the software used in the past in Biological Dosimetry and outlines the reasons to use R and R Shiny as the basis of Biodose Tools.
 
-<!-- Chapter \@ref(package) gives a brief technical review of the implementation of Biodose Tools, and introduces the basic design principles behind the user interface. -->
+Chapter \@ref(package) gives a brief technical review of the implementation of Biodose Tools, and introduces the basic design principles behind the user interface.
 
 Chapter \@ref(manual-get) introduces the user to Biodose Tools and how to use it either online or locally in RStudio. Chapters \@ref(manual-use-shiny) and \@ref(manual-use-r) cover a series of examples to illustrate the functionality of the different modules. These three chapters should be sufficient to get most readers comfortable with Biodose Tools itself (either using the {shiny} interface or the R API).
 
-<!-- Chapters \@ref(stats-considerations), \@ref(stats-fitting), and \@ref(stats-estimation) are a comprehensive review of the different statistical methods and tests used and available throughout Biodose Tools, geared towards mathematicians and biologists alike. -->
+Chapters \@ref(stats-considerations), \@ref(stats-fitting), and \@ref(stats-estimation) are a comprehensive review of the different statistical methods and tests used and available throughout Biodose Tools, geared towards mathematicians and biologists alike.
 
 Appendix \@ref(appendix-feedback) explains how to give feedback of the app. In Appendix \@ref(appendix-cite) we provide a small guide to cite Biodose Tools.
 
-<!-- To sum it up, this book is a comprehensive reference of Biodose Tools. You can follow the 80/20 rule when reading it. Some sections are there for the sake of completeness, and not all sections are equally useful to the particular use case your laboratory or institution may have to use Biodose Tools. -->
+To sum it up, this book is a comprehensive reference of Biodose Tools. You can follow the 80/20 rule when reading it. Some sections are there for the sake of completeness, and not all sections are equally useful to the particular use case your laboratory or institution may have to use Biodose Tools.
