@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 Dose-effect curve fitting | Biodose Tools</title>
+<meta name="author" content="Alfredo Hernández, Joan Francesc Barquinero">
+<meta name="description" content="8.1 Fitting method The technique suggested for determining the best fit coefficients is that of maximum likelihood (Papworth 1975; Merkle 1983). Using this method, the best fit value for each...">
+<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Dose-effect curve fitting | Biodose Tools">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/images/cover.png">
+<meta property="og:description" content="8.1 Fitting method The technique suggested for determining the best fit coefficients is that of maximum likelihood (Papworth 1975; Merkle 1983). Using this method, the best fit value for each...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 Dose-effect curve fitting | Biodose Tools">
+<meta name="twitter:description" content="8.1 Fitting method The technique suggested for determining the best fit coefficients is that of maximum likelihood (Papworth 1975; Merkle 1983). Using this method, the best fit value for each...">
+<meta name="twitter:image" content="/images/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link rel="icon" type="image/x-icon" href="favicon.png">
+<link rel="icon" sizes="192x192" href="favicon-highres.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="User Manual &amp; Documentation">Biodose Tools</a>:
+        <small class="text-muted">User Manual &amp; Documentation</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="package.html"><span class="header-section-number">2</span> Package implementation</a></li>
+<li class="book-part">Using Biodose Tools</li>
+<li><a class="" href="manual-get.html"><span class="header-section-number">3</span> Getting Biodose Tools</a></li>
+<li><a class="" href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></li>
+<li><a class="" href="manual-use-r.html"><span class="header-section-number">5</span> Usage (R API)</a></li>
+<li><a class="" href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></li>
+<li class="book-part">Statistical Methods</li>
+<li><a class="" href="stats-considerations.html"><span class="header-section-number">7</span> Statistical considerations</a></li>
+<li><a class="active" href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></li>
+<li><a class="" href="stats-estimation.html"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></li>
+<li><a class="" href="appendix-cite.html"><span class="header-section-number">B</span> How to cite Biodose Tools</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/biodosetools-team/documentation">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stats-fitting" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Dose-effect curve fitting<a class="anchor" aria-label="anchor" href="#stats-fitting"><i class="fas fa-link"></i></a>
+</h1>
+<div id="fitting-method" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Fitting method<a class="anchor" aria-label="anchor" href="#fitting-method"><i class="fas fa-link"></i></a>
+</h2>
+<p>The technique suggested for determining the best fit coefficients is that of maximum likelihood <span class="citation">(<a href="references.html#ref-Papworth1975" role="doc-biblioref">Papworth 1975</a>; <a href="references.html#ref-Merkle1983" role="doc-biblioref">Merkle 1983</a>)</span>. Using this method, the best fit value for each coefficient is achieved by assuming a Poisson distribution and maximising the likelihood of the observations by the method of iteratively reweighted least squares. For overdispersed (non-Poisson) distributions, as obtained after high-LET radiation, the weights must take into account the overdispersion. If the data show a statistically significant trend of <span class="math inline">\(\hat{\sigma}^{2}/\bar{y}\)</span> with dose, then that trend should be used. Otherwise, the Poisson weight on each data point should be divided by the average value of <span class="math inline">\(\hat{\sigma}^{2}/\bar{y}\)</span>.</p>
+<p>Table <a href="stats-fitting.html#tab:th-dic-count-data">8.1</a> gives example data used to construct a dose-effect curve for low-LET <span class="math inline">\(\gamma\)</span>-radiation <span class="citation">(<a href="references.html#ref-Barquinero1995" role="doc-biblioref">Joan Francesc Barquinero et al. 1995</a>)</span>, while Table <a href="stats-fitting.html#tab:th-dic-coeffs">8.2</a> shows the estimated coefficients when the data from Table <a href="stats-fitting.html#tab:th-dic-count-data">8.1</a> are fitted. The <span class="math inline">\(p\)</span>-values of the <span class="math inline">\(t\)</span>-test indicate that each parameter is statistically significant.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:th-dic-count-data">Table 8.1: </span>Dicentric distribution within cells, dispersion index, and <span class="math inline">\(u\)</span>-value of the dose-effect curve constructed from cytogenetic results obtained from blood samples irradiated with <span class="math inline">\(\gamma\)</span>-rays <span class="citation">(<a href="references.html#ref-Barquinero1995" role="doc-biblioref">Joan Francesc Barquinero et al. 1995</a>)</span>.</caption>
+<colgroup>
+<col width="11%">
+<col width="3%">
+<col width="3%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="7%">
+<col width="13%">
+<col width="19%">
+<col width="5%">
+</colgroup>
+<thead><tr class="header">
+<th align="center"><span class="math inline">\(D \text{ (Gy)}\)</span></th>
+<th align="center"><span class="math inline">\(N\)</span></th>
+<th align="center"><span class="math inline">\(X\)</span></th>
+<th align="center"><span class="math inline">\(C_{0}\)</span></th>
+<th align="center"><span class="math inline">\(C_{1}\)</span></th>
+<th align="center"><span class="math inline">\(C_{2}\)</span></th>
+<th align="center"><span class="math inline">\(C_{3}\)</span></th>
+<th align="center"><span class="math inline">\(C_{4}\)</span></th>
+<th align="center"><span class="math inline">\(C_{5}\)</span></th>
+<th align="center"><span class="math inline">\(\bar{y}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\sigma}^{2}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\sigma}^{2} / \bar{y}\)</span></th>
+<th align="center"><span class="math inline">\(u\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.000</td>
+<td align="center">5000</td>
+<td align="center">8</td>
+<td align="center">4992</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.002</td>
+<td align="center">0.002</td>
+<td align="center">0.999</td>
+<td align="center">-0.075</td>
+</tr>
+<tr class="even">
+<td align="center">0.100</td>
+<td align="center">5002</td>
+<td align="center">14</td>
+<td align="center">4988</td>
+<td align="center">14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.003</td>
+<td align="center">0.003</td>
+<td align="center">0.997</td>
+<td align="center">-0.135</td>
+</tr>
+<tr class="odd">
+<td align="center">0.250</td>
+<td align="center">2008</td>
+<td align="center">22</td>
+<td align="center">1987</td>
+<td align="center">20</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.011</td>
+<td align="center">0.012</td>
+<td align="center">1.080</td>
+<td align="center">2.610</td>
+</tr>
+<tr class="even">
+<td align="center">0.500</td>
+<td align="center">2002</td>
+<td align="center">55</td>
+<td align="center">1947</td>
+<td align="center">55</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.027</td>
+<td align="center">0.027</td>
+<td align="center">0.973</td>
+<td align="center">-0.861</td>
+</tr>
+<tr class="odd">
+<td align="center">0.750</td>
+<td align="center">1832</td>
+<td align="center">100</td>
+<td align="center">1736</td>
+<td align="center">92</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.055</td>
+<td align="center">0.056</td>
+<td align="center">1.026</td>
+<td align="center">0.790</td>
+</tr>
+<tr class="even">
+<td align="center">1.000</td>
+<td align="center">1168</td>
+<td align="center">109</td>
+<td align="center">1064</td>
+<td align="center">99</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.093</td>
+<td align="center">0.093</td>
+<td align="center">0.999</td>
+<td align="center">-0.018</td>
+</tr>
+<tr class="odd">
+<td align="center">1.500</td>
+<td align="center">562</td>
+<td align="center">100</td>
+<td align="center">474</td>
+<td align="center">76</td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.178</td>
+<td align="center">0.189</td>
+<td align="center">1.064</td>
+<td align="center">1.077</td>
+</tr>
+<tr class="even">
+<td align="center">2.000</td>
+<td align="center">333</td>
+<td align="center">103</td>
+<td align="center">251</td>
+<td align="center">63</td>
+<td align="center">17</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.309</td>
+<td align="center">0.353</td>
+<td align="center">1.141</td>
+<td align="center">1.822</td>
+</tr>
+<tr class="odd">
+<td align="center">3.000</td>
+<td align="center">193</td>
+<td align="center">108</td>
+<td align="center">104</td>
+<td align="center">72</td>
+<td align="center">15</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.560</td>
+<td align="center">0.466</td>
+<td align="center">0.834</td>
+<td align="center">-1.638</td>
+</tr>
+<tr class="even">
+<td align="center">4.000</td>
+<td align="center">103</td>
+<td align="center">103</td>
+<td align="center">35</td>
+<td align="center">41</td>
+<td align="center">21</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1.000</td>
+<td align="center">0.882</td>
+<td align="center">0.882</td>
+<td align="center">-0.844</td>
+</tr>
+<tr class="odd">
+<td align="center">5.000</td>
+<td align="center">59</td>
+<td align="center">107</td>
+<td align="center">11</td>
+<td align="center">19</td>
+<td align="center">11</td>
+<td align="center">9</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">1.814</td>
+<td align="center">2.085</td>
+<td align="center">1.150</td>
+<td align="center">0.811</td>
+</tr>
+</tbody>
+</table></div>
+<p>For each dose analysed, the total number of cells scored (<span class="math inline">\(N\)</span>), the total number of dicentrics observed (<span class="math inline">\(X\)</span>), the cell distribution of dicentrics (<span class="math inline">\(C_{0}, \dots, C_{5}\)</span>), and the dispersion index (<span class="math inline">\(\hat{\sigma}^{2}/\bar{y}\)</span>) and <span class="math inline">\(u\)</span>-test statistic (<span class="math inline">\(u\)</span>) are presented (a sample is considered overdispersed if <span class="math inline">\(u &gt; 1.96\)</span>).</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:th-dic-coeffs">Table 8.2: </span>Fitted values of the coefficients of the LQ dose-effect calibration curve <a href="stats-considerations.html#eq:dose-response-lq">(7.1)</a> constructed from the dicentric distribution in Table <a href="stats-fitting.html#tab:th-dic-count-data">8.1</a>.</caption>
+<thead><tr class="header">
+<th align="center">Coefficient</th>
+<th align="center">Estimate</th>
+<th align="center">
+<span class="math inline">\(t\)</span>-statistic</th>
+<th align="center">
+<span class="math inline">\(p\)</span>-value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(C\)</span></td>
+<td align="center">(0.00128 ± 0.00047)</td>
+<td align="center">2.716</td>
+<td align="center">0.007</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\alpha\)</span></td>
+<td align="center">(0.02104 ± 0.00516) Gy⁻¹</td>
+<td align="center">4.079</td>
+<td align="center">&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\beta\)</span></td>
+<td align="center">(0.06303 ± 0.00401) Gy⁻²</td>
+<td align="center">15.730</td>
+<td align="center">&lt;0.001</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="goodness-of-fit" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Goodness of fit<a class="anchor" aria-label="anchor" href="#goodness-of-fit"><i class="fas fa-link"></i></a>
+</h2>
+<p>The goodness of fit of the fitted curve and significance of estimated coefficients should then be tested, for instance using an appropriate form of the <span class="math inline">\(F\)</span>-test, <span class="math inline">\(z\)</span>-test or <span class="math inline">\(t\)</span>-test. {biodosetools} implements the <span class="math inline">\(t\)</span>-test.</p>
+<p>Let <span class="math inline">\(\hat{\theta}\)</span> be an estimator of the parameter <span class="math inline">\(\theta \in \{ \alpha, \beta, C\}\)</span> in the fit model. Then the <span class="math inline">\(t\)</span>-statistic for this parameter is defined as
+<span class="math display" id="eq:t-test">\[\begin{align}
+  t_{\hat{\theta}} = \frac{\hat{\theta}}{\widehat{se}(\hat{\theta})},
+  \tag{8.1}
+\end{align}\]</span>
+where <span class="math inline">\(\widehat{se}(\hat{\theta})\)</span> is the standard error of <span class="math inline">\(\hat\theta\)</span>.</p>
+</div>
+<div id="dose-effect-calibration" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Dose-effect calibration<a class="anchor" aria-label="anchor" href="#dose-effect-calibration"><i class="fas fa-link"></i></a>
+</h2>
+<p>Adequate curve fitting requires a sufficient number of evaluated dose points to minimise the error. A minimum of 7 doses should be evaluated, 5 of them at doses equal or lower than 1 Gy, including the 0 Gy dose. Usually, for low-LET radiation (X-rays and <span class="math inline">\(\gamma\)</span>-rays) the dose range evaluated is 0–5 Gy, indeed, beyond this dose there is evidence of saturation of the aberration yield which will lead to a distortion of the <span class="math inline">\(\beta\)</span> coefficient in equation <a href="stats-considerations.html#eq:dose-response-lq">(7.1)</a> <span class="citation">(<a href="references.html#ref-ISO19238:2014" role="doc-biblioref">International Organization for Standardization 2014</a>; <a href="references.html#ref-Lloyd1983" role="doc-biblioref">D. C. Lloyd and Edwards 1983</a>)</span>. For high-LET radiation, a range of 0–2 Gy is suggested <span class="citation">(<a href="references.html#ref-IAEA2011" role="doc-biblioref">International Atomic Energy Agency 2011</a>)</span>.</p>
+<p>At higher doses, scoring should aim to detect 100 dicentrics at each dose. However, at lower doses this is difficult to achieve and instead several thousand cells per point should be scored; a number between and is suggested. In all cases, the actual number of cells scored should be dependent on the number of dose points in the low dose region, with the focus on minimising the error on the fitted curve <span class="citation">(<a href="references.html#ref-Higueras2020" role="doc-biblioref">Higueras, Howes, and López-Fidalgo 2020</a>)</span>.</p>
+<p>Opinions vary on how to treat the background level of aberrations in fitting dose-effect data. In general there are three approaches: (a) a dose point at 0 Gy is included in the curve fitting procedure, (b) the zero dose point is ignored, or else (c) the zero dose point is represented in every fitting procedure by a standard background value. Nowadays almost all laboratories include a 0 Gy dose point, and it should always be included for dicentrics, translocations and micronuclei.</p>
+<p>If the measured yield at zero dose is used as one of the data points for the curve fitting (as used in the curve fitting presented in Table <a href="stats-fitting.html#tab:th-dic-coeffs">8.2</a>), the background becomes a variable parameter. However, since the yield in unirradiated cells is usually low, often none are observed so the measured yield at zero dose is zero. As discussed, at low doses, the statistical resolution of the data points is generally low. Thus, including the zero dose point in the curve fitting procedure can sometimes lead to negative estimates of the background value (<span class="math inline">\(C\)</span>) and negative linear coefficients (<span class="math inline">\(\alpha\)</span>), which obviously have no biological basis. Some investigators resolve this problem by ignoring zero dose data points and constraining the curve to pass through the origin. Another way to solve this is to fit the calibration curve model with constrained maximum likelihood which forces the intercept parameter to be non-negative <span class="citation">(<a href="references.html#ref-Oliveira2016" role="doc-biblioref">Oliveira et al. 2016</a>)</span>.</p>
+<p>There are, however, sufficient data published from surveys of subjects exposed only to background radiation to show that there is a small positive background level of aberrations. An alternative method adopted by some experts is therefore to use a small positive background value as a data point and to ascribe a large percentage of uncertainty to it. Ideally a laboratory should generate its own background data, although this requires the analysis of many thousands of cells. A consensus has emerged that the background level of dicentrics is ~ 0.5–1.0 per 1000 cells <span class="citation">(<a href="references.html#ref-Lloyd1980" role="doc-biblioref">D. C. Lloyd, Purrott, and Reeder 1980</a>)</span> whilst for translocations <span class="citation">(<a href="references.html#ref-Sigurdson2008" role="doc-biblioref">Sigurdson et al. 2008</a>)</span> and for micronuclei <span class="citation">(<a href="references.html#ref-Fenech1993" role="doc-biblioref">Fenech 1993</a>)</span> the control values are higher.</p>
+</div>
+<div id="protracted-and-fractionated-exposure" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Protracted and fractionated exposure<a class="anchor" aria-label="anchor" href="#protracted-and-fractionated-exposure"><i class="fas fa-link"></i></a>
+</h2>
+<p>In case of a protracted or fractionated exposure the resulting chromosomal aberration yield may be lower than when receiving the same dose acutely. No dose rate or fractionation effect would be expected for high-LET radiation, where the dose-effect relationship is close to linear. However, with low-LET radiation, dose protraction has the impact of reducing the dose squared coefficient, <span class="math inline">\(\beta\)</span>, in the yield <a href="stats-considerations.html#eq:dose-response-lq">(7.1)</a>. It is assumed that this term refers to those aberrations generated by the interaction of two tracks or more. Exchange type aberrations, such as dicentrics have a fast kinetics formation <span class="citation">(<a href="references.html#ref-Darroudi1998" role="doc-biblioref">Darroudi et al. 1998</a>; <a href="references.html#ref-Durante1996" role="doc-biblioref">Durante, George, and Yang 1996</a>; <a href="references.html#ref-Durante1998" role="doc-biblioref">Durante, Furusawa, and Gotoh 1998</a>; <a href="references.html#ref-Pujol2020" role="doc-biblioref">Pujol-Canadell et al. 2020</a>)</span>, and hence the effect on the interaction of two tracks can be modified by repair mechanisms that have time to function over the course of a long exposure or in the intervals between intermittent acute exposures. The decrease in the frequency of aberrations appears to follow a single exponential function with a mean time of about 2 hours.</p>
+<p>In the early times of radiobiology and evaluating the effect of IR on <span class="citation">Lea and Catcheside (<a href="references.html#ref-Lea1942" role="doc-biblioref">1942</a>)</span> suggested a time-dependent factor called the <span class="math inline">\(G\)</span> function <a href="stats-fitting.html#eq:protraction-function">(8.3)</a> to allow change of the dose squared coefficient and so account for the impacts of dose protraction.
+<span class="math display" id="eq:dose-response-lq-protracted">\[\begin{align}
+  \lambda = C + \alpha D + \beta G(x) D^{2},
+  \tag{8.2}
+\end{align}\]</span>
+where <span class="math inline">\(t\)</span> is the time over which the irradiation occurred, and <span class="math inline">\(t_{0}\)</span> is the mean lifetime of the breaks, which has been shown to be of the order of ~ 2 hours <span class="citation">(<a href="references.html#ref-Bauchinger1979" role="doc-biblioref">Bauchinger, Schmid, and Dresp 1979</a>; <a href="references.html#ref-Lloyd1984" role="doc-biblioref">D. C. Lloyd et al. 1984</a>)</span>.</p>
+<p>Currently in biological dosimetry this approach is still accepted and that is why the LQ dose-effect equation <a href="stats-considerations.html#eq:dose-response-lq">(7.1)</a> may be modified as follows:
+<span class="math display" id="eq:protraction-function">\[\begin{align}
+  G(x) = \frac{2}{x^{2}} \left( x - 1 + e^{-x} \right) ,
+  \quad \text{and} \quad
+  x = \frac{t}{t_{0}}.
+  \tag{8.3}
+\end{align}\]</span></p>
+<p>Given a value of <span class="math inline">\(t\)</span>, we can have three protraction cases:</p>
+<ul>
+<li>Acute exposure when <span class="math inline">\(t\)</span> is approximately 0. In this case <span class="math inline">\(\lim\limits_{x\to 0} G(x) = 1\)</span>. Therefore, the dose-effect equation becomes <a href="stats-considerations.html#eq:dose-response-lq">(7.1)</a>.</li>
+<li>Highly protracted exposure when <span class="math inline">\(t\)</span> is high. In this case <span class="math inline">\(G(x)\)</span> reduces virtually to zero. Therefore, even if a high dose (&gt; 1.0 Gy) is involved, the dose-effect equation becomes linear <a href="stats-considerations.html#eq:dose-response-l">(7.2)</a>.</li>
+<li>Protracted exposure for any case in between. In this case the effects of <span class="math inline">\(G(x)\)</span> need to be considered.</li>
+</ul>
+<p>All dose estimation methods implemented in {biodosetools} consider protraction, with the extreme of <span class="math inline">\(G(x) = 1\)</span> or <span class="math inline">\(G(x) \approx 0\)</span> being just particular cases. For this reason, all methods described in Chapter <a href="stats-estimation.html#stats-estimation">9</a> are derived using equation <a href="stats-fitting.html#eq:dose-response-lq-protracted">(8.2)</a> instead of <a href="stats-considerations.html#eq:dose-response-lq">(7.1)</a>.</p>
+</div>
+<div id="genomic-equivalence-for-translocations" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Genomic equivalence for translocations<a class="anchor" aria-label="anchor" href="#genomic-equivalence-for-translocations"><i class="fas fa-link"></i></a>
+</h2>
+<p>Curve fitting for translocations follow the same procedure described for dicentrics. However, Fluorescence Hybridisation (FISH) analysis only evaluates the translocation frequency in a specific set of chromosomes painted. The conversion of this frequency to full genome equivalence is a recommended procedure to use when different data must be combined when results using different combinations of whole chromosome paintings are compared, e.g. in the frame of interlaboratory comparisons.</p>
+<p>When the DNA probes used to paint different chromosome pairs are labelled with different fluorochromes, the genomic conversion factor <span class="math inline">\(F_{p}/F_{G}\)</span> is usually calculated by using the formula for the painted fractions of the genome <span class="citation">(<a href="references.html#ref-Lucas2000" role="doc-biblioref">Lucas and Deng 2000</a>)</span>:
+<span class="math display" id="eq:genome-factor">\[\begin{align}
+  \frac{F_{p}}{F_{G}} = \frac{2}{0.974} \left[ \sum_{i} f_{i} (1 - f_{i}) - \sum_{i &lt; j} f_{i} f_{j} \right],
+  \tag{8.4}
+\end{align}\]</span>
+where <span class="math inline">\(F_{G}\)</span> is the full genome aberration frequency, <span class="math inline">\(F_{p}\)</span> is the translocation frequency detected by FISH, and <span class="math inline">\(f_{i}\)</span> is the fraction of genome corresponding to each chromosome <span class="math inline">\(i\)</span> used in the hybridisation, taking into account the gender of the subjects <span class="citation">(<a href="references.html#ref-Morton1991" role="doc-biblioref">Morton 1991</a>)</span>. The total number of interchromosomal exchanges is 0.974, using the same assumption of DNA proportionality (see calculations in <span class="citation">Lucas et al. (<a href="references.html#ref-Lucas1992" role="doc-biblioref">1992</a>)</span>).</p>
+<p>In the case when the DNA probes used to paint different chromosomes are all labelled with the same fluorochrome, the genomic conversion factor <a href="stats-fitting.html#eq:genome-factor">(8.4)</a> reduces to:
+<span class="math display" id="eq:genome-factor-simple">\[\begin{align}
+  \frac{F_{p}}{F_{G}} = \frac{2}{0.974} f_{p} (1 - f_{p}) = 2.05 f_{p} (1 - f_{p}),
+  \tag{8.5}
+\end{align}\]</span>
+where <span class="math inline">\(F_{G}\)</span> is the full genome aberration frequency, <span class="math inline">\(F_{p}\)</span> is the translocation frequency detected by FISH, and <span class="math inline">\(f_{p}\)</span> is the fraction of genome covered by the combination of whole chromosome probes used in the hybridisation, also taking into account the gender of the subjects.</p>
+<p>Translocations have higher background levels than dicentrics, which is partly due to the former being a persistent type of aberration. When attempting retrospective biological dosimetry, it is critical to account for the translocation background, especially at low doses. Because a pre-exposure control blood sample from the unintentionally irradiated person or a population study group is not available, an estimated value based on generic survey data must be utilised. Ideally, a laboratory would create its own control database, but this is a huge undertaking because it would have to cover a lot of confounding factors and, more importantly, a wide range of age groups. The greatest international database, split down by age, sex, ethnicity, geographic region, and smoking behaviours, is currently available thanks to a comprehensive meta-analysis published by <span class="citation">Sigurdson et al. (<a href="references.html#ref-Sigurdson2008" role="doc-biblioref">2008</a>)</span>.</p>
+<p>It is important to account for the background and subtract from the total number of translocations observed in an individual’s lymphocyte the expected translocation rate given a set of confounding factors <a href="stats-fitting.html#eq:sigurdson-corrected-FG">(8.6)</a>, the most important of which is age:
+<span class="math display" id="eq:sigurdson-corrected-FG">\[\begin{align}
+  F'_{G} = \frac{X - X_{c}}{N (F_{p} / F_{G})},
+  \tag{8.6}
+\end{align}\]</span>
+where <span class="math inline">\(F'_{G}\)</span> is the corrected full genome aberration frequency, <span class="math inline">\(X\)</span> is the total number of translocations observed, <span class="math inline">\(X_{c}\)</span> is the total number of expected aberrations, <span class="math inline">\(N\)</span> is the total number of cells, and <span class="math inline">\(F_{p} / F_{G}\)</span> is the genomic conversion factor given by <a href="stats-fitting.html#eq:genome-factor">(8.4)</a>.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="stats-considerations.html"><span class="header-section-number">7</span> Statistical considerations</a></div>
+<div class="next"><a href="stats-estimation.html"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#stats-fitting"><span class="header-section-number">8</span> Dose-effect curve fitting</a></li>
+<li><a class="nav-link" href="#fitting-method"><span class="header-section-number">8.1</span> Fitting method</a></li>
+<li><a class="nav-link" href="#goodness-of-fit"><span class="header-section-number">8.2</span> Goodness of fit</a></li>
+<li><a class="nav-link" href="#dose-effect-calibration"><span class="header-section-number">8.3</span> Dose-effect calibration</a></li>
+<li><a class="nav-link" href="#protracted-and-fractionated-exposure"><span class="header-section-number">8.4</span> Protracted and fractionated exposure</a></li>
+<li><a class="nav-link" href="#genomic-equivalence-for-translocations"><span class="header-section-number">8.5</span> Genomic equivalence for translocations</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/biodosetools-team/documentation/blob/master/contents/03c_stats_fitting.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/biodosetools-team/documentation/edit/master/contents/03c_stats_fitting.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Biodose Tools</strong>: User Manual &amp; Documentation" was written by Alfredo Hernández, Joan Francesc Barquinero. It was last built on 2023-02-16.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

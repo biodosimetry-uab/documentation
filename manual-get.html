@@ -4,21 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 1 Getting Biodose Tools | Biodose Tools</title>
+<title>Chapter 3 Getting Biodose Tools | Biodose Tools</title>
 <meta name="author" content="Alfredo Hernández, Joan Francesc Barquinero">
 <meta name="description" content="There are mainly two methods to get Biodose Tools: Online on a web browser.  Locally on your computer using RStudio. This chapter will go over the details and steps required to get Biodose Tools...">
-<meta name="generator" content="bookdown 0.30 with bs4_book()">
-<meta property="og:title" content="Chapter 1 Getting Biodose Tools | Biodose Tools">
+<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Getting Biodose Tools | Biodose Tools">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/images/cover.png">
 <meta property="og:description" content="There are mainly two methods to get Biodose Tools: Online on a web browser.  Locally on your computer using RStudio. This chapter will go over the details and steps required to get Biodose Tools...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 1 Getting Biodose Tools | Biodose Tools">
+<meta name="twitter:title" content="Chapter 3 Getting Biodose Tools | Biodose Tools">
 <meta name="twitter:description" content="There are mainly two methods to get Biodose Tools: Online on a web browser.  Locally on your computer using RStudio. This chapter will go over the details and steps required to get Biodose Tools...">
 <meta name="twitter:image" content="/images/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="icon" sizes="192x192" href="favicon-highres.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
@@ -72,10 +72,17 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
 <li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="package.html"><span class="header-section-number">2</span> Package implementation</a></li>
 <li class="book-part">Using Biodose Tools</li>
-<li><a class="active" href="manual-get.html"><span class="header-section-number">1</span> Getting Biodose Tools</a></li>
-<li><a class="" href="manual-use-shiny.html"><span class="header-section-number">2</span> Usage (web UI)</a></li>
-<li><a class="" href="manual-use-r.html"><span class="header-section-number">3</span> Usage (R API)</a></li>
+<li><a class="active" href="manual-get.html"><span class="header-section-number">3</span> Getting Biodose Tools</a></li>
+<li><a class="" href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></li>
+<li><a class="" href="manual-use-r.html"><span class="header-section-number">5</span> Usage (R API)</a></li>
+<li><a class="" href="technical-matters.html"><span class="header-section-number">6</span> Technical matters</a></li>
+<li class="book-part">Statistical Methods</li>
+<li><a class="" href="stats-considerations.html"><span class="header-section-number">7</span> Statistical considerations</a></li>
+<li><a class="" href="stats-fitting.html"><span class="header-section-number">8</span> Dose-effect curve fitting</a></li>
+<li><a class="" href="stats-estimation.html"><span class="header-section-number">9</span> Uncertainty on dose estimation</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="appendix-feedback.html"><span class="header-section-number">A</span> Feedback and issues</a></li>
 <li><a class="" href="appendix-cite.html"><span class="header-section-number">B</span> How to cite Biodose Tools</a></li>
@@ -87,9 +94,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="manual-get" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="manual-get" class="section level1" number="3">
 <h1>
-<span class="header-section-number">1</span> Getting Biodose Tools<a class="anchor" aria-label="anchor" href="#manual-get"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3</span> Getting Biodose Tools<a class="anchor" aria-label="anchor" href="#manual-get"><i class="fas fa-link"></i></a>
 </h1>
 <p>There are mainly two methods to get Biodose Tools:</p>
 <ul>
@@ -98,9 +105,9 @@
 <li>Locally on your computer using RStudio.</li>
 </ul>
 <p>This chapter will go over the details and steps required to get Biodose Tools running for each method.</p>
-<div id="manual-get-online" class="section level2" number="1.1">
+<div id="manual-get-online" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">1.1</span> Online<a class="anchor" aria-label="anchor" href="#manual-get-online"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Online<a class="anchor" aria-label="anchor" href="#manual-get-online"><i class="fas fa-link"></i></a>
 </h2>
 <p>Biodose Tools is currently hosted on Shinyapps.io: <a href="https://aldomann.shinyapps.io/biodosetools-v3/">https://aldomann.shinyapps.io/biodosetools-v3/</a>.</p>
 <p>Biodose Tools will be later hosted at one of our institution’s servers.</p>
@@ -113,9 +120,9 @@
 <li>Microsoft Edge.</li>
 </ul>
 </div>
-<div id="manual-get-offline" class="section level2" number="1.2">
+<div id="manual-get-offline" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">1.2</span> On RStudio<a class="anchor" aria-label="anchor" href="#manual-get-offline"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> On RStudio<a class="anchor" aria-label="anchor" href="#manual-get-offline"><i class="fas fa-link"></i></a>
 </h2>
 <p>Many laboratories will prefer to use their own computers to run the app instead of relying on an external server, either for security reasons or better reliability.</p>
 <p>To run Biodose Tools on your local machine, you need to install R <span class="citation">(<a href="references.html#ref-R-base" role="doc-biblioref">R Core Team 2022</a>)</span>. Additionally, we recommend to install RStudio <span class="citation">(<a href="references.html#ref-R-Rstudio" role="doc-biblioref">RStudio Team 2015</a>)</span>.</p>
@@ -123,9 +130,9 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BimfOgKZUIk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 <p>The “Installation Guide” tutorial has captions available in 8 languages. And as of 14th November, 2022 the number of views of the three existing tutorials has been 508.</p>
-<div id="installing-r" class="section level3" number="1.2.1">
+<div id="installing-r" class="section level3" number="3.2.1">
 <h3>
-<span class="header-section-number">1.2.1</span> Installing R<a class="anchor" aria-label="anchor" href="#installing-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.1</span> Installing R<a class="anchor" aria-label="anchor" href="#installing-r"><i class="fas fa-link"></i></a>
 </h3>
 <div id="under-windows" class="section level4 unnumbered">
 <h4>Under Windows<a class="anchor" aria-label="anchor" href="#under-windows"><i class="fas fa-link"></i></a>
@@ -152,9 +159,9 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="manual-get.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pacman <span class="at">-S</span> r</span></code></pre></div>
 </div>
 </div>
-<div id="installing-rstudio" class="section level3" number="1.2.2">
+<div id="installing-rstudio" class="section level3" number="3.2.2">
 <h3>
-<span class="header-section-number">1.2.2</span> Installing RStudio<a class="anchor" aria-label="anchor" href="#installing-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2</span> Installing RStudio<a class="anchor" aria-label="anchor" href="#installing-rstudio"><i class="fas fa-link"></i></a>
 </h3>
 <p>RStudio for Windows, macOS, or GNU/Linux can be downloaded from <a href="https://www.rstudio.com/products/rstudio/download/#download">https://www.rstudio.com/products/rstudio/download/</a>. RStudio requires R to be installed on the local machine, so make sure to install it first.</p>
 <p>Once installation is complete, the recommended next step for a new user would be to start RStudio and run a sample session.</p>
@@ -162,9 +169,9 @@
 <p>The <code>&gt;</code> character is the command prompt, and commands are executed once the user
 presses the RETURN or ENTER key.</p>
 </div>
-<div id="installing-biodose-tools" class="section level3" number="1.2.3">
+<div id="installing-biodose-tools" class="section level3" number="3.2.3">
 <h3>
-<span class="header-section-number">1.2.3</span> Installing Biodose Tools<a class="anchor" aria-label="anchor" href="#installing-biodose-tools"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.3</span> Installing Biodose Tools<a class="anchor" aria-label="anchor" href="#installing-biodose-tools"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can install the stable version of {biodosetools} from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -174,9 +181,9 @@ presses the RETURN or ENTER key.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"biodosetools-team/biodosetools"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="running-biodose-tools" class="section level3" number="1.2.4">
+<div id="running-biodose-tools" class="section level3" number="3.2.4">
 <h3>
-<span class="header-section-number">1.2.4</span> Running Biodose Tools<a class="anchor" aria-label="anchor" href="#running-biodose-tools"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.4</span> Running Biodose Tools<a class="anchor" aria-label="anchor" href="#running-biodose-tools"><i class="fas fa-link"></i></a>
 </h3>
 <p>Once installed, to run the Biodose Tools app locally, we can run the following command on the R console, which will invoke the {shiny} user interface:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -187,19 +194,19 @@ presses the RETURN or ENTER key.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="preface.html">Preface</a></div>
-<div class="next"><a href="manual-use-shiny.html"><span class="header-section-number">2</span> Usage (web UI)</a></div>
+<div class="prev"><a href="package.html"><span class="header-section-number">2</span> Package implementation</a></div>
+<div class="next"><a href="manual-use-shiny.html"><span class="header-section-number">4</span> Usage (web UI)</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#manual-get"><span class="header-section-number">1</span> Getting Biodose Tools</a></li>
-<li><a class="nav-link" href="#manual-get-online"><span class="header-section-number">1.1</span> Online</a></li>
+<li><a class="nav-link" href="#manual-get"><span class="header-section-number">3</span> Getting Biodose Tools</a></li>
+<li><a class="nav-link" href="#manual-get-online"><span class="header-section-number">3.1</span> Online</a></li>
 <li>
-<a class="nav-link" href="#manual-get-offline"><span class="header-section-number">1.2</span> On RStudio</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#installing-r"><span class="header-section-number">1.2.1</span> Installing R</a></li>
-<li><a class="nav-link" href="#installing-rstudio"><span class="header-section-number">1.2.2</span> Installing RStudio</a></li>
-<li><a class="nav-link" href="#installing-biodose-tools"><span class="header-section-number">1.2.3</span> Installing Biodose Tools</a></li>
-<li><a class="nav-link" href="#running-biodose-tools"><span class="header-section-number">1.2.4</span> Running Biodose Tools</a></li>
+<a class="nav-link" href="#manual-get-offline"><span class="header-section-number">3.2</span> On RStudio</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#installing-r"><span class="header-section-number">3.2.1</span> Installing R</a></li>
+<li><a class="nav-link" href="#installing-rstudio"><span class="header-section-number">3.2.2</span> Installing RStudio</a></li>
+<li><a class="nav-link" href="#installing-biodose-tools"><span class="header-section-number">3.2.3</span> Installing Biodose Tools</a></li>
+<li><a class="nav-link" href="#running-biodose-tools"><span class="header-section-number">3.2.4</span> Running Biodose Tools</a></li>
 </ul>
 </li>
 </ul>
@@ -219,7 +226,7 @@ presses the RETURN or ENTER key.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Biodose Tools</strong>: User Manual &amp; Documentation" was written by Alfredo Hernández, Joan Francesc Barquinero. It was last built on 2022-12-10.</p>
+    <p>"<strong>Biodose Tools</strong>: User Manual &amp; Documentation" was written by Alfredo Hernández, Joan Francesc Barquinero. It was last built on 2023-02-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
